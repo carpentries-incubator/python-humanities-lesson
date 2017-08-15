@@ -41,43 +41,39 @@ directory structure, however, that is not our focus today.
 ### Our Data
 
 For this lesson, we will be using the Portal Teaching data, a subset of the data
-from Ernst et al
-[Long-term monitoring and experimental manipulation of a Chihuahuan Desert ecosystem near Portal, Arizona, USA](http://www.esapubs.org/archive/ecol/E090/118/default.htm)
+from EEBO/TCP
+[Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
-We will be using files from the [Portal Project Teaching Database](https://figshare.com/articles/Portal_Project_Teaching_Database/1314459).
-This section will use the `surveys.csv` file that can be downloaded here:
-[https://ndownloader.figshare.com/files/2292172](https://ndownloader.figshare.com/files/2292172)
+We will be using files from the [Text Creation Partnership repository](https://github.com/textcreationpartnership/Texts).
+This section will use the `TCP.csv` file that can be downloaded here:
+[https://github.com/textcreationpartnership/Texts/blob/master/TCP.csv?raw=true](https://github.com/textcreationpartnership/Texts/blob/master/TCP.csv?raw=true)
 
-We are studying the species and weight of animals caught in plots in our study
-area. The dataset is stored as a `.csv` file: each row holds information for a
-single animal, and the columns represent:
+We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a
+single title, and the columns represent:
 
 | Column           | Description                        |
 |------------------|------------------------------------|
-| record_id        | Unique id for the observation      |
-| month            | month of observation               |
-| day              | day of observation                 |
-| year             | year of observation                |
-| plot_id          | ID of a particular plot            |
-| species_id       | 2-letter code                      |
-| sex              | sex of animal ("M", "F")           |
-| hindfoot_length  | length of the hindfoot in mm       |
-| weight           | weight of the animal in grams      |
-
+| TCP              | TCP identity                       |
+| EEBO             | EEBO identity                      |
+| VID              | VID identity                       |
+| STC              | STC identity                       |
+| status           | Whether the book is free or not    |
+| Author           | Author(s)                          |
+| Date             | Date of publication                |
+| Title            | The Book title                     |
+| Terms            | Tersm associated with the text     |
+| Pages            | Number of pages in the text        |
 
 The first few rows of our first file look like this:
 
 ```
-record_id,month,day,year,plot_id,species_id,sex,hindfoot_length,weight
-1,7,16,1977,2,NL,M,32,
-2,7,16,1977,3,NL,M,33,
-3,7,16,1977,2,DM,F,37,
-4,7,16,1977,7,DM,M,36,
-5,7,16,1977,3,DM,M,35,
-6,7,16,1977,1,PF,M,14,
-7,7,16,1977,2,PE,F,,
-8,7,16,1977,1,DM,M,37,
-9,7,16,1977,1,DM,F,34,
+TCP,EEBO,VID,STC,Status,Author,Date,Title,Terms,Pages
+A00002,99850634,15849,STC 1000.5; ESTC S115415,Free,"Aylett, Robert, 1583-1655?",1625,"The brides ornaments viz. fiue meditations, morall and diuine. 1. Knowledge, 2. zeale, 3. temperance, 4. bountie, 5. ioy.",,134
+A00005,99842408,7058,STC 10000; ESTC S106695,Free,"Higden, Ranulf, d. 1364. Polycronicon. English. Selections.; Trevisa, John, d. 1402.",1515,Here begynneth a shorte and abreue table on the Cronycles ...; Saint Albans chronicle.,Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,302
+A00007,99844302,9101,STC 10002; ESTC S108645,Free,"Higden, Ranulf, d. 1364. Polycronicon.",1528,"The Cronycles of Englonde with the dedes of popes and emperours, and also the descripcyon of Englonde; Saint Albans chronicle.",Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,386
+A00008,99848896,14017,STC 10003; ESTC S113665,Free,"Wood, William, fl. 1623, attributed name.",1623,Considerations vpon the treaty of marriage between England and Spain,Great Britain -- Foreign relations -- Spain.,14
+A00011,99837000,1304,STC 10008; ESTC S101178,Free,,1640,"Englands complaint to Iesus Christ, against the bishops canons of the late sinfull synod, a seditious conuenticle, a packe of hypocrites, a sworne confederacy, a traiterous conspiracy ... In this complaint are specified those impieties and insolencies, which are most notorious, scattered through the canons and constitutions of the said sinfull synod. And confuted by arguments annexed hereunto.",Church of England. -- Thirty-nine Articles -- Controversial literature.; Canon law -- Early works to 1800.,54
+A00012,99853871,19269,STC 1001; ESTC S118664,Free,"Aylett, Robert, 1583-1655?",1623,"Ioseph, or, Pharoah's fauourite; Joseph.",Joseph -- (Son of Jacob) -- Early works to 1800.,99
 ```
 
 ---
@@ -129,29 +125,27 @@ an element in the data structure.
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
-pd.read_csv("surveys.csv")
+pd.read_csv("TCP.csv")
 ```
 
 The above command yields the **output** below:
 
 ```
-record_id  month  day  year  plot_id species_id sex  hindfoot_length  weight
-0          1      7   16  1977        2         NL   M               32   NaN
-1          2      7   16  1977        3         NL   M               33   NaN
-2          3      7   16  1977        2         DM   F               37   NaN
-3          4      7   16  1977        7         DM   M               36   NaN
-4          5      7   16  1977        3         DM   M               35   NaN
+          TCP        EEBO     VID  \
+0      A00002  99850634.0   15849   
+1      A00005  99842408.0    7058   
+2      A00007  99844302.0    9101   
+3      A00008  99848896.0   14017   
+4      A00011  99837000.0    1304
 ...
-35544      35545     12   31  2002       15     AH  NaN              NaN  NaN
-35545      35546     12   31  2002       15     AH  NaN              NaN  NaN
-35546      35547     12   31  2002       10     RM    F               15   14
-35547      35548     12   31  2002        7     DO    M               36   51
-35548      35549     12   31  2002        5     NaN  NaN             NaN  NaN
-
-[35549 rows x 9 columns]
+61311  B36556  12765250.0  199318   
+61312  B36604  99830259.0  207353   
+61313  B36974  11511954.0  209883   
+61314  B36975  11512329.0  209884 
+[61315 rows x 10 columns]
 ```
 
-We can see that there were 33,549 rows parsed. Each row has 9
+We can see that there were 61,315 rows parsed. Each row has 10
 columns. The first column is the index of the DataFrame. The index is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
@@ -159,52 +153,53 @@ we haven't saved any data to memory so we can work with it.We need to assign the
 DataFrame to a variable. Remember that a variable is a name for a value, such as `x`,
 or  `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
 
-Let's call the imported survey data `surveys_df`:
+Let's call the imported survey data `tcp_df`:
 
 ```python
-surveys_df = pd.read_csv("surveys.csv")
+tcp_df = pd.read_csv("TCP.csv")
 ```
 
 Notice when you assign the imported DataFrame to a variable, Python does not
-produce any output on the screen. We can print the value of the `surveys_df`
+produce any output on the screen. We can print the value of the `tcp_df`
 object by typing its name into the Python command prompt.
 
 ```python
-surveys_df
+tcp_df
 ```
 
 which prints contents like above
 
-## Manipulating Our Species Survey Data
+## Manipulating Our Index Data
 
 Now we can start manipulating our data. First, let's check the data type of the
-data stored in `surveys_df` using the `type` method. **The `type` method and
-`__class__` attribute** tell us that `surveys_df` is `<class 'pandas.core.frame.DataFrame'>`.
+data stored in `tcp_df` using the `type` method. **The `type` method and
+`__class__` attribute** tell us that `tcp_df` is `<class 'pandas.core.frame.DataFrame'>`.
 
 ```python
-type(surveys_df)
+type(tcp_df)
 # this does the same thing as the above!
-surveys_df.__class__
+tcp_df.__class__
 ```
-We can also enter `surveys_df.dtypes` at our prompt to view the data type for each
+We can also enter `tcp_df.dtypes` at our prompt to view the data type for each
 column in our DataFrame. `int64` represents numeric integer values - `int64` cells
 can not store decimals. `object` represents strings (letters and numbers). `float64`
 represents numbers with decimals.
 
-	surveys_df.dtypes
+	tcp_df.dtypes
 
 which returns:
 
 ```
-record_id            int64
-month                int64
-day                  int64
-year                 int64
-plot_id              int64
-species_id          object
-sex                 object
-hindfoot_length    float64
-weight             float64
+TCP        object
+EEBO      float64
+VID        object
+STC        object
+Status     object
+Author     object
+Date       object
+Title      object
+Terms      object
+Pages       int64
 dtype: object
 ```
 
@@ -216,29 +211,29 @@ There are many ways to summarize and access the data stored in DataFrames,
 using attributes and methods provided by the DataFrame object.
 
 To access an attribute, use the DataFrame object name followed by the attribute
-name `df_object.attribute`. Using the DataFrame `surveys_df` and attribute
+name `df_object.attribute`. Using the DataFrame `tcp_df` and attribute
 `columns`, an index of all the column names in the DataFrame can be accessed
-with `surveys_df.columns`.
+with `tcp_df.columns`.
 
 Methods are called in a similar fashion using the syntax `df_object.method()`.
-As an example, `surveys_df.head()` gets the first few rows in the DataFrame
-`surveys_df` using **the `head()` method**. With a method, we can supply extra
+As an example, `tcp_df.head()` gets the first few rows in the DataFrame
+`tcp_df` using **the `head()` method**. With a method, we can supply extra
 information in the parens to control behaviour.
 
 Let's look at the data using these.
 
 > ## Challenge - DataFrames
 >
-> Using our DataFrame `surveys_df`, try out the attributes & methods below to see
+> Using our DataFrame `tcp_df`, try out the attributes & methods below to see
 > what they return.
 >
-> 1. `surveys_df.columns`
-> 2. `surveys_df.shape` Take note of the output of `shape` - what format does it
+> 1. `tcp_df.columns`
+> 2. `tcp_df.shape` Take note of the output of `shape` - what format does it
 >    return the shape of the DataFrame in?
 >    
 >    HINT: [More on tuples, here](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
-> 3. `surveys_df.head()` Also, what does `surveys_df.head(15)` do?
-> 4. `surveys_df.tail()`
+> 3. `tcp_df.head()` Also, what does `tcp_df.head(15)` do?
+> 4. `tcp_df.tail()`
 {: .challenge}
 
 
@@ -254,40 +249,36 @@ Let's begin by exploring our data:
 
 ```python
 # Look at the column names
-surveys_df.columns.values
+tcp_df.columns.values
 ```
 
 which **returns**:
 
 ```
-array(['record_id', 'month', 'day', 'year', 'plot_id', 'species_id', 'sex',
-       'hindfoot_length', 'weight'], dtype=object)
+array(['TCP', 'EEBO', 'VID', 'STC', 'Status', 'Author', 'Date', 'Title',
+       'Terms', 'Pages'], dtype=object)
 ```
 
 Let's get a list of all the species. The `pd.unique` function tells us all of
 the unique values in the `species_id` column.
 
 ```python
-pd.unique(surveys_df['species_id'])
+pd.unique(tcp_df['Status'])
 ```
 
 which **returns**:
 
 ```python
-array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
-       'OL', 'RM', nan, 'SA', 'PM', 'AH', 'DX', 'AB', 'CB', 'CM', 'CQ',
-       'RF', 'PC', 'PG', 'PH', 'PU', 'CV', 'UR', 'UP', 'ZL', 'UL', 'CS',
-       'SC', 'BA', 'SF', 'RO', 'AS', 'SO', 'PI', 'ST', 'CU', 'SU', 'RX',
-       'PB', 'PL', 'PX', 'CT', 'US'], dtype=object)
+array(['Free', 'Restricted'], dtype=object)
 ```
 
 > ## Challenge - Statistics
 >
-> 1. Create a list of unique plot ID's found in the surveys data. Call it
+> 1. Create a list of unique plot ID's found in the index data. Call it
 >   `plot_names`. How many unique plots are there in the data? How many unique
 >   species are in the data?
 >
-> 2. What is the difference between `len(plot_names)` and `surveys_df['plot_id'].nunique()`?
+> 2. What is the difference between `len(plot_names)` and `tcp_df['Author'].nunique()`?
 {: .challenge}
 
 # Groups in Pandas
@@ -300,7 +291,7 @@ We can calculate basic statistics for all records in a single column using the
 syntax below:
 
 ```python
-surveys_df['weight'].describe()
+tcp_df['weight'].describe()
 ```
 gives **output**
 
@@ -319,11 +310,11 @@ Name: weight, dtype: float64
 We can also extract one specific metric if we wish:
 
 ```python
-surveys_df['weight'].min()
-surveys_df['weight'].max()
-surveys_df['weight'].mean()
-surveys_df['weight'].std()
-surveys_df['weight'].count()
+tcp_df['weight'].min()
+tcp_df['weight'].max()
+tcp_df['weight'].mean()
+tcp_df['weight'].std()
+tcp_df['weight'].count()
 ```
 
 But if we want to summarize by one or more variables, for example sex, we can
@@ -332,7 +323,7 @@ can quickly calculate summary statistics by a group of our choice.
 
 ```python
 # Group data by sex
-grouped_data = surveys_df.groupby('sex')
+grouped_data = tcp_df.groupby('sex')
 ```
 
 The **pandas function `describe`** will return descriptive stats including: mean,
@@ -370,7 +361,7 @@ summary stats.
 > 1. How many recorded individuals are female `F` and how many male `M`
 > 2. What happens when you group by two columns using the following syntax and
 >    then grab mean values:
->	- `grouped_data2 = surveys_df.groupby(['plot_id','sex'])`
+>	- `grouped_data2 = tcp_df.groupby(['plot_id','sex'])`
 >	- `grouped_data2.mean()`
 > 3. Summarize weight values for each plot in your data. HINT: you can use the
 >   following syntax to only create summary statistics for one column in your data
@@ -403,14 +394,14 @@ ways, but we'll use `groupby` combined with **a `count()` method**.
 
 ```python
 # count the number of samples by species
-species_counts = surveys_df.groupby('species_id')['record_id'].count()
+species_counts = tcp_df.groupby('species_id')['record_id'].count()
 print(species_counts)
 ```
 
 Or, we can also count just the rows that have the species "DO":
 
 ```python
-surveys_df.groupby('species_id')['record_id'].count()['DO']
+tcp_df.groupby('species_id')['record_id'].count()['DO']
 ```
 
 > ## Challenge - Make a list
@@ -428,7 +419,7 @@ be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
 	# multiply all weight values by 2
-	surveys_df['weight']*2
+	tcp_df['weight']*2
 
 # Quick & Easy Plotting Data Using Pandas
 
@@ -445,7 +436,7 @@ Weight by species plot
 We can also look at how many animals were captured in each plot:
 
 ```python
-total_count = surveys_df.groupby('plot_id')['record_id'].nunique()
+total_count = tcp_df.groupby('plot_id')['record_id'].nunique()
 # let's plot that too
 total_count.plot(kind='bar');
 ```
@@ -505,7 +496,7 @@ total_count.plot(kind='bar');
 >> First we group data by plot and by sex, and then calculate a total for each plot.
 >>
 >> ```python
->> by_plot_sex = surveys_df.groupby(['plot_id','sex'])
+>> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
 >> plot_sex_count = by_plot_sex['weight'].sum()
 >> ```
 >>
@@ -528,7 +519,7 @@ total_count.plot(kind='bar');
 >> Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
 >>
 >> ```python
->> by_plot_sex = surveys_df.groupby(['plot_id','sex'])
+>> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
 >> plot_sex_count = by_plot_sex['weight'].sum()
 >> plot_sex_count.unstack()
 >> ```
@@ -550,7 +541,7 @@ total_count.plot(kind='bar');
 >> Rather than display it as a table, we can plot the above data by stacking the values of each sex as follows:
 >>
 >> ```python
->> by_plot_sex = surveys_df.groupby(['plot_id','sex'])
+>> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
 >> plot_sex_count = by_plot_sex['weight'].sum()
 >> spc = plot_sex_count.unstack()
 >> s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by plot and sex")
