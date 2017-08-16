@@ -322,8 +322,8 @@ use **Pandas' `.groupby` method**. Once we've created a groupby DataFrame, we
 can quickly calculate summary statistics by a group of our choice.
 
 ```python
-# Group data by sex
-grouped_data = tcp_df.groupby('sex')
+# Group data by status
+grouped_data = tcp_df.groupby('Status')
 ```
 
 The **pandas function `describe`** will return descriptive stats including: mean,
@@ -388,25 +388,25 @@ summary stats.
 
 ## Quickly Creating Summary Counts in Pandas
 
-Let's next count the number of samples for each species. We can do this in a few
+Let's next count the number of samples for each author. We can do this in a few
 ways, but we'll use `groupby` combined with **a `count()` method**.
 
 
 ```python
-# count the number of samples by species
-species_counts = tcp_df.groupby('species_id')['record_id'].count()
-print(species_counts)
+# count the number of texts by authors
+author_counts = tcp_df.groupby('Author')['EEBO'].count()
+print(author_counts)
 ```
 
-Or, we can also count just the rows that have the species "DO":
+Or, we can also count just the rows that have the author "A. B.":
 
 ```python
-tcp_df.groupby('species_id')['record_id'].count()['DO']
+tcp_df.groupby('Author')['EEBO'].count()['A. B.']
 ```
 
 > ## Challenge - Make a list
 >
->  What's another way to create a list of species and associated `count` of the
+>  What's another way to create a list of authors and associated `count` of the
 >  records in the data? Hint: you can perform `count`, `min`, etc functions on
 >  groupby DataFrames in the same way you can perform them on regular DataFrames.
 {: .challenge}
@@ -419,7 +419,7 @@ be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
 	# multiply all weight values by 2
-	tcp_df['weight']*2
+	tcp_df['EEBO']*2
 
 # Quick & Easy Plotting Data Using Pandas
 
@@ -428,7 +428,7 @@ We can plot our summary stats using Pandas, too.
 	# make sure figures appear inline in Ipython Notebook
 	%matplotlib inline
 	# create a quick bar chart
-	species_counts.plot(kind='bar');
+	author_counts.plot(kind='bar');
 
 ![Weight by Species Plot](../fig/weightBySpecies.png)
 Weight by species plot
