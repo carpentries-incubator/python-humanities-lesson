@@ -78,13 +78,13 @@ same `surveys.csv` dataset that we've used in previous lessons.
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
-surveys_df = pd.read_csv("data/surveys.csv")
+authors_df = pd.read_csv("TCP.csv")
 ```
 
 Remember that we can check the type of an object like this:
 
 ```python
-type(surveys_df)
+type(authors_df)
 ```
 
 **OUTPUT:** `pandas.core.frame.DataFrame`
@@ -94,7 +94,7 @@ the type of one column in a DataFrame using the syntax
 `dataFrameName[column_name].dtype`:
 
 ```python
-surveys_df['sex'].dtype
+authors_df['TCP'].dtype
 ```
 
 **OUTPUT:** `dtype('O')`
@@ -103,38 +103,39 @@ A type 'O' just stands for "object" which in Pandas' world is a string
 (text).
 
 ```python
-surveys_df['record_id'].dtype
+authors_df['EEBO'].dtype
 ```
 
-**OUTPUT:** `dtype('int64')`
+**OUTPUT:** `dtype('float64')`
 
-The type `int64` tells us that python is storing each value within this column
-as a 64 bit integer. We can use the `dat.dtypes` command to view the data type
+The type `float64` tells us that python is storing each value within this column
+as a 64 bit float. We can use the `dat.dtypes` command to view the data type
 for each column in a DataFrame (all at once).
 
 ```python
-surveys_df.dtypes
+authors_df.dtypes
 ```
 
 which **returns**:
 
 ```
-record_id            int64
-month                int64
-day                  int64
-year                 int64
-plot_id              int64
-species_id          object
-sex                 object
-hindfoot_length    float64
-weight             float64
+TCP        object
+EEBO      float64
+VID        object
+STC        object
+Status     object
+Author     object
+Date       object
+Title      object
+Terms      object
+Pages       int64
 dtype: object
 ```
 
-Note that most of the columns in our Survey data are of type `int64`. This means
-that they are 64 bit integers. But the weight column is a floating point value
-which means it contains decimals. The `species_id` and `sex` columns are objects which
-means they contain strings.
+Note that most of the columns in our Survey data are of type `object`. This means
+that they are strings. But the EEBO column is a floating point value
+which means it contains decimals. The pages column an int64 which
+means they contain 64 bit integers.
 
 ## Working With Integers and Floats
 
@@ -180,16 +181,16 @@ float(b)
 7.0
 ```
 
-# Working With Our Survey Data
+# Working With Our Index Data
 
 Getting back to our data, we can modify the format of values within our data, if
-we want. For instance, we could convert the `record_id` field to floating point
+we want. For instance, we could convert the `EEBO` field to integer
 values.
 
 ```python
 # convert the record_id field from an integer to a float
-surveys_df['record_id'] = surveys_df['record_id'].astype('float64')
-surveys_df['record_id'].dtype
+authors_df['Pages'] = authors_df['Pages'].astype('float64')
+authors_df['pages'].dtype
 ```
 
 **OUTPUT:** `dtype('float64')`
@@ -200,10 +201,10 @@ surveys_df['record_id'].dtype
 > Try converting the column `plot_id` to floats using
 >
 > ```python
-> surveys_df.plot_id.astype("float")
+> authors_df.EEBO.astype("float")
 > ```
 >
-> Next try converting `weight` to an integer. What goes wrong here? What is Pandas telling you?
+> Next try converting `EEBO` to an integer. What goes wrong here? What is Pandas telling you?
 > We will talk about some solutions to this later.
 {: .challenge}
 
@@ -218,8 +219,8 @@ were to average the `weight` column without replacing our NaNs, Python would kno
 over those cells.
 
 ```python
-surveys_df['weight'].mean()
-42.672428212991356
+authors_df['EEBO'].mean()
+59425204.736782461
 ```
 Dealing with missing data values is always a challenge. It's sometimes hard to
 know why values are missing - was it because of a data entry error? Or data that
@@ -244,18 +245,18 @@ weight. We can also create a new subset from our data that only contains rows
 with weight values > 0 (ie select meaningful weight values):
 
 ```python
-len(surveys_df[pd.isnull(surveys_df.weight)])
+len(authors_df[pd.isnull(authors_df.EEBO)])
 # how many rows have weight values?
-len(surveys_df[surveys_df.weight> 0])
+len(authors_df[authors_df.EEBO > 0])
 ```
 
 We can replace all NaN values with zeroes using the `.fillna()` method (after
 making a copy of the data so we don't lose our work):
 
 ```python
-df1 = surveys_df.copy()
+df1 = authors_df.copy()
 # fill all NaN values with 0
-df1['weight'] = df1['weight'].fillna(0)
+df1['EEBO'] = df1['EEBO'].fillna(0)
 ```
 
 However NaN and 0 yield different analysis results. The mean value when NaN
@@ -263,15 +264,15 @@ values are replaced with 0 is different from when NaN values are simply thrown
 out or ignored.
 
 ```python
-df1['weight'].mean()
-38.751976145601844
+df1['EEBO'].mean()
+52170900.611285985
 ```
 
 We can fill NaN values with any value that we chose. The code below fills all
 NaN values with a mean for all weight values.
 
 ```python
- df1['weight'] = surveys_df['weight'].fillna(surveys_df['weight'].mean())
+ df1['EEBO'] = authors_df['EEBO'].fillna(authors_df['EEBO'].mean())
 ```
 
 We could also chose to create a subset of our data, only keeping rows that do
