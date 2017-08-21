@@ -76,7 +76,7 @@ the loop. The statement `pass` in the body of the loop just means "do nothing".
 
 ## Automating data processing using For Loops
 
-The file we've been using so far, `surveys.csv`, contains 25 years of data and is
+The file we've been using so far, `TCP.csv`, contains 25 years of data and is
 very large. We would like to separate the data for each year into a separate
 file.
 
@@ -99,7 +99,7 @@ sure, we can check that the new directory was created within the `data` folder:
  'species.csv',
  'survey2001.csv',
  'survey2002.csv',
- 'surveys.csv',
+ 'TCP.csv',
  'surveys2002_temp.csv',
  'yearly_files']
 ```
@@ -115,13 +115,13 @@ that performs those three steps in sequence for the year 2002:
 import pandas as pd
 
 # Load the data into a DataFrame
-surveys_df = pd.read_csv('data/surveys.csv')
+authors_df = pd.read_csv('TCP.csv')
 
-# Select only data for 2002
-surveys2002 = surveys_df[surveys_df.year == 2002]
+# Select only data for 1640
+authors1640 = authors_df[authors_df.Date == "1640"]
 
 # Write the new DataFrame to a csv file
-surveys2002.to_csv('data/yearly_files/surveys2002.csv')
+authors1640.to_csv('yearly_files/authors1640.csv')
 ```
 
 To create yearly data files, we could repeat the last two commands over and
@@ -139,77 +139,67 @@ We have seen that we can loop over a list of items, so we need a list of years
 to loop over. We can get the years in our DataFrame with:
 
 ```python
->>> surveys_df['year']
+>>> authors_df['Date']
 
-0        1977
-1        1977
-2        1977
-3        1977
-         ...
-35545    2002
-35546    2002
-35547    2002
-35548    2002
+0              1625
+1              1515
+2              1528
+3              1623
+4              1640
+            ...    
+61309    1500-1599?
+61310          1650
+61311          1650
+61312          1681
+61313          1659
+61314          1684
 ```
 
 but we want only unique years, which we can get using the `unique` function
 which we have already seen.  
 
 ```python
->>> surveys_df['year'].unique()
-array([1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987,
-       1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-       1999, 2000, 2001, 2002], dtype=int64)
+>>> authors_df['Date'].unique()
+array(['1625', '1515', '1528', '1623', '1640', '1624', '1607', '1558',
+       '1599', '1622', '1613', '1600', '1635', '1569', '1579', '1597',
+        ....
+       '1699-1704?', '1650-1659?', '1641-1681?', '1674-1700?',
+       '1658-1695?', '1685-1692', '1548-1549?', '1582-1583?', '1660-uuuu?',
+       '1690-1702?', '1698-1700?', '1688-9999?', '1640-1649?',
+       '1659-1660?', '1690-1691?', '1685-1687?', '1743-2005?',
+       '1660-1675?', '1675-1676?', '1674-1691?', '1672-1680?', '1584-1594',
+       '1688-1689', '1676-1684?', '1650-9999?'], dtype=object
 ```
 
 Putting this into our for loop we get
 
 ```python
->>> for year in surveys_df['year'].unique():
-...    filename='data/yearly_files/surveys' + str(year) + '.csv'
+>>> for year in authors_df['Date'].unique():
+...    filename='data/yearly_files/authors' + str(year) + '.csv'
 ...    print(filename)
 ...
-data/yearly_files/surveys1977.csv
-data/yearly_files/surveys1978.csv
-data/yearly_files/surveys1979.csv
-data/yearly_files/surveys1980.csv
-data/yearly_files/surveys1981.csv
-data/yearly_files/surveys1982.csv
-data/yearly_files/surveys1983.csv
-data/yearly_files/surveys1984.csv
-data/yearly_files/surveys1985.csv
-data/yearly_files/surveys1986.csv
-data/yearly_files/surveys1987.csv
-data/yearly_files/surveys1988.csv
-data/yearly_files/surveys1989.csv
-data/yearly_files/surveys1990.csv
-data/yearly_files/surveys1991.csv
-data/yearly_files/surveys1992.csv
-data/yearly_files/surveys1993.csv
-data/yearly_files/surveys1994.csv
-data/yearly_files/surveys1995.csv
-data/yearly_files/surveys1996.csv
-data/yearly_files/surveys1997.csv
-data/yearly_files/surveys1998.csv
-data/yearly_files/surveys1999.csv
-data/yearly_files/surveys2000.csv
-data/yearly_files/surveys2001.csv
-data/yearly_files/surveys2002.csv
+yearly_files/authors1625.csv
+yearly_files/authors1515.csv
+yearly_files/authors1528.csv
+yearly_files/authors1623.csv
+yearly_files/authors1640.csv
+yearly_files/authors1624.csv
+yearly_files/authors1607.csv
 ```
 
 We can now add the rest of the steps we need to create separate text files:
 
 ```python
 # Load the data into a DataFrame
-surveys_df = pd.read_csv('data/surveys.csv')
+authors_df = pd.read_csv('data/TCP.csv')
 
-for year in surveys_df['year'].unique():
+for year in authors_df['Data'].unique():
 
     # Select data for the year
-    surveys_year = surveys_df[surveys_df.year == year]
+    surveys_year = authors_df[authors_df.Date == year]
 
     # Write the new DataFrame to a csv file
-    filename = 'data/yearly_files/surveys' + str(year) + '.csv'
+    filename = 'yearly_files/authors' + str(year) + '.csv'
     surveys_year.to_csv(filename)
 ```
 
@@ -220,13 +210,13 @@ just created to confirm that everything worked as expected.
 
 Notice that the code above created a unique filename for each year.
 
-	filename = 'data/yearly_files/surveys' + str(year) + '.csv'
+	filename = 'data/yearly_files/authors' + str(year) + '.csv'
 
 Let's break down the parts of this name:
 
 * The first part is simply some text that specifies the directory to store our
   data file in (data/yearly_files/) and the first part of the file name
-  (surveys): `'data/yearly_files/surveys'`
+  (authors): `'data/yearly_files/authors'`
 * We can concatenate this with the value of a variable, in this case `year` by
   using the plus `+` sign and the variable we want to add to the file name: `+
   str(year)`
@@ -234,7 +224,7 @@ Let's break down the parts of this name:
 
 Notice that we use single quotes to add text strings. The variable is not
 surrounded by quotes. This code produces the string
-`data/yearly_files/surveys2002.csv` which contains the path to the new filename
+`data/yearly_files/authors1607.csv` which contains the path to the new filename
 AND the file name itself.
 
 > ## Challenge - Modifying loops
@@ -245,11 +235,11 @@ AND the file name itself.
 > included in the yearly files.
 >
 > 2. What happens if there is no data for a year in the sequence (for example,
-> imagine we had used 1976 as the start year in `range`)?
+> imagine we had used 1800 as the start year in `range`)?
 >
-> 3. Let's say you only want to look at data from a given multiple of years. How would you modify your loop in order to generate a data file for only every 5th year, starting from 1977?
+> 3. Let's say you only want to look at data from a given multiple of years. How would you modify your loop in order to generate a data file for only every 5th year, starting from 1500?
 >
-> 4. Instead of splitting out the data by years, a colleague wants to do analyses each species separately. How would you write a unique csv file for each species?
+> 4. Instead of splitting out the data by years, a colleague wants to analyse each term separately. How would you write a unique csv file for each term?
 {: .challenge}
 
 ## Building reusable and modular code with functions
@@ -328,11 +318,11 @@ def one_year_csv_writer(this_year, all_data):
     """
 
     # Select data for the year
-    surveys_year = all_data[all_data.year == this_year]
+    texts_year = all_data[all_data.Date == this_year]
 
     # Write the new DataFrame to a csv file
-    filename = 'data/yearly_files/function_surveys' + str(this_year) + '.csv'
-    surveys_year.to_csv(filename)
+    filename = 'data/yearly_files/function_authors' + str(this_year) + '.csv'
+    texts_year.to_csv(filename)
 ```
 
 The text between the two sets of triple double quotes is called a docstring and
@@ -346,7 +336,7 @@ one_year_csv_writer?
 ```
 
 ```python
-one_year_csv_writer(2002,surveys_df)
+one_year_csv_writer('1607',authors_df)
 ```
 
 We changed the root of the name of the csv file so we can distinguish it from
@@ -371,7 +361,7 @@ def yearly_data_csv_writer(start_year, end_year, all_data):
 
     # "end_year" is the last year of data we want to pull, so we loop to end_year+1
     for year in range(start_year, end_year+1):
-        one_year_csv_writer(year, all_data)
+        one_year_csv_writer(str(year), all_data)
 ```
 
 Because people will naturally expect that the end year for the files is the last
@@ -384,10 +374,10 @@ function:
 
 ```python
 # Load the data into a DataFrame
-surveys_df = pd.read_csv('data/surveys.csv')
+authors_df = pd.read_csv('data/TCP.csv')
 
 # Create csv files
-yearly_data_csv_writer(1977, 2002, surveys_df)
+yearly_data_csv_writer(1300, 1700, authors_df)
 ```
 
 BEWARE! If you are using IPython Notebooks and you modify a function, you MUST
@@ -426,34 +416,34 @@ values (here, `all_data`) is a required argument and MUST come before the
 argument with default values (which are optional in the function call).
 
 ```python
-    def yearly_data_arg_test(all_data, start_year = 1977, end_year = 2002):
+    def yearly_data_arg_test(all_data, start_year = '1300', end_year = '1700'):
         """
         Modified from yearly_data_csv_writer to test default argument values!
 
-        start_year --- the first year of data we want --- default: 1977
-        end_year --- the last year of data we want --- default: 2002
+        start_year --- the first year of data we want --- default: 1300
+        end_year --- the last year of data we want --- default: 1700
         all_data --- DataFrame with multi-year data
         """
 
         return start_year, end_year
 
 
-    start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+    start,end = yearly_data_arg_test (authors_df, '1600', '1660')
     print('Both optional arguments:\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df)
+    start,end = yearly_data_arg_test (authors_df)
     print('Default values:\t\t\t', start, end)
 ```
 
 ```
-    Both optional arguments:	1988 1993
-    Default values:			1977 2002
+    Both optional arguments:	1600 1660
+    Default values:			1300 1700
 ```
 
 The "\t" in the `print` statements are tabs, used to make the text align and be
 easier to read.
 
-But what if our dataset doesn't start in 1977 and end in 2002? We can modify the
+But what if our dataset doesn't start in 1300 and end in 1700? We can modify the
 function so that it looks for the start and end years in the dataset if those
 dates are not provided:
 
@@ -468,26 +458,26 @@ dates are not provided:
         """
 
         if not start_year:
-            start_year = min(all_data.year)
+            start_year = min(all_data.Date)
         if not end_year:
-            end_year = max(all_data.year)
+            end_year = max(all_data.Date)
 
         return start_year, end_year
 
 
-    start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+    start,end = yearly_data_arg_test (authors_df, '1600', '1660')
     print('Both optional arguments:\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df)
+    start,end = yearly_data_arg_test (authors_df)
     print('Default values:\t\t\t', start, end)
 ```
 ```
-    Both optional arguments:	1988 1993
-    Default values:			1977 2002
+    Both optional arguments:	1600 1660
+    Default values:			1300 1700
 ```
 
 The default values of the `start_year` and `end_year` arguments in the function
-`yearly_data_arg_test` are now `None`. This is a build-it constant in Python
+`yearly_data_arg_test` are now `None`. This is a build-in constant in Python
 that indicates the absence of a value - essentially, that the variable exists in
 the namespace of the function (the directory of variable names) but that it
 doesn't correspond to any existing object.
@@ -570,38 +560,38 @@ values to the function using these keywords:
         """
 
         if not start_year:
-            start_year = min(all_data.year)
+            start_year = min(all_data.Date)
         if not end_year:
-            end_year = max(all_data.year)
+            end_year = max(all_data.Date)
 
         return start_year, end_year
 
 
-    start,end = yearly_data_arg_test (surveys_df)
+    start,end = yearly_data_arg_test (authors_df)
     print('Default values:\t\t\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+    start,end = yearly_data_arg_test (authors_df, 1600, 1660)
     print('No keywords:\t\t\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df, start_year = 1988, end_year = 1993)
+    start,end = yearly_data_arg_test (authors_df, start_year = 1600, end_year = 1660)
     print('Both keywords, in order:\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df, end_year = 1993, start_year = 1988)
+    start,end = yearly_data_arg_test (authors_df, end_year = 1660, start_year = 1600)
     print('Both keywords, flipped:\t\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df, start_year = 1988)
+    start,end = yearly_data_arg_test (authors_df, start_year = 1600)
     print('One keyword, default end:\t', start, end)
 
-    start,end = yearly_data_arg_test (surveys_df, end_year = 1993)
+    start,end = yearly_data_arg_test (authors_df, end_year = 1660)
     print('One keyword, default start:\t', start, end)
 ```
 ```
-    Default values:			1977 2002
-    No keywords:			1988 1993
-    Both keywords, in order:	1988 1993
-    Both keywords, flipped:		1988 1993
-    One keyword, default end:	1988 2002
-    One keyword, default start:	1977 1993
+    Default values:			1300 1700
+    No keywords:			1473 '1uuu-1672?'
+    Both keywords, in order:	1600 1660
+    Both keywords, flipped:		1600 1660
+    One keyword, default end:	1600 '1uuu-1672?'
+    One keyword, default start:	1600 1700
 ```
 
 > ## Challenge - Modifying functions
