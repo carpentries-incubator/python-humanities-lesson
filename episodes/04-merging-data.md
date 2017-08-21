@@ -23,9 +23,9 @@ surveys files into pandas DataFrames. In iPython:
 
 ```python
 import pandas as pd
-surveys_df = pd.read_csv("surveys.csv",
+authors_df = pd.read_csv("authors.csv",
                          keep_default_na=False, na_values=[""])
-surveys_df
+authors_df
 
        record_id  month  day  year  plot species  sex  hindfoot_length weight
 0              1      7   16  1977     2      NA    M               32  NaN
@@ -42,23 +42,17 @@ surveys_df
 
 [35549 rows x 9 columns]
 
-species_df = pd.read_csv("species.csv",
+authors_df = pd.read_csv("terms.csv",
                          keep_default_na=False, na_values=[""])
-species_df
-  species_id             genus          species     taxa
-0          AB        Amphispiza        bilineata     Bird
-1          AH  Ammospermophilus          harrisi   Rodent
-2          AS        Ammodramus       savannarum     Bird
-3          BA           Baiomys          taylori   Rodent
-4          CB   Campylorhynchus  brunneicapillus     Bird
+authors_df
+          TCP        EEBO     VID  \
+0      A00002  99850634.0   15849   
+1      A00005  99842408.0    7058 
 ..        ...               ...              ...      ...
-49         UP            Pipilo              sp.     Bird
-50         UR            Rodent              sp.   Rodent
-51         US           Sparrow              sp.     Bird
-52         ZL       Zonotrichia       leucophrys     Bird
-53         ZM           Zenaida         macroura     Bird
+61313  B36974  11511954.0  209883   
+61314  B36975  11512329.0  209884 
 
-[54 rows x 4 columns]
+[61315 rows x 10 columns]
 ```
 
 Take note that the `read_csv` method we used can take some additional options which
@@ -148,7 +142,7 @@ table" containing additional data that we want to include in the other.
 NOTE: This process of joining tables is similar to what we do with tables in an
 SQL database.
 
-For example, the `species.csv` file that we've been working with is a lookup
+For example, the `TCP.csv` file that we've been working with is a lookup
 table. This table contains the genus, species and taxa code for 55 species. The
 species code is unique for each line. These species are identified in our survey
 data as well using the unique species code. Rather than adding 3 more columns
@@ -184,7 +178,7 @@ species_sub = pd.read_csv('data/speciesSubset.csv', keep_default_na=False, na_va
 
 In this example, `species_sub` is the lookup table containing genus, species, and
 taxa names that we want to join with the data in `survey_sub` to produce a new
-DataFrame that contains all of the columns from both `species_df` *and*
+DataFrame that contains all of the columns from both `authors_df` *and*
 `survey_df`.
 
 
@@ -290,7 +284,7 @@ The result `merged_inner` DataFrame contains all of the columns from `survey_sub
 
 Notice that `merged_inner` has fewer rows than `survey_sub`. This is an
 indication that there were rows in `surveys_df` with value(s) for `species_id` that
-do not exist as value(s) for `species_id` in `species_df`.
+do not exist as value(s) for `species_id` in `authors_df`.
 
 ## Left joins
 
@@ -385,8 +379,8 @@ The pandas `merge` function supports two other join types:
 # Final Challenges
 
 > ## Challenge - Distributions
-> Create a new DataFrame by joining the contents of the `surveys.csv` and
-> `species.csv` tables. Then calculate and plot the distribution of:
+> Create a new DataFrame by joining the contents of the `TCP.csv` and
+> `TCP.csv` tables. Then calculate and plot the distribution of:
 >
 > 1. taxa by plot
 > 2. taxa by sex by plot
