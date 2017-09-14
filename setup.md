@@ -6,15 +6,13 @@ permalink: /setup/
 
 > ## Data
 {: .prereq}
-Data for this lesson is from the Portal Project Teaching Database -
-[available on FigShare](https://figshare.com/articles/Portal_Project_Teaching_Database/1314459).
+Data for this lesson is from the Humanities Lesson data -
+[available on Github](https://github.com/iaine/humanities-lesson-data).
 
 For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
 
-- [surveys.csv](https://ndownloader.figshare.com/files/2292172)
-- [species.csv](https://ndownloader.figshare.com/files/3299483)
-- [speciesSubset.csv](https://github.com/datacarpentry/python-ecology-lesson/blob/gh-pages/data/speciesSubset.csv)
-- [SQL Database](https://github.com/datacarpentry/python-ecology-lesson/blob/gh-pages/data/portal_mammals.sqlite)
+- [TCP.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/TCP.csv)
+- [SQL Database](https://github.com/iaine/humanities-lesson-data/blob/master/tcp.db.zip)
 
 
 
@@ -33,6 +31,7 @@ For this workshop we use Python version 3.x.
 * [Jupyter notebook](http://jupyter.org/)
 * [Numpy](http://www.numpy.org/)
 * [Matplotlib](http://matplotlib.org/)
+* [GGPlot2]
 
 ## Install the workshop packages
 
