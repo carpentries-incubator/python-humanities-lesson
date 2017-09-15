@@ -23,42 +23,29 @@ surveys files into pandas DataFrames. In iPython:
 
 ```python
 import pandas as pd
-surveys_df = pd.read_csv("surveys.csv",
+authors_df = pd.read_csv("authors.csv",
                          keep_default_na=False, na_values=[""])
-surveys_df
+authors_df
+       TCP      EEBO    VID                       STC Status  \
+0   A00002  99850634  15849  STC 1000.5; ESTC S115415   Free   
+1   A00005  99842408   7058   STC 10000; ESTC S106695   Free   
+2   A00007  99844302   9101   STC 10002; ESTC S108645   Free   
+3   A00008  99848896  14017   STC 10003; ESTC S113665   Free   
+4   A00011  99837000   1304   STC 10008; ESTC S101178   Free   
+5   A00012  99853871  19269    STC 1001; ESTC S118664   Free
 
-       record_id  month  day  year  plot species  sex  hindfoot_length weight
-0              1      7   16  1977     2      NA    M               32  NaN
-1              2      7   16  1977     3      NA    M               33  NaN
-2              3      7   16  1977     2      DM    F               37  NaN
-3              4      7   16  1977     7      DM    M               36  NaN
-4              5      7   16  1977     3      DM    M               35  NaN
-...          ...    ...  ...   ...   ...     ...  ...              ...  ...
-35544      35545     12   31  2002    15      AH  NaN              NaN  NaN
-35545      35546     12   31  2002    15      AH  NaN              NaN  NaN
-35546      35547     12   31  2002    10      RM    F               15   14
-35547      35548     12   31  2002     7      DO    M               36   51
-35548      35549     12   31  2002     5     NaN  NaN              NaN  NaN
 
-[35549 rows x 9 columns]
-
-species_df = pd.read_csv("species.csv",
+places_df = pd.read_csv("places.csv",
                          keep_default_na=False, na_values=[""])
-species_df
-  species_id             genus          species     taxa
-0          AB        Amphispiza        bilineata     Bird
-1          AH  Ammospermophilus          harrisi   Rodent
-2          AS        Ammodramus       savannarum     Bird
-3          BA           Baiomys          taylori   Rodent
-4          CB   Campylorhynchus  brunneicapillus     Bird
-..        ...               ...              ...      ...
-49         UP            Pipilo              sp.     Bird
-50         UR            Rodent              sp.   Rodent
-51         US           Sparrow              sp.     Bird
-52         ZL       Zonotrichia       leucophrys     Bird
-53         ZM           Zenaida         macroura     Bird
+places_df
+    A00002                         London
+0   A00005                         London
+1   A00007                         London
+2   A00008               The Netherlands?
+3   A00011                      Amsterdam
+4   A00012                         London
+5   A00014                         London
 
-[54 rows x 4 columns]
 ```
 
 Take note that the `read_csv` method we used can take some additional options which
@@ -75,11 +62,11 @@ works.
 
 ```python
 # read in first 10 lines of surveys table
-survey_sub = surveys_df.head(10)
+place_sub = places_df.head(10)
 # grab the last 10 rows 
-survey_sub_last10 = surveys_df.tail(10)
+place_sub_last10 = places_df.tail(10)
 #reset the index values to the second dataframe appends properly
-survey_sub_last10=survey_sub_last10.reset_index(drop=True)
+place_sub_last10 = place_sub_last10.reset_index(drop=True)
 # drop=True option avoids adding new index column with old index values
 ```
 
@@ -94,15 +81,15 @@ related in some way).
 
 ```python
 # stack the DataFrames on top of each other
-vertical_stack = pd.concat([survey_sub, survey_sub_last10], axis=0)
+vertical_stack = pd.concat([place_sub, place_sub_last10], axis=0)
 
 # place the DataFrames side by side
-horizontal_stack = pd.concat([survey_sub, survey_sub_last10], axis=1)
+horizontal_stack = pd.concat([place_sub, place_sub_last10], axis=1)
 ```
 
 ### Row Index Values and Concat
 Have a look at the `vertical_stack` dataframe? Notice anything unusual?
-The row indexes for the two data frames `survey_sub` and `survey_sub_last10`
+The row indexes for the two data frames `place_sub` and `place_sub_last10`
 have been repeated. We can reindex the new dataframe using the `reset_index()` method.
 
 ## Writing Out Data to CSV
@@ -129,8 +116,8 @@ new_output = pd.read_csv('out.csv', keep_default_na=False, na_values=[""])
 
 > ## Challenge - Combine Data
 >
-> In the data folder, there are two survey data files: `survey2001.csv` and
-> `survey2002.csv`. Read the data into python and combine the files to make one
+> In the data folder, there are two catalogue data files: `1640.csv` and
+> `1641.csv`. Read the data into python and combine the files to make one
 > new data frame. Create a plot of average plot weight by year grouped by sex.
 > Export your results as a CSV and make sure it reads back into python properly.
 {: .challenge}
@@ -148,44 +135,21 @@ table" containing additional data that we want to include in the other.
 NOTE: This process of joining tables is similar to what we do with tables in an
 SQL database.
 
-For example, the `species.csv` file that we've been working with is a lookup
-table. This table contains the genus, species and taxa code for 55 species. The
-species code is unique for each line. These species are identified in our survey
-data as well using the unique species code. Rather than adding 3 more columns
-for the genus, species and taxa to each of the 35,549 line Survey data table, we
-can maintain the shorter table with the species information. When we want to
-access that information, we can create a query that joins the additional columns
-of information to the Survey data.
+The `places.csv` file is table that contains the place and EEBO id for some titles. 
+When we want to access that information, we can create a query that joins the additional 
+columns of information to the Survey data.
 
 Storing data in this way has many benefits including:
 
-1. It ensures consistency in the spelling of species attributes (genus, species
-   and taxa) given each species is only entered once. Imagine the possibilities
-   for spelling errors when entering the genus and species thousands of times!
-2. It also makes it easy for us to make changes to the species information once
-   without having to find each instance of it in the larger survey data.
-3. It optimizes the size of our data.
-
-
-## Joining Two DataFrames
-
-To better understand joins, let's grab the first 10 lines of our data as a
-subset to work with. We'll use the `.head` method to do this. We'll also read
-in a subset of the species table.
-
-```python
-# read in first 10 lines of surveys table
-survey_sub = surveys_df.head(10)
 
 # import a small subset of the species data designed for this part of the lesson.
 # It is stored in the data folder.
-species_sub = pd.read_csv('data/speciesSubset.csv', keep_default_na=False, na_values=[""])
+cat_sub = pd.read_csv('subCatalogue.csv', keep_default_na=False, na_values=[""])
 ```
 
-In this example, `species_sub` is the lookup table containing genus, species, and
-taxa names that we want to join with the data in `survey_sub` to produce a new
-DataFrame that contains all of the columns from both `species_df` *and*
-`survey_df`.
+In this example, `cat_sub` is the lookup table containing catalogue data that we want 
+to join with the data in `place_sub` to produce a new DataFrame that contains all of the 
+columns from both places *and* the subCatalogue.
 
 
 ## Identifying join keys
@@ -198,20 +162,19 @@ identify a (differently-named) column in each DataFrame that contains the same
 information.
 
 ```python
->>> species_sub.columns
+>>> cat_sub.columns
 
-Index([u'species_id', u'genus', u'species', u'taxa'], dtype='object')
+Index([u'TCP', u'EEBO', u'VID', u'STC', u'Status', u'Author', u'Date', u'Title', u'Terms', u'Pages'], dtype='object')
 
->>> survey_sub.columns
+>>> place_sub.columns
 
-Index([u'record_id', u'month', u'day', u'year', u'plot_id', u'species_id',
-       u'sex', u'hindfoot_length', u'weight'], dtype='object')
+Index([u'EEBO', u'Place'], dtype='object')
+
 ```
 
-In our example, the join key is the column containing the two-letter species
-identifier, which is called `species_id`.
+In our example, the join key is the column containing the identifier, which is called `EEBO`.
 
-Now that we know the fields with the common species ID attributes in each
+Now that we know the fields with the common EEBO ID attributes in each
 DataFrame, we are almost ready to join our data. However, since there are
 [different types of joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/), we
 also need to decide which type of join makes sense for our analysis.
@@ -233,7 +196,7 @@ The pandas function for performing joins is called `merge` and an Inner join is
 the default option:  
 
 ```python
-merged_inner = pd.merge(left=survey_sub,right=species_sub, left_on='species_id', right_on='species_id')
+merged_inner = pd.merge(left=cat_sub,right=place_sub, left_on='TCP', right_on='TCP')
 # in this case `species_id` is the only column name in  both dataframes, so if we skippd `left_on`
 # and `right_on` arguments we would still get the same result
 
@@ -245,33 +208,21 @@ merged_inner
 **OUTPUT:**
 
 ```
-   record_id  month  day  year  plot_id species_id sex  hindfoot_length  \
-0          1      7   16  1977        2         NL   M               32   
-1          2      7   16  1977        3         NL   M               33   
-2          3      7   16  1977        2         DM   F               37   
-3          4      7   16  1977        7         DM   M               36   
-4          5      7   16  1977        3         DM   M               35   
-5          8      7   16  1977        1         DM   M               37   
-6          9      7   16  1977        1         DM   F               34   
-7          7      7   16  1977        2         PE   F              NaN   
-
-   weight       genus   species    taxa  
-0     NaN     Neotoma  albigula  Rodent  
-1     NaN     Neotoma  albigula  Rodent  
-2     NaN   Dipodomys  merriami  Rodent  
-3     NaN   Dipodomys  merriami  Rodent  
-4     NaN   Dipodomys  merriami  Rodent  
-5     NaN   Dipodomys  merriami  Rodent  
-6     NaN   Dipodomys  merriami  Rodent  
-7     NaN  Peromyscus  eremicus  Rodent  
+    EEBO_x                          Place     TCP    EEBO_y    VID  \
+0   A00002                         London  A00002  99850634  15849   
+1   A00005                         London  A00005  99842408   7058   
+2   A00007                         London  A00007  99844302   9101   
+3   A00008               The Netherlands?  A00008  99848896  14017   
+4   A00011                      Amsterdam  A00011  99837000   1304   
+5   A00012                         London  A00012  99853871  19269
 ```
 
-The result of an inner join of `survey_sub` and `species_sub` is a new DataFrame
-that contains the combined set of columns from `survey_sub` and `species_sub`. It
+The result of an inner join of `place_sub` and `cat_sub` is a new DataFrame
+that contains the combined set of columns from `place_sub` and `cat_sub`. It
 *only* contains rows that have two-letter species codes that are the same in
-both the `survey_sub` and `species_sub` DataFrames. In other words, if a row in
-`survey_sub` has a value of `species_id` that does *not* appear in the `species_id`
-column of `species`, it will not be included in the DataFrame returned by an
+both the `cat_sub` and `place_sub` DataFrames. In other words, if a row in
+`cat_sub` has a value of `TCP` that does *not* appear in the `TCP`
+column of `TCP`, it will not be included in the DataFrame returned by an
 inner join.  Similarly, if a row in `species_sub` has a value of `species_id`
 that does *not* appear in the `species_id` column of `survey_sub`, that row will not
 be included in the DataFrame returned by an inner join.
@@ -284,13 +235,13 @@ use the `species_id` column as the join key from `species_sub` (the `right`
 DataFrame). For inner joins, the order of the `left` and `right` arguments does
 not matter.
 
-The result `merged_inner` DataFrame contains all of the columns from `survey_sub`
-(record id, month, day, etc.) as well as all the columns from `species_sub`
-(species_id, genus, species, and taxa).
+The result `merged_inner` DataFrame contains all of the columns from `cat_sub`
+(TCP, EEBO, title and so on) as well as all the columns from `place_sub`
+(EEBO, Place).
 
-Notice that `merged_inner` has fewer rows than `survey_sub`. This is an
-indication that there were rows in `surveys_df` with value(s) for `species_id` that
-do not exist as value(s) for `species_id` in `species_df`.
+Notice that `merged_inner` has fewer rows than `place_sub`. This is an
+indication that there were rows in `place_df` with value(s) for `EEBO` that
+do not exist as value(s) for `EEBO` in `authors_df`.
 
 ## Left joins
 
@@ -314,59 +265,42 @@ A left join is performed in pandas by calling the same `merge` function used for
 inner join, but using the `how='left'` argument:
 
 ```python
-merged_left = pd.merge(left=survey_sub,right=species_sub, how='left', left_on='species_id', right_on='species_id')
-
+merged_left = pd.merge(left=place_sub,right=cat_sub, how='left', left_on='EEBO', right_on='TCP')
 merged_left
 
 **OUTPUT:**
 
-   record_id  month  day  year  plot_id species_id sex  hindfoot_length  \
-0          1      7   16  1977        2         NL   M               32   
-1          2      7   16  1977        3         NL   M               33   
-2          3      7   16  1977        2         DM   F               37   
-3          4      7   16  1977        7         DM   M               36   
-4          5      7   16  1977        3         DM   M               35   
-5          6      7   16  1977        1         PF   M               14   
-6          7      7   16  1977        2         PE   F              NaN   
-7          8      7   16  1977        1         DM   M               37   
-8          9      7   16  1977        1         DM   F               34   
-9         10      7   16  1977        6         PF   F               20   
-
-   weight       genus   species    taxa  
-0     NaN     Neotoma  albigula  Rodent  
-1     NaN     Neotoma  albigula  Rodent  
-2     NaN   Dipodomys  merriami  Rodent  
-3     NaN   Dipodomys  merriami  Rodent  
-4     NaN   Dipodomys  merriami  Rodent  
-5     NaN         NaN       NaN     NaN  
-6     NaN  Peromyscus  eremicus  Rodent  
-7     NaN   Dipodomys  merriami  Rodent  
-8     NaN   Dipodomys  merriami  Rodent  
-9     NaN         NaN       NaN     NaN  
+    EEBO_x                          Place     TCP    EEBO_y    VID  \
+0   A00002                         London  A00002  99850634  15849   
+1   A00005                         London  A00005  99842408   7058   
+2   A00007                         London  A00007  99844302   9101   
+3   A00008               The Netherlands?  A00008  99848896  14017   
+4   A00011                      Amsterdam  A00011  99837000   1304   
+5   A00012                         London  A00012  99853871  19269   
+6   A00014                         London  A00014  33143147  28259
 ```
 
 The result DataFrame from a left join (`merged_left`) looks very much like the
 result DataFrame from an inner join (`merged_inner`) in terms of the columns it
 contains. However, unlike `merged_inner`, `merged_left` contains the **same
-number of rows** as the original `survey_sub` DataFrame. When we inspect
+number of rows** as the original `place_sub` DataFrame. When we inspect
 `merged_left`, we find there are rows where the information that should have
 come from `species_sub` (i.e., `species_id`, `genus`, and `taxa`) is
 missing (they contain NaN values):
 
 ```python
-merged_left[ pd.isnull(merged_left.genus) ]
+ merged_inner[ pd.isnull(merged_inner.Author) ]
 **OUTPUT:**
-   record_id  month  day  year  plot_id species_id sex  hindfoot_length  \
-5          6      7   16  1977        1         PF   M               14   
-9         10      7   16  1977        6         PF   F               20   
-
-   weight genus species taxa  
-5     NaN   NaN     NaN  NaN  
-9     NaN   NaN     NaN  NaN
+     EEBO_x            Place     TCP    EEBO_y    VID  \
+4    A00011        Amsterdam  A00011  99837000   1304   
+6    A00014           London  A00014  33143147  28259   
+8    A00018         Germany?  A00018  99850740  15965   
+11   A00025          London?  A00025  29905398  28125   
+12   A00026           London  A00026  29900271  28115
 ```
 
-These rows are the ones where the value of `species_id` from `survey_sub` (in this
-case, `PF`) does not occur in `species_sub`.
+These rows are the ones where the value of `Author` from `cat_sub ` does not occur 
+in `place_sub`.
 
 
 ## Other join types
@@ -385,11 +319,11 @@ The pandas `merge` function supports two other join types:
 # Final Challenges
 
 > ## Challenge - Distributions
-> Create a new DataFrame by joining the contents of the `surveys.csv` and
-> `species.csv` tables. Then calculate and plot the distribution of:
+> Create a new DataFrame by joining the contents of the `TCP.csv` and
+> `places.csv` tables. Then calculate and plot the distribution of:
 >
-> 1. taxa by plot
-> 2. taxa by sex by plot
+> 1. place by author
+> 2. title by author by place
 {: .challenge}
 
 > ## Challenge - Diversity Index
@@ -405,3 +339,20 @@ The pandas `merge` function supports two other join types:
 >
 >        the number of species in the plot / the total number of individuals in the plot = Biodiversity index.
 {: .challenge}
+---
+title: Combining DataFrames with pandas
+teaching: 20
+exercises: 25
+questions:
+- " Can I work with data from multiple sources? "
+- " How can I combine data from different data sets? "
+objectives:
+    - Combine data from multiple files into a single DataFrame using merge and concat.
+    - Combine two DataFrames using a unique ID found in both DataFrames.
+    - Employ `to_csv` to export a DataFrame in CSV format.
+    - Join DataFrames using common fields (join keys).
+---
+
+In many "real world" situations, the data that we want to use come in multiple
+files. We often need to combine these files into a single DataFrame to analyze
+the data. The pandas package provides [various methods for combining
