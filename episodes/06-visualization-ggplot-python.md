@@ -30,23 +30,17 @@ Wilkinson.
 ```python
 import pandas as pd
 
-surveys_complete = pd.read_csv( 'data_output/surveys_complete.csv', index_col=0)
-surveys_complete.index.name = 'X'
-surveys_complete
+authors_complete = pd.read_csv( 'data_output/luther.csv', index_col=0)
+authors_complete.index.name = 'X'
+authors_complete
 ```
 
-| X | record_id | month | day | year | plot_id | species_id | sex | hindfoot_length | weight | genus | species | taxa | plot_type |
-| --- | --------- | ----- | --- | ---- | ------- | ---------- | --- | --------------- | ------ | ----- | ------- | ---- | --------- |
-| 1 | 845 | 5 | 6 | 1978 | 2 | NL | M | 32 | 204 | Neotoma | albigula | Rodent | Control |
-| 2 | 1164 | 8 | 5 | 1978 | 2 | NL | M | 34 | 199 | Neotoma | albigula | Rodent | Control |
-| 3 | 1261 | 9 | 4 | 1978 | 2 | NL | M | 32 | 197 | Neotoma | albigula | Rodent | Control |
-| 4 | 1756 | 4 | 29 | 1979 | 2 | NL | M | 33 | 166 | Neotoma | albigula | Rodent | Control |
-| 5 | 1818 | 5 | 30 | 1979 | 2 | NL | M | 32 | 184 | Neotoma | albigula | Rodent | Control |
-| 6 | 1882 | 7 | 4 | 1979 | 2 | NL | M | 32 | 206 | Neotoma | albigula | Rodent | Control |
-| 7 | 2133 | 10 | 25 | 1979 | 2 | NL | F | 33 | 274 | Neotoma | albigula | Rodent | Control |
-| 8 | 2184 | 11 | 17 | 1979 | 2 | NL | F | 30 | 186 | Neotoma | albigula | Rodent | Control |
-| 9 | 2406 | 1 | 16 | 1980 | 2 | NL | F | 33 | 184 | Neotoma | albigula | Rodent | Control |
-| 10 | 3000 | 5 | 18 | 1980 | 2 | NL | F | 31 | 87 | Neotoma | albigula | Rodent | Control |
+,Freq,Publication
+0,5,1548
+1,3,1538
+2,2,1679
+3,2,1529
+4,2,1578
 
 30463 rows × 13 columns
 
@@ -76,7 +70,7 @@ exportable plots
 
 ```python
 %matplotlib notebook
-ggplot( aesthetics= aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete)
+ggplot( aesthetics= aes(x = 'Publication', y = 'Freq'), data = authors_complete)
 ```
 
 ![png](../fig/output_6_0.png)
@@ -87,7 +81,7 @@ ggplot( aesthetics= aes(x = 'weight', y = 'hindfoot_length'), data = surveys_com
      lines, bars). To add a geom to the plot use `+` operator:
 
 ```python
-ggplot( aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete) + geom_point()
+ggplot( aes(x = 'Publication', y = 'Freq'), data = authors_complete) + geom_point()
 ```
 
 ![png](../fig/output_8_0.png)
@@ -101,10 +95,10 @@ plot can also be generated with code like this:
 
 ```python
 # Create
-surveys_plot = ggplot( aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete)
+luther_plot = ggplot( aes(x = 'Publication', y = 'Freq'), data = authors_complete)
 
 # Draw the plot
-surveys_plot + geom_point()
+luther_plot + geom_point()
 ```
 
 ![png](../fig/output_10_0.png)
@@ -125,7 +119,7 @@ Building plots with ggplot is typically an iterative process. We start by
 defining the dataset we'll use, lay the axes, and choose a geom.
 
 ```python
-ggplot(aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete, ) + geom_point()
+ggplot(aes(x = 'Publication', y = 'Freq'), data = authors_complete, ) + geom_point()
 ```
 
 ![png](../fig/output_12_0.png)
@@ -136,7 +130,7 @@ Then, we start modifying this plot to extract more information from it. For
 instance, we can add transparency (alpha) to avoid overplotting.
 
 ```python
-ggplot(aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete) + \
+ggplot(aes(x = 'Publication', y = 'Freq'), data = authors_complete) + \
     geom_point(alpha = 0.1)
 ```
 
@@ -147,7 +141,7 @@ ggplot(aes(x = 'weight', y = 'hindfoot_length'), data = surveys_complete) + \
 We can also add colors for all the points
 
 ```python
-ggplot(aes(x = 'weight', y = 'hindfoot_length'),data = surveys_complete) + \
+ggplot(aes(x = 'Publication', y = 'Freq'),data = authors_complete) + \
     geom_point(alpha = 0.1, color = "blue")
 ```
 
@@ -158,10 +152,10 @@ ggplot(aes(x = 'weight', y = 'hindfoot_length'),data = surveys_complete) + \
 Or to color each species in the plot differently:
 
 ```python
-# ggplot(data = surveys_complete, aes(x = weight, y = hindfoot_length)) +
+# ggplot(data = authors_complete, aes(x = weight, y = hindfoot_length)) +
 #    geom_point(alpha = 0.1, aes(color=species_id))
 
-ggplot(aes(x = 'weight', y = 'hindfoot_length', color='species_id'),data = surveys_complete) + \
+ggplot(aes(x = 'Publication', y = 'Freq', color='Authors'),data = authors_complete) + \
     geom_point( alpha = 0.1)
 ```
 
@@ -175,7 +169,7 @@ Visualising the distribution of weight within each species.
 
 
 ```python
-ggplot( aes(x = 'species_id', y = 'hindfoot_length'), data = surveys_complete) + geom_boxplot()
+ggplot( aes(x = 'Authors', y = 'Freq'), data = authors_complete) + geom_boxplot()
 ```
 
 ![png](../fig/output_21_0.png)
@@ -187,15 +181,15 @@ measurements and of their distribution:
 
 
 ```python
-surveys_complete['species_factor'] = surveys_complete['species_id'].astype('category').cat.codes
+authors_complete['authors_factor'] = authors_complete['Authors'].astype('category').cat.codes
 
-xlabels = sorted(set(surveys_complete['species_id'].values) )
-xcodes = sorted(set(surveys_complete['species_factor'].values))
+xlabels = sorted(set(authors_complete['Authors'].values) )
+xcodes = sorted(set(authors_complete['authors_factor'].values))
 
-ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = surveys_complete) + \
+ggplot(aes(x = 'authors_factor', y = 'Freq'),data = authors_complete) + \
     geom_point(position='jitter',alpha=0.7,jittersize=0.4) + \
         scale_x_continuous(breaks=xcodes, labels=xlabels) + \
-                         xlab('species_id') + geom_boxplot(alpha=0)
+                         xlab('Authors') + geom_boxplot(alpha=0)
 
 ```
 
@@ -231,7 +225,7 @@ hidden.
 >> ## Solution
 >> ```python
 >> Start with the boxplot we created:
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = surveys_complete) + \
+>> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
 >>                         xlab('species_id') + geom_boxplot(alpha=0)
@@ -240,7 +234,7 @@ hidden.
 >> ```python
 >> 1. Replace the box plot with a violin plot; see `geom_violin()`.
 >>
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = surveys_complete) + \
+>> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
 >>                         xlab('species_id') + geom_violin(alpha=0)
@@ -248,7 +242,7 @@ hidden.
 >>
 >> ```python
 >> 2. Represent weight on the log10 scale; see `scale_y_log10()`.
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = surveys_complete) + \
+>> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
 >>                         xlab('species_id') + geom_violin(alpha=0) + \
@@ -257,7 +251,7 @@ hidden.
 >>
 >> ```python
 >> 3. Create boxplot for `hindfoot_length`.
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = surveys_complete) + \
+>> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
 >>     geom_jitter(alpha=0.01) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
 >>                         xlab('species_id') + geom_boxplot(alpha=0) + \
@@ -272,7 +266,7 @@ hidden.
 >>    of `plot_id` from integer to factor. Why does this change how R
 >>    makes the graph?
 >>
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length', color='plot_id'),data = surveys_complete) + \
+>> ggplot(aes(x = 'species_factor', y = 'hindfoot_length', color='plot_id'),data = authors_complete) + \
 >>     geom_jitter(alpha=0.01) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
 >>                         xlab('species_id') + geom_boxplot(alpha=0) + \
@@ -288,13 +282,13 @@ Let's calculate number of counts per year for each species. To do that we need
 to group data first and count records within each group.
 
 ```python
-#yearly_counts <- surveys_complete %>%
+#yearly_counts <- authors_complete %>%
                  group_by(year, species_id) %>%
                  tally
 ```
 
 ```python
-yearly_counts = surveys_complete[['year','species_id','species']].groupby(['year', 'species_id']).count().reset_index()
+yearly_counts = authors_complete[['year','species_id','species']].groupby(['year', 'species_id']).count().reset_index()
 yearly_counts.columns = ['year','species_id', 'n']
 yearly_counts
 ```
@@ -358,7 +352,7 @@ measured. To do that we need to make counts in data frame grouped by year,
 species_id, and sex:
 
 ```python
-yearly_sex_counts = surveys_complete.groupby( ['year','species_id', 'sex']).count()
+yearly_sex_counts = authors_complete.groupby( ['year','species_id', 'sex']).count()
 yearly_sex_counts['n']  = yearly_sex_counts['record_id']
 yearly_sex_counts = yearly_sex_counts['n'].reset_index()
 yearly_sex_counts
@@ -413,7 +407,7 @@ ggplot(aes(x = "year", y = "n", color = "sex", group = "sex"), data = yearly_sex
 >> ## Solution
 >>
 >> ```python
->> yearly_weight = surveys_complete[["year", "species_id","weight"]].groupby(["year", "species_id"]).mean().reset_index()
+>> yearly_weight = authors_complete[["year", "species_id","weight"]].groupby(["year", "species_id"]).mean().reset_index()
 >> yearly_weight.columns =   ["year", "species_id","avg_weight"]  
 >> yearly_weight
 >> ```
@@ -438,7 +432,7 @@ has changed through time.
 
 ```python
 ## One column, facet by rows
-yearly_sex_weight = surveys_complete[
+yearly_sex_weight = authors_complete[
     ['year','sex','species_id','weight']].groupby(
     ["year", "sex", "species_id"]).mean().reset_index()
 yearly_sex_weight.columns = ['year','sex','species_id','avg_weight']
@@ -528,7 +522,7 @@ an object to easily apply them to other plots you may create:
 arial_grey_theme <- theme(axis.text.x = element_text(colour="grey20", size=12, angle=90, hjust=.5, vjust=.5),
                           axis.text.y = element_text(colour="grey20", size=12),
                           text=element_text(size=16, family="Arial"))
-ggplot(surveys_complete, aes(x = species_id, y = hindfoot_length)) +
+ggplot(authors_complete, aes(x = species_id, y = hindfoot_length)) +
     geom_boxplot() +
     arial_grey_theme
 ```
@@ -536,7 +530,7 @@ ggplot(surveys_complete, aes(x = species_id, y = hindfoot_length)) +
 ```python
 arial_grey_theme = theme(axis_text_x = element_text(color="grey", size=10, angle=90, hjust=.5, vjust=.5),
                           axis_text_y = element_text(color="grey", size=10))
-ggplot(surveys_complete, aes(x = 'species_id', y = 'hindfoot_length')) + \
+ggplot(authors_complete, aes(x = 'species_id', y = 'hindfoot_length')) + \
     geom_boxplot() + \
     arial_grey_theme
 ```

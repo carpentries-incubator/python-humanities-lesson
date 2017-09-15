@@ -26,6 +26,7 @@ import pandas as pd
 authors_df = pd.read_csv("authors.csv",
                          keep_default_na=False, na_values=[""])
 authors_df
+
        TCP      EEBO    VID                       STC Status  \
 0   A00002  99850634  15849  STC 1000.5; ESTC S115415   Free   
 1   A00005  99842408   7058   STC 10000; ESTC S106695   Free   
@@ -325,34 +326,3 @@ The pandas `merge` function supports two other join types:
 > 1. place by author
 > 2. title by author by place
 {: .challenge}
-
-> ## Challenge - Diversity Index
->
-> 1. In the data folder, there is a plot `CSV` that contains information about the
->    type associated with each plot. Use that data to summarize the number of
->   plots by plot type.
-> 2. Calculate a diversity index of your choice for control vs rodent exclosure
->   plots. The index should consider both species abundance and number of
->   species. You might choose to use the simple [biodiversity index described
->   here](http://www.amnh.org/explore/curriculum-collections/biodiversity-counts/plant-ecology/how-to-calculate-a-biodiversity-index)
->   which calculates diversity as:
->
->        the number of species in the plot / the total number of individuals in the plot = Biodiversity index.
-{: .challenge}
----
-title: Combining DataFrames with pandas
-teaching: 20
-exercises: 25
-questions:
-- " Can I work with data from multiple sources? "
-- " How can I combine data from different data sets? "
-objectives:
-    - Combine data from multiple files into a single DataFrame using merge and concat.
-    - Combine two DataFrames using a unique ID found in both DataFrames.
-    - Employ `to_csv` to export a DataFrame in CSV format.
-    - Join DataFrames using common fields (join keys).
----
-
-In many "real world" situations, the data that we want to use come in multiple
-files. We often need to combine these files into a single DataFrame to analyze
-the data. The pandas package provides [various methods for combining
