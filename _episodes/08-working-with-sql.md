@@ -34,12 +34,12 @@ perform all kinds of operations with `.execute()`.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/portal_mammals.sqlite")
+con = sqlite3.connect("data/subcatalogue.db")
 
 cur = con.cursor()
 
 # the result of a "cursor.execute" can be iterated over by row
-for row in cur.execute('SELECT * FROM species;'):
+for row in cur.execute('SELECT * FROM subcatalogue;'):
     print(row)
 
 #Be sure to close the connection.
@@ -57,16 +57,16 @@ statement to filter your results based on some parameter.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/portal_mammals.sqlite")
+con = sqlite3.connect("data/subcatalogue.db")
 
 cur = con.cursor()
 
 # Return all results of query
-cur.execute('SELECT plot_id FROM plots WHERE plot_type="Control"')
+cur.execute('SELECT Title FROM subcatalogue WHERE Status="Free"')
 cur.fetchall()
 
 # Return first result of query
-cur.execute('SELECT species FROM species WHERE taxa="Bird"')
+cur.execute('SELECT Title FROM subcatalogue WHERE Status="Free"')
 cur.fetchone()
 
 #Be sure to close the connection.
@@ -84,8 +84,8 @@ import pandas as pd
 import sqlite3
 
 # Read sqlite query results into a pandas DataFrame
-con = sqlite3.connect("data/portal_mammals.sqlite")
-df = pd.read_sql_query("SELECT * from surveys", con)
+con = sqlite3.connect("data/subcatalogue.db")
+df = pd.read_sql_query("SELECT * from subcatalogue", con)
 
 # verify that result of SQL query is stored in the dataframe
 print(df.head())
@@ -105,13 +105,9 @@ benchmarks]).
 
 > ## Challenge - SQL
 >
-> 1. Create a query that contains survey data collected between 1998 - 2001 for
->   observations of sex "male" or "female" that includes observation's genus and
->   species and plot type for the sample. How many records are returned?
+> 1. Create a query that contains title data published between 1550 - 1650 that 
+>   includes observation's Title, Author, and EEBO id. How many records are returned?
 >
-> 2. Create a dataframe that contains the total number of observations (count)
->   made for all years, and sum of observation weights for each plot, ordered by
->   plot ID.
 {: .challenge}
 
 ## Storing data: Create new tables using Pandas
@@ -122,16 +118,16 @@ We can also us pandas to create new tables within an SQLite database. Here, we r
 import pandas as pd
 import sqlite3
 
-con = sqlite3.connect("data/portal_mammals.sqlite")
+con = sqlite3.connect("data/subcatalogue.db")
 
 # Load the data into a DataFrame
-surveys_df = pd.read_sql_query("SELECT * from surveys", con)
+surveys_df = pd.read_sql_query("SELECT * from subcatalogue", con)
 
-# Select only data for 2002
-surveys2002 = surveys_df[surveys_df.year == 2002]
+# Select only data for 1640
+titles1640 = surveys_df[surveys_df.Date == '1640']
 
 # Write the new DataFrame to a new SQLite table
-surveys2002.to_sql("surveys2002", con, if_exists="replace")
+titles1640.to_sql("titles1640", con, if_exists="replace")
 
 con.close()
 ```
