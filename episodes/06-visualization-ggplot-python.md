@@ -214,7 +214,7 @@ hidden.
 >
 > - Represent weight on the log10 scale; see `scale_y_log10()`
 >
-> - Create boxplot for `hindfoot_length`.
+> - Create boxplot for `Pages`.
 >
 > - Add color to the datapoints on your boxplot according to the plot from which
 >   the sample was taken (`plot_id`)
@@ -288,32 +288,27 @@ to group data first and count records within each group.
 ```
 
 ```python
-yearly_counts = authors_complete[['year','species_id','species']].groupby(['year', 'species_id']).count().reset_index()
-yearly_counts.columns = ['year','species_id', 'n']
-yearly_counts
+sub_complete = pd.read_csv("subCatalogue.csv")
+yearly = sub_complete[['Date','Author']].groupby(['Date']).count().reset_index()
+yearly
 ```
+     Date  Author
+0    1483       1
+1    1490       1
+2    1495       1
+3    1496       1
+4    1506       2
+5    1509       2
+6    1510       1
+7    1515       1
 
-| x | year | species_id | n |
-| - | ---- | ---------- | - |
-| 0 | 1977 | DM | 181 |
-| 1 | 1977 | DO | 12 |
-| 2 | 1977 | DS | 29 |
-| 3 | 1977 | OL | 1 |
-| 4 | 1977 | PE | 2 |
-| 5 | 1977 | PF | 22 |
-| 6 | 1977 | PP | 3 |
-| 7 | 1977 | RM | 2 |
-| 8 | 1978 |  DM | 336 |
-| 9 | 1978 | DO | 21 |
-| 10 | 1978 | DS | 272 |
-
-292 rows × 3 columns
+[126 rows x 2 columns]
 
 Timelapse data can be visualised as a line plot with years on x axis and counts
 on y axis.
 
 ```python
-ggplot(aes(x = 'year', y = 'n'),data = yearly_counts) + \
+ggplot(aes(x = 'Publication', y = 'Freq'),data = authors_complete) + \
      geom_line()
 ```
 
@@ -326,12 +321,7 @@ together. We need to tell ggplot to draw a line for each species by modifying
 the aesthetic function to include `group = species_id`.
 
 ```python
-ggplot(aes(x = 'year', y = 'n', group='species_id'),data = yearly_counts) + geom_line()
-```
-We will be able to distinguish species in the plot if we add colors.
-
-```python
-ggplot(aes(x = 'year', y = 'n', color='species_id'),data = yearly_counts) + geom_line()
+ggplot(aes(x = 'Date', y = 'Author', group='Author'),data = yearly) + geom_line()
 ```
 
 # Faceting
@@ -341,9 +331,9 @@ into multiple plots based on a factor included in the dataset. We will use it to
 make one plot for a time series for each species.
 
 ```python
-ggplot(aes(x = "year", y = "n", colour = "species_id"),data = yearly_counts) + \
+ggplot(aes(x = "Date", y = "Author"),data = yearly) + \
     geom_line() + \
-    facet_wrap("species_id")
+    facet_wrap("EEBO")
 
 ```
 
@@ -352,18 +342,18 @@ measured. To do that we need to make counts in data frame grouped by year,
 species_id, and sex:
 
 ```python
-yearly_sex_counts = authors_complete.groupby( ['year','species_id', 'sex']).count()
-yearly_sex_counts['n']  = yearly_sex_counts['record_id']
-yearly_sex_counts = yearly_sex_counts['n'].reset_index()
-yearly_sex_counts
+yearly_status = sub_complete.groupby( ['Date','Author', 'Status']).count()
+yearly_status["n"] = yearly_status["EEBO"]
+yearly_status = yearly_status["n"].reset_index()
+yearly_status
 ```
 
 We can now make the faceted plot splitting further by sex (within a single plot):
 
 ```python
- ggplot(aes(x = "year", y = "n", color = "species_id", group = "sex"), data = yearly_sex_counts, ) + \
+ ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status ) + \
      geom_line() + \
-         facet_wrap( "species_id")
+         facet_wrap( "Date")
 ```
 
 Usually plots with white background look more readable when printed.  We can set
@@ -371,18 +361,7 @@ the background to white using the function `theme_bw()`. Additionally you can al
 the grid.
 
 ```python
- ggplot(data = yearly_sex_counts, aes(x = year, y = n, color = species_id, group = sex)) +
-     geom_line() +
-     facet_wrap(~ species_id) +
-     theme_bw() +
-     theme(panel.grid.major.x = element_blank(),
-	   panel.grid.minor.x = element_blank(),
-	   panel.grid.major.y = element_blank(),
-	   panel.grid.minor.y = element_blank())
-```
-
-```python
- ggplot(aes(x = "year", y = "n", color = "species_id", group = "sex"),data = yearly_sex_counts ) + \
+ ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status) + \
      geom_line() + \
             facet_wrap( "species_id") + \
                 theme_bw() + \
@@ -393,7 +372,7 @@ To make the plot easier to read, we can color by sex instead of species (species
 are already in separate plots, so we don't need to distinguish them further).
 
 ```python
-ggplot(aes(x = "year", y = "n", color = "sex", group = "sex"), data = yearly_sex_counts) + \
+ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status) + \
     geom_line() + \
     facet_wrap("species_id") + \
     theme_bw()
@@ -407,15 +386,15 @@ ggplot(aes(x = "year", y = "n", color = "sex", group = "sex"), data = yearly_sex
 >> ## Solution
 >>
 >> ```python
->> yearly_weight = authors_complete[["year", "species_id","weight"]].groupby(["year", "species_id"]).mean().reset_index()
->> yearly_weight.columns =   ["year", "species_id","avg_weight"]  
+>> yearly_weight = sub_complete[["Date", "EEBO","Pages"]].groupby(["Date", "EEBO"]).mean().reset_index()
+>> yearly_weight.columns =   ["year", "EEBO","avg_length"]  
 >> yearly_weight
 >> ```
 >>
 >> ```python
->> ggplot( aes(x="year", y="avg_weight", color = "species_id", group = "species_id"),data = yearly_weight) + \
+>> ggplot( aes(x="year", y="avg_length", group = "year"),data = yearly_weight) + \
 >>    geom_line() + \
->>    facet_wrap("species_id") + \
+>>    facet_wrap("year") + \
 >>    theme_bw()
 >> ```
 > {: .solution}
@@ -432,30 +411,20 @@ has changed through time.
 
 ```python
 ## One column, facet by rows
-yearly_sex_weight = authors_complete[
-    ['year','sex','species_id','weight']].groupby(
-    ["year", "sex", "species_id"]).mean().reset_index()
-yearly_sex_weight.columns = ['year','sex','species_id','avg_weight']
-yearly_sex_weight
-```
-
-```python
-ggplot( aes(x="year", y="avg_weight", color = "species_id", group = "species_id"),data = yearly_sex_weight) + \
-    geom_line() + \
-    facet_grid("sex")
+yearly_status = sub_complete[["Date", "Status", "EEBO", "Pages"]].groupby(["Date", "Status", "EEBO"]).mean().reset_index()
+yearly_status.columns = ["year", "Status", "EEBO","avg_length"]
+yearly_status
 ```
 
 ```python
 # One row, facet by column
-ggplot(data = yearly_sex_weight, aes(x=year, y=avg_weight, color = species_id, group = species_id)) +
-    geom_line() +
-    facet_grid(. ~ sex)
+ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + geom_line() + facet_grid("Status")
 ```
 ```python
 # One row, facet by column
-ggplot( aes(x="year", y="avg_weight", color = "species_id", group = "species_id"),data = yearly_sex_weight) + \
+ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
     geom_line() + \
-    facet_grid(None, "sex")
+    facet_grid(None, "Status")
 ```
 
 # Customization
@@ -469,12 +438,12 @@ Now, let's change names of axes to something more informative than 'year'
 and 'n' and add a title to this figure:
 
 ```python
-ggplot( aes(x = "year", y = "n", color = "sex", group = "sex"),data = yearly_sex_counts) + \
+ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap( "species_id" ) + \
-    labs(title = 'Observed species in time',
-         x = 'Year of observation',
-         y = 'Number of species') + \
+    facet_wrap( "Status" ) + \
+    labs(title = 'Number of pages in EEBO/TCP texts by publication',
+         x = 'Number of texts',
+         y = 'Publication Date') + \
     theme_bw()
 ```
 
@@ -482,15 +451,15 @@ The axes have more informative names, but their readability can be improved by
 increasing the font size. While we are at it, we'll also change the font family:
 
 ```python
-ggplot( aes(x = "year", y = "n", color = "sex", group = "sex"),data = yearly_sex_counts) + \
+ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap( "species_id" ) + \
+    facet_wrap( "Status" ) + \
     theme_bw() + \
     theme(axis_title_x = element_text(size=16, family="Arial"),
          axis_title_y = element_text(size=16, family="Arial")) + \
-    labs(title = 'Observed species in time',
-        x = 'Year of observation',
-        y = 'Number of species')
+    labs(title = 'Number of pages by year by status',
+        x = 'Number of Pages',
+        y = 'Year of Publication')
 ```
 
 
@@ -502,12 +471,12 @@ labels.
 
 
 ```python
-ggplot( aes(x = "year", y = "n", color = "sex", group = "sex"),data = yearly_sex_counts) + \
+ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap( "species_id" ) + \
-    labs(title = 'Observed species in time',
-        x = 'Year of observation',
-        y = 'Number of species') + \
+    facet_wrap( "Status" ) + \
+    labs(title = 'Number of pages by status',
+        x = 'Number of Pages',
+        y = 'Year of Publication') + \
     theme_bw() + \
     theme(axis_text_x = element_text(color="grey", size=10, angle=90, hjust=.5, vjust=.5),
           axis_text_y = element_text(color="grey", size=10, hjust=0),
@@ -519,18 +488,9 @@ If you like the changes you created to the default theme, you can save them as
 an object to easily apply them to other plots you may create:
 
 ```python
-arial_grey_theme <- theme(axis.text.x = element_text(colour="grey20", size=12, angle=90, hjust=.5, vjust=.5),
-                          axis.text.y = element_text(colour="grey20", size=12),
-                          text=element_text(size=16, family="Arial"))
-ggplot(authors_complete, aes(x = species_id, y = hindfoot_length)) +
-    geom_boxplot() +
-    arial_grey_theme
-```
-
-```python
 arial_grey_theme = theme(axis_text_x = element_text(color="grey", size=10, angle=90, hjust=.5, vjust=.5),
                           axis_text_y = element_text(color="grey", size=10))
-ggplot(authors_complete, aes(x = 'species_id', y = 'hindfoot_length')) + \
+ggplot(yearly_status, aes(x="year", y="avg_length")) + \
     geom_boxplot() + \
     arial_grey_theme
 ```
@@ -552,12 +512,12 @@ adjusting the appropriate arguments (`width`, `height` and `dpi`):
 
 
 ```python
-my_plot =  ggplot(yearly_sex_counts, aes(x = "year", y = "n", color = "sex", group = "sex"))
+my_plot =  ggplot(yearly_status, aes(x = "year", y = "avg_length", group = "Status"))
 my_plot += geom_line()
-my_plot += facet_wrap("species_id")
-my_plot += labs(title = 'Observed species in time',
-                x = 'Year of observation',
-                y = 'Number of species')
+my_plot += facet_wrap("Status")
+my_plot += labs(title = 'Number of pages per year',
+                x = 'Number of Pages',
+                y = 'Year of Publication')
 my_plot += theme_bw()
 my_plot += theme(axis_text_x = element_text(color="grey", size=10, angle=90, hjust=.5, vjust=.5),
                         axis_text_y = element_text(color="grey", size=10))
