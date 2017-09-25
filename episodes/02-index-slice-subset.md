@@ -482,12 +482,12 @@ asking Python to select rows that have a `NaN` value of author.
 
 > ## Challenge - Putting it all together
 >
-> 1. Create a new DataFrame that only contains observations with sex values that
->   are **not** female or male. Assign each sex value in the new DataFrame to a
+> 1. Create a new DataFrame that only contains titles with status values that
+>   are **not** restricted. Assign each status value in the new DataFrame to a
 >   new value of 'x'. Determine the number of null values in the subset.
 >   
-> 2. Create a new DataFrame that contains only observations that are of sex male
->   or female and where weight values are greater than 0. Create a stacked bar
+> 2. Create a new DataFrame that contains only observations that are of status free
+>   and where weight values are greater than 100. Create a stacked bar
 >   plot of average weight by plot with male vs female values stacked for each
 >   plot.
 {: .challenge}
