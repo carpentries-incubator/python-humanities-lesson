@@ -12,7 +12,9 @@ Data for this lesson is from the Humanities Lesson data -
 For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
 
 - [TCP.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/TCP.csv)
-- [SQL Database](https://github.com/iaine/humanities-lesson-data/blob/master/tcp.db.zip)
+- [subCatalogue.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/subCatalogue.csv)
+- [Places.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/places.csv)
+- [SQL Database](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/subcatalogue.db)
 
 
 
