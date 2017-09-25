@@ -291,30 +291,30 @@ We can calculate basic statistics for all records in a single column using the
 syntax below:
 
 ```python
-tcp_df['weight'].describe()
+tcp_df['Pages'].describe()
 ```
 gives **output**
 
 ```python
-count    32283.000000
-mean        42.672428
-std         36.631259
-min          4.000000
-25%         20.000000
-50%         37.000000
-75%         48.000000
-max        280.000000
-Name: weight, dtype: float64
+count    61315.000000
+mean        88.464797
+std        152.714933
+min          0.000000
+25%          7.000000
+50%         28.000000
+75%         96.000000
+max       2988.000000
+Name: Pages, dtype: float64
 ```
 
 We can also extract one specific metric if we wish:
 
 ```python
-tcp_df['weight'].min()
-tcp_df['weight'].max()
-tcp_df['weight'].mean()
-tcp_df['weight'].std()
-tcp_df['weight'].count()
+tcp_df['Pages'].min()
+tcp_df['Pages'].max()
+tcp_df['Pages'].mean()
+tcp_df['Pages'].std()
+tcp_df['Pages'].count()
 ```
 
 But if we want to summarize by one or more variables, for example sex, we can
@@ -341,15 +341,10 @@ grouped_data.mean()
 `grouped_data.mean()` **OUTPUT:**
 
 ```python
-        record_id     month        day         year    plot_id  \
-sex                                                              
-F    18036.412046  6.583047  16.007138  1990.644997  11.440854   
-M    17754.835601  6.392668  16.184286  1990.480401  11.098282   
-
-     hindfoot_length     weight  
-sex                              
-F          28.836780  42.170555  
-M          29.709578  42.995379  
+                    EEBO      Pages
+Status                             
+Free        5.533880e+07  97.387271
+Restricted  6.306740e+07  78.165800 
 
 ```
 
@@ -358,14 +353,14 @@ summary stats.
 
 > ## Challenge - Summary Data
 >
-> 1. How many recorded individuals are female `F` and how many male `M`
+> 1. How many recorded titles are `Free` and how many  `Restricted`
 > 2. What happens when you group by two columns using the following syntax and
 >    then grab mean values:
->	- `grouped_data2 = tcp_df.groupby(['plot_id','sex'])`
+>	- `grouped_data2 = tcp_df.groupby(['EEBO','Pages'])`
 >	- `grouped_data2.mean()`
 > 3. Summarize weight values for each plot in your data. HINT: you can use the
 >   following syntax to only create summary statistics for one column in your data
->   `by_plot['weight'].describe()`
+>   `by_plot['Pages'].describe()`
 >
 >
 >> ## Did you get #3 right?
@@ -418,8 +413,8 @@ example let's multiply all weight values by 2. A more practical use of this migh
 be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
-	# multiply all weight values by 2
-	tcp_df['EEBO']*2
+	# multiply all page length values by 2
+	tcp_df['Pages']*2
 
 # Quick & Easy Plotting Data Using Pandas
 
@@ -436,9 +431,9 @@ Weight by species plot
 We can also look at how many animals were captured in each plot:
 
 ```python
-total_count = tcp_df.groupby('plot_id')['record_id'].nunique()
+total_count = tcp_df.groupby('EEBO')['Pages'].nunique()
 # let's plot that too
-total_count.plot(kind='bar');
+total_count.plot(kind='bar')
 ```
 
 > ## Challenge - Plots
