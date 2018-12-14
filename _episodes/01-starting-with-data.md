@@ -125,7 +125,7 @@ an element in the data structure.
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
-pd.read_csv("TCP.csv")
+pd.read_csv("eebo.csv")
 ```
 
 The above command yields the **output** below:
@@ -145,7 +145,7 @@ The above command yields the **output** below:
 [61315 rows x 10 columns]
 ```
 
-We can see that there were 61,315 rows parsed. Each row has 10
+We can see that there were 149 rows parsed. Each row has 10
 columns. The first column is the index of the DataFrame. The index is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
@@ -259,11 +259,11 @@ array(['TCP', 'EEBO', 'VID', 'STC', 'Status', 'Author', 'Date', 'Title',
        'Terms', 'Pages'], dtype=object)
 ```
 
-Let's get a list of all the species. The `pd.unique` function tells us all of
-the unique values in the `species_id` column.
+Let's get a list of all the page counts. The `pd.unique` function tells us all of
+the unique values in the `Pages` column.
 
 ```python
-pd.unique(tcp_df['Status'])
+pd.unique(tcp_df['Pages'])
 ```
 
 which **returns**:
@@ -274,11 +274,11 @@ array(['Free', 'Restricted'], dtype=object)
 
 > ## Challenge - Statistics
 >
-> 1. Create a list of unique plot ID's found in the index data. Call it
->   `plot_names`. How many unique plots are there in the data? How many unique
+> 1. Create a list of unique locations found in the index data. Call it
+>   `places`. How many unique location are there in the data? How many unique
 >   species are in the data?
 >
-> 2. What is the difference between `len(plot_names)` and `tcp_df['Author'].nunique()`?
+> 2. What is the difference between `len(places)` and `tcp_df['Author'].nunique()`?
 {: .challenge}
 
 # Groups in Pandas
