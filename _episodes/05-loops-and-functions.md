@@ -115,7 +115,7 @@ that performs those three steps in sequence for the year 2002:
 import pandas as pd
 
 # Load the data into a DataFrame
-authors_df = pd.read_csv('TCP.csv')
+authors_df = pd.read_csv('data/eebo.csv')
 
 # Select only data for 1640
 authors1640 = authors_df[authors_df.Date == "1640"]
@@ -141,18 +141,22 @@ to loop over. We can get the years in our DataFrame with:
 ```python
 >>> authors_df['Date']
 
-0              1625
-1              1515
-2              1528
-3              1623
-4              1640
-            ...    
-61309    1500-1599?
-61310          1650
-61311          1650
-61312          1681
-61313          1659
-61314          1684
+0      1625
+1      1515
+2      1528
+3      1623
+4      1640
+5      1623
+    ...    
+141    1635
+142    1614
+143    1589
+144    1636
+145    1562
+146    1533
+147    1606
+148    1618
+Name: Date, Length: 149, dtype: int64
 ```
 
 but we want only unique years, which we can get using the `unique` function
@@ -160,15 +164,14 @@ which we have already seen.
 
 ```python
 >>> authors_df['Date'].unique()
-array(['1625', '1515', '1528', '1623', '1640', '1624', '1607', '1558',
-       '1599', '1622', '1613', '1600', '1635', '1569', '1579', '1597',
-        ....
-       '1699-1704?', '1650-1659?', '1641-1681?', '1674-1700?',
-       '1658-1695?', '1685-1692', '1548-1549?', '1582-1583?', '1660-uuuu?',
-       '1690-1702?', '1698-1700?', '1688-9999?', '1640-1649?',
-       '1659-1660?', '1690-1691?', '1685-1687?', '1743-2005?',
-       '1660-1675?', '1675-1676?', '1674-1691?', '1672-1680?', '1584-1594',
-       '1688-1689', '1676-1684?', '1650-9999?'], dtype=object
+array([1625, 1515, 1528, 1623, 1640, 1624, 1607, 1558, 1599, 1622, 1613,
+       1600, 1635, 1569, 1579, 1597, 1538, 1559, 1563, 1577, 1580, 1626,
+       1631, 1565, 1632, 1571, 1554, 1615, 1549, 1567, 1605, 1636, 1591,
+       1588, 1619, 1566, 1593, 1547, 1603, 1609, 1589, 1574, 1584, 1630,
+       1621, 1610, 1542, 1534, 1519, 1550, 1540, 1557, 1606, 1545, 1537,
+       1532, 1526, 1531, 1533, 1572, 1536, 1529, 1535, 1543, 1586, 1596,
+       1552, 1608, 1611, 1616, 1581, 1639, 1570, 1564, 1568, 1602, 1618,
+       1583, 1638, 1592, 1544, 1585, 1614, 1562])
 ```
 
 Putting this into our for loop we get
@@ -191,16 +194,16 @@ We can now add the rest of the steps we need to create separate text files:
 
 ```python
 # Load the data into a DataFrame
-authors_df = pd.read_csv('data/TCP.csv')
+authors_df = pd.read_csv('data/eebo.csv')
 
 for year in authors_df['Data'].unique():
 
     # Select data for the year
-    surveys_year = authors_df[authors_df.Date == year]
+    publish_year = authors_df[authors_df.Date == year]
 
     # Write the new DataFrame to a csv file
     filename = 'yearly_files/authors' + str(year) + '.csv'
-    surveys_year.to_csv(filename)
+    publish_year.to_csv(filename)
 ```
 
 Look inside the `yearly_files` directory and check a couple of the files you
@@ -239,7 +242,7 @@ AND the file name itself.
 >
 > 3. Let's say you only want to look at data from a given multiple of years. How would you modify your loop in order to generate a data file for only every 5th year, starting from 1500?
 >
-> 4. Instead of splitting out the data by years, a colleague wants to analyse each term separately. How would you write a unique csv file for each term?
+> 4. Instead of splitting out the data by years, a colleague wants to analyse each place separately. How would you write a unique csv file for each location?
 {: .challenge}
 
 ## Building reusable and modular code with functions
@@ -374,10 +377,10 @@ function:
 
 ```python
 # Load the data into a DataFrame
-authors_df = pd.read_csv('data/TCP.csv')
+authors_df = pd.read_csv('data/eebo.csv')
 
 # Create csv files
-yearly_data_csv_writer(1300, 1700, authors_df)
+yearly_data_csv_writer(1500, 1650, authors_df)
 ```
 
 BEWARE! If you are using IPython Notebooks and you modify a function, you MUST
@@ -416,7 +419,7 @@ values (here, `all_data`) is a required argument and MUST come before the
 argument with default values (which are optional in the function call).
 
 ```python
-    def yearly_data_arg_test(all_data, start_year = '1300', end_year = '1700'):
+    def yearly_data_arg_test(all_data, start_year = '1500', end_year = '1650'):
         """
         Modified from yearly_data_csv_writer to test default argument values!
 
@@ -473,7 +476,7 @@ dates are not provided:
 ```
 ```
     Both optional arguments:	1600 1660
-    Default values:			1300 1700
+    Default values:		1500 1650
 ```
 
 The default values of the `start_year` and `end_year` arguments in the function
@@ -586,12 +589,12 @@ values to the function using these keywords:
     print('One keyword, default start:\t', start, end)
 ```
 ```
-    Default values:			1300 1700
-    No keywords:			1473 '1uuu-1672?'
-    Both keywords, in order:	1600 1660
+    Default values:			1515 1640
+    No keywords:			1600 1640
+    Both keywords, in order:	        1600 1660
     Both keywords, flipped:		1600 1660
-    One keyword, default end:	1600 '1uuu-1672?'
-    One keyword, default start:	1600 1700
+    One keyword, default end:	        1600 1640
+    One keyword, default start:	        1515 1660
 ```
 
 > ## Challenge - Modifying functions
