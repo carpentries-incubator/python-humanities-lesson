@@ -61,19 +61,23 @@ single title, and the columns represent:
 | Author           | Author(s)                          |
 | Date             | Date of publication                |
 | Title            | The Book title                     |
-| Terms            | Tersm associated with the text     |
-| Pages            | Number of pages in the text        |
+| Terms            | Terms associated with the text     |
+| Page Count       | Number of pages in the text        |
+| Place            | Location where published           |
 
 The first few rows of our first file look like this:
 
 ```
-TCP,EEBO,VID,STC,Status,Author,Date,Title,Terms,Pages
-A00002,99850634,15849,STC 1000.5; ESTC S115415,Free,"Aylett, Robert, 1583-1655?",1625,"The brides ornaments viz. fiue meditations, morall and diuine. 1. Knowledge, 2. zeale, 3. temperance, 4. bountie, 5. ioy.",,134
-A00005,99842408,7058,STC 10000; ESTC S106695,Free,"Higden, Ranulf, d. 1364. Polycronicon. English. Selections.; Trevisa, John, d. 1402.",1515,Here begynneth a shorte and abreue table on the Cronycles ...; Saint Albans chronicle.,Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,302
-A00007,99844302,9101,STC 10002; ESTC S108645,Free,"Higden, Ranulf, d. 1364. Polycronicon.",1528,"The Cronycles of Englonde with the dedes of popes and emperours, and also the descripcyon of Englonde; Saint Albans chronicle.",Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,386
-A00008,99848896,14017,STC 10003; ESTC S113665,Free,"Wood, William, fl. 1623, attributed name.",1623,Considerations vpon the treaty of marriage between England and Spain,Great Britain -- Foreign relations -- Spain.,14
-A00011,99837000,1304,STC 10008; ESTC S101178,Free,,1640,"Englands complaint to Iesus Christ, against the bishops canons of the late sinfull synod, a seditious conuenticle, a packe of hypocrites, a sworne confederacy, a traiterous conspiracy ... In this complaint are specified those impieties and insolencies, which are most notorious, scattered through the canons and constitutions of the said sinfull synod. And confuted by arguments annexed hereunto.",Church of England. -- Thirty-nine Articles -- Controversial literature.; Canon law -- Early works to 1800.,54
-A00012,99853871,19269,STC 1001; ESTC S118664,Free,"Aylett, Robert, 1583-1655?",1623,"Ioseph, or, Pharoah's fauourite; Joseph.",Joseph -- (Son of Jacob) -- Early works to 1800.,99
+TCP,EEBO,VID,STC,Status,Author,Date,Title,Terms,Page Count,Place
+A00002,99850634,15849,STC 1000.5; ESTC S115415,Free,"Aylett, Robert, 1583-1655?",1625,"The brides ornaments viz. fiue meditations, morall and diuine. 1. Knowledge, 2. zeale, 3. temperance, 4. bountie, 5. ioy.",,134,London
+A00005,99842408,7058,STC 10000; ESTC S106695,Free,"Higden, Ranulf, d. 1364. Polycronicon. English. Selections.; Trevisa, John, d. 1402.",1515,Here begynneth a shorte and abreue table on the Cronycles ...; Saint Albans chronicle.,Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,302,London
+A00007,99844302,9101,STC 10002; ESTC S108645,Free,"Higden, Ranulf, d. 1364. Polycronicon.",1528,"The Cronycles of Englonde with the dedes of popes and emperours, and also the descripcyon of Englonde; Saint Albans chronicle.",Great Britain -- History -- To 1485 -- Early works to 1800.; England -- Description and travel -- Early works to 1800.,386,London
+A00008,99848896,14017,STC 10003; ESTC S113665,Free,"Wood, William, fl. 1623, attributed name.",1623,Considerations vpon the treaty of marriage between England and Spain,Great Britain -- Foreign relations -- Spain.,14,The Netherlands?
+A00011,99837000,1304,STC 10008; ESTC S101178,Free,,1640,"Englands complaint to Iesus Christ, against the bishops canons of the late sinfull synod, a seditious conuenticle, a packe of hypocrites, a sworne confederacy, a traiterous conspiracy ... In this complaint are specified those impieties and insolencies, which are most notorious, scattered through the canons and constitutions of the said sinfull synod. And confuted by arguments annexed hereunto.",Church of England. -- Thirty-nine Articles -- Controversial literature.; Canon law -- Early works to 1800.,54,Amsterdam
+A00012,99853871,19269,STC 1001; ESTC S118664,Free,"Aylett, Robert, 1583-1655?",1623,"Ioseph, or, Pharoah's fauourite; Joseph.",Joseph -- (Son of Jacob) -- Early works to 1800.,99,London
+A00014,33143147,28259,STC 10011.6; ESTC S3200,Free,,1624,Greate Brittaines noble and worthy councell of warr,"England and Wales. -- Privy Council -- Portraits.; Great Britain -- History -- James I, 1603-1625.; Broadsides -- London (England) -- 17th century.",1,London
+A00015,99837006,1310,STC 10011; ESTC S101184,Free,"Jones, William, of Usk.",1607,"Gods vvarning to his people of England By the great ouer-flowing of the vvaters or floudes lately hapned in South-wales and many other places. Wherein is described the great losses, and wonderfull damages, that hapned thereby: by the drowning of many townes and villages, to the vtter vndooing of many thousandes of people.",Floods -- Wales -- Early works to 1800.,16, London
+A00018,99850740,15965,STC 10015; ESTC S115521,Free,,1558,The lame[n]tacion of England; Lamentacion of England.,"Great Britain -- History -- Mary I, 1553-1558 -- Early works to 1800.",26,Germany?
 ```
 
 ---
@@ -138,14 +142,13 @@ The above command yields the **output** below:
 3      A00008  99848896.0   14017   
 4      A00011  99837000.0    1304
 ...
-61311  B36556  12765250.0  199318   
-61312  B36604  99830259.0  207353   
-61313  B36974  11511954.0  209883   
-61314  B36975  11512329.0  209884 
-[61315 rows x 10 columns]
+146  A00525  99856552        ...                854   Prentyd  London
+147  A00527  99849909        ...                 72            London
+148  A00535  99849912        ...                106        Saint-Omer 
+[148 rows x 11 columns]
 ```
 
-We can see that there were 149 rows parsed. Each row has 10
+We can see that there were 149 rows parsed. Each row has 11
 columns. The first column is the index of the DataFrame. The index is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
@@ -156,7 +159,7 @@ or  `data`. We can create a new  object with a variable name by assigning a valu
 Let's call the imported survey data `tcp_df`:
 
 ```python
-tcp_df = pd.read_csv("TCP.csv")
+tcp_df = pd.read_csv("eebo.csv")
 ```
 
 Notice when you assign the imported DataFrame to a variable, Python does not
@@ -190,16 +193,16 @@ represents numbers with decimals.
 which returns:
 
 ```
-TCP        object
-EEBO      float64
-VID        object
-STC        object
-Status     object
-Author     object
-Date       object
-Title      object
-Terms      object
-Pages       int64
+TCP         object
+EEBO        float64
+VID         object
+STC         object
+Status      object
+Author      object
+Date        object
+Title       object
+Terms       object
+Page Count  int64
 dtype: object
 ```
 
@@ -256,20 +259,26 @@ which **returns**:
 
 ```
 array(['TCP', 'EEBO', 'VID', 'STC', 'Status', 'Author', 'Date', 'Title',
-       'Terms', 'Pages'], dtype=object)
+       'Terms', 'Page Count', 'Place'], dtype=object)
 ```
 
 Let's get a list of all the page counts. The `pd.unique` function tells us all of
 the unique values in the `Pages` column.
 
 ```python
-pd.unique(tcp_df['Pages'])
+pd.unique(tcp_df['Page Count'])
 ```
 
 which **returns**:
 
 ```python
-array(['Free', 'Restricted'], dtype=object)
+array([134, 302, 386,  14,  54,  99,   1,  16,  26,  62,  50,  66,  30,
+         6,  36,   8,  12,  24,  22,   7,  20,  40,  38,  13,  28,  10,
+        23,   2, 112,  18,   4,  27,  42,  17,  46,  58, 200, 158,  65,
+        96, 178,  52, 774,  81, 392,  74, 162,  56, 100, 172,  94,  79,
+       107,  48, 102, 343, 136,  70, 156, 133, 228, 357, 110,  72,  44,
+        43,  37,  98, 566, 500, 746, 884, 254, 618, 274, 188, 374,  47,
+        34, 177,  82,  78,  64, 124,  80, 108, 182, 120,  68, 854, 106])
 ```
 
 > ## Challenge - Statistics
@@ -278,7 +287,7 @@ array(['Free', 'Restricted'], dtype=object)
 >   `places`. How many unique location are there in the data? How many unique
 >   species are in the data?
 >
-> 2. What is the difference between `len(places)` and `tcp_df['Author'].nunique()`?
+> 2. What is the difference between `len(places)` and `tcp_df['Place'].nunique()`?
 {: .challenge}
 
 # Groups in Pandas
@@ -291,30 +300,30 @@ We can calculate basic statistics for all records in a single column using the
 syntax below:
 
 ```python
-tcp_df['Pages'].describe()
+tcp_df['Page Count'].describe()
 ```
 gives **output**
 
 ```python
-count    61315.000000
-mean        88.464797
-std        152.714933
-min          0.000000
-25%          7.000000
-50%         28.000000
-75%         96.000000
-max       2988.000000
-Name: Pages, dtype: float64
+count    149.000000
+mean     104.382550
+std      160.125398
+min        1.000000
+25%       16.000000
+50%       52.000000
+75%      108.000000
+max      884.000000
+Name: Page Count, dtype: float64
 ```
 
 We can also extract one specific metric if we wish:
 
 ```python
-tcp_df['Pages'].min()
-tcp_df['Pages'].max()
-tcp_df['Pages'].mean()
-tcp_df['Pages'].std()
-tcp_df['Pages'].count()
+tcp_df['Page Count'].min()
+tcp_df['Page Count'].max()
+tcp_df['Page Count'].mean()
+tcp_df['Page Count'].std()
+tcp_df['Page Count'].count()
 ```
 
 But if we want to summarize by one or more variables, for example sex, we can
@@ -323,7 +332,7 @@ can quickly calculate summary statistics by a group of our choice.
 
 ```python
 # Group data by status
-grouped_data = tcp_df.groupby('Status')
+grouped_data = tcp_df.groupby('Place')
 ```
 
 The **pandas function `describe`** will return descriptive stats including: mean,
@@ -332,19 +341,22 @@ median, max, min, std and count for a particular column in the data. Pandas'
 numeric data.
 
 ```python
-# summary statistics for all numeric columns by sex
+# summary statistics for all numeric columns by place
 grouped_data.describe()
-# provide the mean for each numeric column by sex
+# provide the mean for each numeric column by place
 grouped_data.mean()
 ```
 
 `grouped_data.mean()` **OUTPUT:**
 
 ```python
-                    EEBO      Pages
-Status                             
-Free        5.533880e+07  97.387271
-Restricted  6.306740e+07  78.165800 
+                                       EEBO     ...      Page Count
+Place                                           ...                
+Amsterdam                      9.983700e+07     ...       54.000000
+Antverpi                       9.983759e+07     ...       34.000000
+Antwerp                        9.985185e+07     ...       40.000000
+Cambridge                      2.445926e+07     ...        1.000000
+Emden                          9.984713e+07     ...       58.000000
 
 ```
 
@@ -353,29 +365,29 @@ summary stats.
 
 > ## Challenge - Summary Data
 >
-> 1. How many recorded titles are `Free` and how many  `Restricted`
+> 1. What is the mean page length for books published in `Amsterdam` and how many for `London`
 > 2. What happens when you group by two columns using the following syntax and
 >    then grab mean values:
->	- `grouped_data2 = tcp_df.groupby(['EEBO','Pages'])`
+>	- `grouped_data2 = tcp_df.groupby(['EEBO','Page Count'])`
 >	- `grouped_data2.mean()`
-> 3. Summarize weight values for each plot in your data. HINT: you can use the
+> 3. Summarize the Date values in your data. HINT: you can use the
 >   following syntax to only create summary statistics for one column in your data
->   `by_plot['Pages'].describe()`
+>   `tcp_df['Page Count'].describe()`
 >
 >
 >> ## Did you get #3 right?
 >> **A Snippet of the Output from challenge 3 looks like:**
 >>
 >> ```
->>	plot
->>	1     count    1903.000000
->>	      mean       51.822911
->>	      std        38.176670
->>	      min         4.000000
->>	      25%        30.000000
->>	      50%        44.000000
->>	      75%        53.000000
->>	      max       231.000000
+>>	
+>>	      count    149.000000
+>>	      mean    1584.288591
+>>	      std       36.158864
+>>	      min     1515.000000
+>>	      25%     1552.000000
+>>	      50%     1583.000000
+>>	      75%     1618.000000
+>>	      max     1640.000000
 >>          ...
 >> ```
 > {: .solution}
@@ -396,7 +408,7 @@ print(author_counts)
 Or, we can also count just the rows that have the author "A. B.":
 
 ```python
-tcp_df.groupby('Author')['EEBO'].count()['A. B.']
+tcp_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
 ```
 
 > ## Challenge - Make a list
@@ -414,7 +426,7 @@ be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
 	# multiply all page length values by 2
-	tcp_df['Pages']*2
+	tcp_df['Page Count']*2
 
 # Quick & Easy Plotting Data Using Pandas
 
@@ -423,7 +435,7 @@ We can plot our summary stats using Pandas, too.
 	# make sure figures appear inline in Ipython Notebook
 	%matplotlib inline
 	# create a quick bar chart
-	author_counts.plot(kind='bar');
+	author_counts.plot(kind='bar')
 
 ![Weight by Species Plot](../fig/weightBySpecies.png)
 Weight by species plot
@@ -431,21 +443,20 @@ Weight by species plot
 We can also look at how many animals were captured in each plot:
 
 ```python
-total_count = tcp_df.groupby('EEBO')['Pages'].nunique()
+total_count = tcp_df.groupby('Terms')['Place'].nunique()
 # let's plot that too
 total_count.plot(kind='bar')
 ```
 
 > ## Challenge - Plots
 >
-> 1. Create a plot of average weight across all species per plot.
-> 2. Create a plot of total males versus total females for the entire dataset.
+> 1. Create a plot of Authors across all Places per plot.
 {: .challenge}
 
 > ## Summary Plotting Challenge
 >
-> Create a stacked bar plot, with weight on the Y axis, and the stacked variable
-> being sex. The plot should show total weight by sex for each plot. Some
+> Create a stacked bar plot, with page count on the Y axis, and the stacked variable
+> being author. The plot should show total weight by sex for each plot. Some
 > tips are below to help you solve this challenge:
 >
 > * [For more on Pandas plots, visit this link.](http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot)
@@ -491,23 +502,18 @@ total_count.plot(kind='bar')
 >> First we group data by plot and by sex, and then calculate a total for each plot.
 >>
 >> ```python
->> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
->> plot_sex_count = by_plot_sex['weight'].sum()
+>> tcp_author = tcp_df.groupby(['Place','Author'])
+>> author_count = tcp_author['Page Count'].sum()
 >> ```
 >>
->> This calculates the sums of weights for each sex within each plot as a table
+>> This calculates the sums for each author for each author as a table
 >>
 >> ```
 >> plot  sex
 >> plot_id  sex
->> 1        F      38253
->>          M      59979
->> 2        F      50144
->>          M      57250
->> 3        F      27251
->>          M      28253
->> 4        F      39796
->>          M      49377
+>> Place                          Author  
+Antverpi                       Evans, Lewis, fl. 1574.              34
+Antwerp                        Verstegan, Richard, ca. 1550-1640.   40
 >> <other plots removed for brevity>
 >> ```
 >>
