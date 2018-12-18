@@ -41,8 +41,8 @@ lesson. Let's reopen and read in the data again:
 import pandas as pd
 
 # read in the survey csv
-authors_df = pd.read_csv("TCP.csv")
-```
+authors_df = pd.read_csv("eebo.csv")
+``
 
 ## Indexing and Slicing in Python
 
@@ -59,18 +59,18 @@ DataFrame by name. There are two ways to do this:
 
 ```python
 # Method 1: select a 'subset' of the data using the column name
-authors_df['Status']
+authors_df['Place']
 
 # Method 2: use the column name as an 'attribute'; gives the same output
-authors_df.Status
+authors_df.Place
 ```
 
 We can also create a new object that contains only the data within the
-`status_id` column as follows:
+`Status` column as follows:
 
 ```python
-# creates an object, surveys_species, that only contains the `status_id` column
-texts_status = surveys_df['status']
+# creates an object, texts_species, that only contains the `status_id` column
+texts_status = authors_df['Status']
 ```
 
 We can pass a list of column names too, as an index to select columns in that
@@ -230,7 +230,7 @@ Okay, that's enough of that. Let's create a brand new clean dataframe from
 the original data CSV file.
 
 ```python
-authors_df = pd.read_csv("TCP.csv")
+authors_df = pd.read_csv("eebo.csv")
 ```
 
 ## Slicing Subsets of Rows and Columns in Python
@@ -271,10 +271,10 @@ Let's explore some other ways to index and select subsets of data:
 authors_df.loc[[0, 10], :]
 
 # what does this do?
-authors_df.loc[0, ['Author', 'Title', 'status']]
+authors_df.loc[0, ['Author', 'Title', 'Status']]
 
 # What happens when you type the code below?
-authors_df.loc[[0, 10, 61315], :]
+authors_df.loc[[0, 10, 149], :]
 ```
 
 **NOTE**: Labels must be found in the DataFrame or you will get a `KeyError`.
@@ -354,16 +354,16 @@ Which produces the following output:
 [32853 rows x 10 columns]
 ```
 
-Or we can select all rows that do not contain the year 2002:
+Or we can select all rows wiht a page length greater than 100:
 
 ```python
-authors_df[authors_df.Status != "Free"]
+authors_df[authors_df["Page Count"] > 100]
 ```
 
 We can define sets of criteria too:
 
 ```python
-authors_df[(authors_df.Pages >= 50) & (authors_df.Pages <= 100)]
+authors_df[(authors_df.Date >= 1500) & (authors_df.Date <= 1550)]
 ```
 
 ### Python Syntax Cheat Sheet
@@ -380,8 +380,8 @@ Experiment with selecting various subsets of the "surveys" data.
 
 > ## Challenge - Queries
 >
-> 1. Select a subset of rows in the `surveys_df` DataFrame that contain data from
->   the year 1999 and that contain weight values less than or equal to 8. How
+> 1. Select a subset of rows in the `authors_df` DataFrame that contain data from
+>   the year 1500 and that contain page count values less than or equal to 8. How
 >   many rows did you end up with? What did your neighbor get?
 >
 > 2. You can use the `isin` command in Python to query a DataFrame based upon a
@@ -395,12 +395,12 @@ Experiment with selecting various subsets of the "surveys" data.
 >   in the "authors" DataFrame. How many records contain these values?
 >
 > 3. Experiment with other queries. Create a query that finds all rows with a
->   weight value > or equal to 0.
+>   Page Count value > or equal to 1.
 >
 > 4. The `~` symbol in Python can be used to return the OPPOSITE of the
 >   selection that you specify in Python. It is equivalent to **is not in**.
->   Write a query that selects all rows with sex NOT equal to 'M' or 'F' in
->   the "surveys" data.
+>   Write a query that selects all rows with Date NOT equal to 1500 or 1600 in
+>   the "authors" data.
 {: .challenge}
 
 
@@ -453,7 +453,7 @@ A snippet of the output is below:
 2      False  False  False  False   False   False  False  False  False  False
 3      False  False  False  False   False   False  False  False  False  False
 
-[61315 rows x 10 columns]
+[149 rows x 11 columns]
 ```
 
 To select the rows where there are null values, we can use
@@ -461,7 +461,7 @@ the mask as an index to subset our data as follows:
 
 ```python
 # To select just the rows with NaN values, we can use the 'any()' method
-authors_df[pd.isnull(tcp_df).any(axis=1)]
+authors_df[pd.isnull(authors_df).any(axis=1)]
 ```
 
 Note that the `weight` column of our DataFrame contains many `null` or `NaN`
@@ -483,11 +483,9 @@ asking Python to select rows that have a `NaN` value of author.
 > ## Challenge - Putting it all together
 >
 > 1. Create a new DataFrame that only contains titles with status values that
->   are **not** restricted. Assign each status value in the new DataFrame to a
+>   are **not** from London. Assign each status value in the new DataFrame to a
 >   new value of 'x'. Determine the number of null values in the subset.
 >   
 > 2. Create a new DataFrame that contains only observations that are of status free
->   and where weight values are greater than 100. Create a stacked bar
->   plot of average weight by plot with male vs female values stacked for each
->   plot.
+>   and where page count values are greater than 100.
 {: .challenge}
