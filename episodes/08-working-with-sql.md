@@ -39,7 +39,7 @@ con = sqlite3.connect("data/subcatalogue.db")
 cur = con.cursor()
 
 # the result of a "cursor.execute" can be iterated over by row
-for row in cur.execute('SELECT * FROM subcatalogue;'):
+for row in cur.execute('SELECT * FROM eebo;'):
     print(row)
 
 #Be sure to close the connection.
@@ -57,16 +57,16 @@ statement to filter your results based on some parameter.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/subcatalogue.db")
+con = sqlite3.connect("data/eebo.db")
 
 cur = con.cursor()
 
 # Return all results of query
-cur.execute('SELECT Title FROM subcatalogue WHERE Status="Free"')
+cur.execute('SELECT Title FROM eebo WHERE Status="Free"')
 cur.fetchall()
 
 # Return first result of query
-cur.execute('SELECT Title FROM subcatalogue WHERE Status="Free"')
+cur.execute('SELECT Title FROM eebo WHERE Status="Free"')
 cur.fetchone()
 
 #Be sure to close the connection.
@@ -84,8 +84,8 @@ import pandas as pd
 import sqlite3
 
 # Read sqlite query results into a pandas DataFrame
-con = sqlite3.connect("data/subcatalogue.db")
-df = pd.read_sql_query("SELECT * from subcatalogue", con)
+con = sqlite3.connect("data/eebo.db")
+df = pd.read_sql_query("SELECT * from eebo", con)
 
 # verify that result of SQL query is stored in the dataframe
 print(df.head())
@@ -106,7 +106,7 @@ benchmarks]).
 > ## Challenge - SQL
 >
 > 1. Create a query that contains title data published between 1550 - 1650 that 
->   includes observation's Title, Author, and EEBO id. How many records are returned?
+>   includes book's Title, Author, and TCP id. How many records are returned?
 >
 {: .challenge}
 
@@ -118,13 +118,13 @@ We can also us pandas to create new tables within an SQLite database. Here, we r
 import pandas as pd
 import sqlite3
 
-con = sqlite3.connect("data/subcatalogue.db")
+con = sqlite3.connect("data/eebo.db")
 
 # Load the data into a DataFrame
-surveys_df = pd.read_sql_query("SELECT * from subcatalogue", con)
+books_df = pd.read_sql_query("SELECT * from eebo", con)
 
 # Select only data for 1640
-titles1640 = surveys_df[surveys_df.Date == '1640']
+titles1640 = books_df[books_df.Date == '1640']
 
 # Write the new DataFrame to a new SQLite table
 titles1640.to_sql("titles1640", con, if_exists="replace")
@@ -135,7 +135,7 @@ con.close()
 > ## Challenge - Saving your work
 >
 > 1. For each of the challenges in the previous challenge block, modify your code to save the
->   results to their own tables in the portal database.
+>   results to their own tables in the eebo database.
 >
 > 2. What are some of the reasons you might want to save the results of your queries back into the
 >   database? What are some of the reasons you might avoid doing this.
