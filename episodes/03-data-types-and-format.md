@@ -78,7 +78,7 @@ same `surveys.csv` dataset that we've used in previous lessons.
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
-authors_df = pd.read_csv("TCP.csv")
+authors_df = pd.read_csv("eebo.csv")
 ```
 
 Remember that we can check the type of an object like this:
@@ -106,10 +106,10 @@ A type 'O' just stands for "object" which in Pandas' world is a string
 authors_df['EEBO'].dtype
 ```
 
-**OUTPUT:** `dtype('float64')`
+**OUTPUT:** `dtype('int64')`
 
-The type `float64` tells us that python is storing each value within this column
-as a 64 bit float. We can use the `dat.dtypes` command to view the data type
+The type `int64` tells us that python is storing each value within this column
+as a 64 bit integer. We can use the `dat.dtypes` command to view the data type
 for each column in a DataFrame (all at once).
 
 ```python
@@ -120,7 +120,7 @@ which **returns**:
 
 ```
 TCP        object
-EEBO      float64
+EEBO       int64
 VID        object
 STC        object
 Status     object
@@ -128,14 +128,14 @@ Author     object
 Date       object
 Title      object
 Terms      object
-Pages       int64
+Page Count int64
+Place      object
 dtype: object
 ```
 
 Note that most of the columns in our Survey data are of type `object`. This means
-that they are strings. But the EEBO column is a floating point value
-which means it contains decimals. The pages column an int64 which
-means they contain 64 bit integers.
+that they are strings. But the EEBO column is a integer value
+which means it contains whole numbers.
 
 ## Working With Integers and Floats
 
@@ -189,8 +189,8 @@ values.
 
 ```python
 # convert the record_id field from an integer to a float
-authors_df['Pages'] = authors_df['Pages'].astype('float64')
-authors_df['pages'].dtype
+authors_df['Page Count'] = authors_df['Page Count'].astype('float64')
+authors_df['Page Count'].dtype
 ```
 
 **OUTPUT:** `dtype('float64')`
@@ -220,7 +220,7 @@ over those cells.
 
 ```python
 authors_df['EEBO'].mean()
-59425204.736782461
+84280511.94630873
 ```
 Dealing with missing data values is always a challenge. It's sometimes hard to
 know why values are missing - was it because of a data entry error? Or data that
