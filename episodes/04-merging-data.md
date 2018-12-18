@@ -27,14 +27,12 @@ authors_df = pd.read_csv("authors.csv",
                          keep_default_na=False, na_values=[""])
 authors_df
 
-       TCP      EEBO    VID                       STC Status  \
-0   A00002  99850634  15849  STC 1000.5; ESTC S115415   Free   
-1   A00005  99842408   7058   STC 10000; ESTC S106695   Free   
-2   A00007  99844302   9101   STC 10002; ESTC S108645   Free   
-3   A00008  99848896  14017   STC 10003; ESTC S113665   Free   
-4   A00011  99837000   1304   STC 10008; ESTC S101178   Free   
-5   A00012  99853871  19269    STC 1001; ESTC S118664   Free
-
+        TCP                                             Author
+0    A00002                         Aylett, Robert, 1583-1655?
+1    A00005  Higden, Ranulf, d. 1364. Polycronicon. English...
+2    A00007             Higden, Ranulf, d. 1364. Polycronicon.
+3    A00008          Wood, William, fl. 1623, attributed name.
+4    A00011
 
 places_df = pd.read_csv("places.csv",
                          keep_default_na=False, na_values=[""])
@@ -64,8 +62,8 @@ works.
 ```python
 # read in first 10 lines of surveys table
 place_sub = places_df.head(10)
-# grab the last 10 rows 
-place_sub_last10 = places_df.tail(10)
+# grab the last 20 rows 
+place_sub_last10 = places_df.tail(20)
 #reset the index values to the second dataframe appends properly
 place_sub_last10 = place_sub_last10.reset_index(drop=True)
 # drop=True option avoids adding new index column with old index values
@@ -145,7 +143,7 @@ Storing data in this way has many benefits including:
 
 # import a small subset of the species data designed for this part of the lesson.
 # It is stored in the data folder.
-cat_sub = pd.read_csv('subCatalogue.csv', keep_default_na=False, na_values=[""])
+cat_sub = pd.read_csv('eebo.csv', keep_default_na=False, na_values=[""])
 ```
 
 In this example, `cat_sub` is the lookup table containing catalogue data that we want 
@@ -173,9 +171,9 @@ Index([u'EEBO', u'Place'], dtype='object')
 
 ```
 
-In our example, the join key is the column containing the identifier, which is called `EEBO`.
+In our example, the join key is the column containing the identifier, which is called `TCP`.
 
-Now that we know the fields with the common EEBO ID attributes in each
+Now that we know the fields with the common TCP ID attributes in each
 DataFrame, we are almost ready to join our data. However, since there are
 [different types of joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/), we
 also need to decide which type of join makes sense for our analysis.
@@ -209,13 +207,11 @@ merged_inner
 **OUTPUT:**
 
 ```
-    EEBO_x                          Place     TCP    EEBO_y    VID  \
-0   A00002                         London  A00002  99850634  15849   
-1   A00005                         London  A00005  99842408   7058   
-2   A00007                         London  A00007  99844302   9101   
-3   A00008               The Netherlands?  A00008  99848896  14017   
-4   A00011                      Amsterdam  A00011  99837000   1304   
-5   A00012                         London  A00012  99853871  19269
+      TCP      EEBO    VID        ...        Page Count           Place_x           Place_y
+0  A00002  99850634  15849        ...               134            London            London
+1  A00005  99842408   7058        ...               302            London            London
+2  A00007  99844302   9101        ...               386            London            London
+3  A00008  99848896  14017        ...                14  The Netherlands?  The Netherlands?
 ```
 
 The result of an inner join of `place_sub` and `cat_sub` is a new DataFrame
@@ -238,7 +234,7 @@ not matter.
 
 The result `merged_inner` DataFrame contains all of the columns from `cat_sub`
 (TCP, EEBO, title and so on) as well as all the columns from `place_sub`
-(EEBO, Place).
+(TCP, Place).
 
 Notice that `merged_inner` has fewer rows than `place_sub`. This is an
 indication that there were rows in `place_df` with value(s) for `EEBO` that
@@ -246,7 +242,7 @@ do not exist as value(s) for `EEBO` in `authors_df`.
 
 ## Left joins
 
-What if we want to add information from `species_sub` to `survey_sub` without
+What if we want to add information from `cat_sub` to `survey_sub` without
 losing any of the information from `survey_sub`? In this case, we use a different
 type of join called a "left outer join", or a "left join".
 
@@ -266,19 +262,16 @@ A left join is performed in pandas by calling the same `merge` function used for
 inner join, but using the `how='left'` argument:
 
 ```python
-merged_left = pd.merge(left=place_sub,right=cat_sub, how='left', left_on='EEBO', right_on='TCP')
+merged_left = pd.merge(left=place_sub,right=cat_sub, how='left', left_on='TCP', right_on='TCP')
 merged_left
 
 **OUTPUT:**
 
-    EEBO_x                          Place     TCP    EEBO_y    VID  \
-0   A00002                         London  A00002  99850634  15849   
-1   A00005                         London  A00005  99842408   7058   
-2   A00007                         London  A00007  99844302   9101   
-3   A00008               The Netherlands?  A00008  99848896  14017   
-4   A00011                      Amsterdam  A00011  99837000   1304   
-5   A00012                         London  A00012  99853871  19269   
-6   A00014                         London  A00014  33143147  28259
+      TCP           Place_x        ...         Page Count           Place_y
+0  A00002            London        ...                134            London
+1  A00005            London        ...                302            London
+2  A00007            London        ...                386            London
+3  A00008  The Netherlands?        ...                 14  The Netherlands?
 ```
 
 The result DataFrame from a left join (`merged_left`) looks very much like the
@@ -292,12 +285,11 @@ missing (they contain NaN values):
 ```python
  merged_inner[ pd.isnull(merged_inner.Author) ]
 **OUTPUT:**
-     EEBO_x            Place     TCP    EEBO_y    VID  \
-4    A00011        Amsterdam  A00011  99837000   1304   
-6    A00014           London  A00014  33143147  28259   
-8    A00018         Germany?  A00018  99850740  15965   
-11   A00025          London?  A00025  29905398  28125   
-12   A00026           London  A00026  29900271  28115
+
+      TCP      EEBO    VID    ...     Page Count    Place_x    Place_y
+4  A00011  99837000   1304    ...             54  Amsterdam  Amsterdam
+6  A00014  33143147  28259    ...              1     London     London
+8  A00018  99850740  15965    ...             26   Germany?   Germany?
 ```
 
 These rows are the ones where the value of `Author` from `cat_sub ` does not occur 
