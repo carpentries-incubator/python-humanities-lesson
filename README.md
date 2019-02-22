@@ -8,3 +8,7 @@ on how to contribute updates, bug fixes, or other corrections.
 
 - April Wright ([@wrightaprilm](https://github.com/wrightaprilm))
 - John Gosset ([@qjcg](https://github.com/qjcg))
+
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iaine/python-humanities-lesson/dev)
