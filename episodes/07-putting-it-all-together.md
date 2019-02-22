@@ -27,9 +27,7 @@ through as well as the Python documentation to help you along.
 There are many repositories online from which you can obtain data. We are
 providing you with one data file to use with these exercises, but feel free to
 use any data that is relevant to your research. The file
-`bouldercreek_09_2013.txt` contains stream discharge data, summarized at 15
-15 minute intervals (in cubic feet per second) for a streamgage on Boulder
-Creek at North 75th Street (USGS gage06730200) for 1-30 September 2013. If you'd
+`TCP.csv` contains the complete EEBO metadata of books between 1300-1700. If you'd
 like to use this dataset, please find it in the data folder.
 
 ## 2. Clean up your data and open it using Python and Pandas
@@ -55,11 +53,13 @@ delimiter or separator. Common delimiters are `','` for comma, `' '` for space,
 and `'\t'` for tab).
 
 Create a DataFrame that includes only the values of the data that are useful to
-you. In the streamgage file, those values might be the date, time, and discharge
-measurements. Convert any measurements in imperial units into SI units. You can
-also change the name of the columns in the DataFrame like this:
+you. In the streamgage file, those values might be the date, title, terms, and TCP. 
+Convert and joined strings into individual ones. You can also change the name of the 
+columns in the DataFrame like this:
 
 ```python
+    df['Author'] = df['Author'].str.split(';') #split a column in the data frame
+
     df = pd.DataFrame({'1stcolumn':[100,200], '2ndcolumn':[10,20]}) # this just creates a DataFrame for the example!
     print('With the old column names:\n') # the \n makes a new line, so it's easier to see
     print(df)
