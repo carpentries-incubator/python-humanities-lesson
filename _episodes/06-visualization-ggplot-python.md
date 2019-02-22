@@ -30,19 +30,23 @@ Wilkinson.
 ```python
 import pandas as pd
 
-authors_complete = pd.read_csv( 'data_output/luther.csv', index_col=0)
+authors_complete = pd.read_csv( '../data/eebo.csv', index_col=0)
 authors_complete.index.name = 'X'
 authors_complete
 ```
+            EEBO    VID  ... Page Count             Place
+X                        ...                             
+A00002  99850634  15849  ...        134            London
+A00005  99842408   7058  ...        302            London
+A00007  99844302   9101  ...        386            London
+A00008  99848896  14017  ...         14  The Netherlands?
+A00011  99837000   1304  ...         54         Amsterdam
+A00012  99853871  19269  ...         99            London
+A00014  33143147  28259  ...          1            London
+A00015  99837006   1310  ...         16            London
+A00018  99850740  15965  ...         26          Germany?
 
-,Freq,Publication
-0,5,1548
-1,3,1538
-2,2,1679
-3,2,1529
-4,2,1578
-
-30463 rows × 13 columns
+149 rows x 10 columns
 
 ```python
 from ggplot import *
@@ -70,7 +74,7 @@ exportable plots
 
 ```python
 %matplotlib notebook
-ggplot( aesthetics= aes(x = 'Publication', y = 'Freq'), data = authors_complete)
+ggplot( aesthetics= aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 ```
 
 ![png](../fig/output_6_0.png)
@@ -81,7 +85,7 @@ ggplot( aesthetics= aes(x = 'Publication', y = 'Freq'), data = authors_complete)
      lines, bars). To add a geom to the plot use `+` operator:
 
 ```python
-ggplot( aes(x = 'Publication', y = 'Freq'), data = authors_complete) + geom_point()
+ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete) + geom_point()
 ```
 
 ![png](../fig/output_8_0.png)
@@ -95,10 +99,10 @@ plot can also be generated with code like this:
 
 ```python
 # Create
-luther_plot = ggplot( aes(x = 'Publication', y = 'Freq'), data = authors_complete)
+eebo_plot = ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 
 # Draw the plot
-luther_plot + geom_point()
+eebo_plot + geom_point()
 ```
 
 ![png](../fig/output_10_0.png)
@@ -122,19 +126,19 @@ defining the dataset we'll use, lay the axes, and choose a geom.
 ggplot(aes(x = 'Publication', y = 'Freq'), data = authors_complete, ) + geom_point()
 ```
 
-![png](../fig/output_12_0.png)
+![png](../fig/figure2.png)
 
 <ggplot: (-9223372036581788156)>
 
 Then, we start modifying this plot to extract more information from it. For
 instance, we can add transparency (alpha) to avoid overplotting.
-
+ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 ```python
-ggplot(aes(x = 'Publication', y = 'Freq'), data = authors_complete) + \
+ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete) + \
     geom_point(alpha = 0.1)
 ```
 
-![png](../fig/output_14_0.png)
+![png](../fig/figure04.png)
 
 <ggplot: (295894448)>
 
@@ -145,21 +149,18 @@ ggplot(aes(x = 'Publication', y = 'Freq'),data = authors_complete) + \
     geom_point(alpha = 0.1, color = "blue")
 ```
 
-![png](../fig/output_16_0.png)
+![png](../fig/figure05.png)
 
 <ggplot: (291993969)>
 
 Or to color each species in the plot differently:
 
 ```python
-# ggplot(data = authors_complete, aes(x = weight, y = hindfoot_length)) +
-#    geom_point(alpha = 0.1, aes(color=species_id))
-
-ggplot(aes(x = 'Publication', y = 'Freq', color='Authors'),data = authors_complete) + \
-    geom_point( alpha = 0.1)
+ggplot( aes(x = 'Date', y = 'Page Count', color='Place'), data = authors_complete) + \
+    geom_point(alpha=0.5)
 ```
 
-![png](../fig/output_18_0.png)
+![png](../fig/figure06.png)
 
 <ggplot: (295600781)>
 
@@ -169,10 +170,10 @@ Visualising the distribution of weight within each species.
 
 
 ```python
-ggplot( aes(x = 'Authors', y = 'Freq'), data = authors_complete) + geom_boxplot()
+ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete) + geom_boxplot()
 ```
 
-![png](../fig/output_21_0.png)
+![png](../fig/figure07.png)
 
 <ggplot: (-9223372036559103053)>
 
@@ -181,17 +182,19 @@ measurements and of their distribution:
 
 
 ```python
-authors_complete['authors_factor'] = authors_complete['Authors'].astype('category').cat.codes
+authors_complete['authors_factor'] = authors_complete['Place'].astype('category').cat.codes
 
-xlabels = sorted(set(authors_complete['Authors'].values) )
+xlabels = sorted(set(authors_complete['Page Count'].values) )
 xcodes = sorted(set(authors_complete['authors_factor'].values))
 
-ggplot(aes(x = 'authors_factor', y = 'Freq'),data = authors_complete) + \
+ggplot(aes(x = 'authors_factor', y = 'Date'),data = authors_complete) + \
     geom_point(position='jitter',alpha=0.7,jittersize=0.4) + \
         scale_x_continuous(breaks=xcodes, labels=xlabels) + \
-                         xlab('Authors') + geom_boxplot(alpha=0)
+                         xlab('Page Count') + geom_boxplot(alpha=0)
 
 ```
+
+![png](../fig/figure08.png)
 
 Notice how the boxplot layer is behind the jitter layer? What do you need to
 change in the code to put the boxplot in front of the points such that it's not
@@ -225,36 +228,36 @@ hidden.
 >> ## Solution
 >> ```python
 >> Start with the boxplot we created:
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
+>> ggplot(aes(x = 'authors_factor', y = 'Date'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
->>                         xlab('species_id') + geom_boxplot(alpha=0)
+>>                         xlab('Page Count') + geom_boxplot(alpha=0)
 >> ```
 >>
 >> ```python
 >> 1. Replace the box plot with a violin plot; see `geom_violin()`.
 >>
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
+>> ggplot(aes(x = 'authors_factor', y = 'Date'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
->>                         xlab('species_id') + geom_violin(alpha=0)
+>>                         xlab('Page Count') + geom_violin(alpha=0)
 >> ```
 >>
 >> ```python
 >> 2. Represent weight on the log10 scale; see `scale_y_log10()`.
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
+>> ggplot(aes(x = 'authors_factor', y = 'Date'),data = authors_complete) + \
 >>    geom_jitter(alpha=0.3) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
->>                         xlab('species_id') + geom_violin(alpha=0) + \
+>>                         xlab('Page Count') + geom_violin(alpha=0) + \
 >>            scale_y_log(base=10)
 >> ```
 >>
 >> ```python
->> 3. Create boxplot for `hindfoot_length`.
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length'),data = authors_complete) + \
+>> 3. Create boxplot for `Page Count`.
+>> ggplot(aes(x = 'authors_factor', y = 'Page Count'),data = authors_complete) + \
 >>     geom_jitter(alpha=0.01) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
->>                         xlab('species_id') + geom_boxplot(alpha=0) + \
+>>                         xlab('Pages') + geom_boxplot(alpha=0) + \
 >>            scale_y_log(base=10)
 >>            
 >> ```
@@ -263,13 +266,13 @@ hidden.
 >> 4. Add color to the datapoints on your boxplot according to the
 >>    plot from which the sample was taken (`plot_id`).
 >>    Hint: Check the class for `plot_id`. Consider changing the class
->>    of `plot_id` from integer to factor. Why does this change how R
+>>    of `Place` from integer to factor. Why does this change how Python
 >>    makes the graph?
 >>
->> ggplot(aes(x = 'species_factor', y = 'hindfoot_length', color='plot_id'),data = authors_complete) + \
+>> ggplot(aes(x = 'authors_factor', y = 'Page Count', color='Place'),data = authors_complete) + \
 >>     geom_jitter(alpha=0.01) + \
 >>        scale_x_discrete(breaks=xcodes, labels=xlabels) + \
->>                         xlab('species_id') + geom_boxplot(alpha=0) + \
+>>                         xlab('Pages') + geom_boxplot(alpha=0) + \
 >>            scale_y_log(base=10)
 >>     
 >> ```
@@ -288,40 +291,39 @@ to group data first and count records within each group.
 ```
 
 ```python
-sub_complete = pd.read_csv("subCatalogue.csv")
-yearly = sub_complete[['Date','Author']].groupby(['Date']).count().reset_index()
-yearly
+yearly = authors_complete[['Date','Place','Page Count']].groupby(['Date', 'Place']).count().reset_index()
+yearly_counts.columns = ['year','place', 'count']
+yearly_counts
 ```
-     Date  Author
-0    1483       1
-1    1490       1
-2    1495       1
-3    1496       1
-4    1506       2
-5    1509       2
-6    1510       1
-7    1515       1
 
-[126 rows x 2 columns]
+	year 	place 	count
+0 	1515 	London 	1
+1 	1519 	Londini 	1
+2 	1526 	London 	2
+3 	1528 	London 	1
+4 	1529 	Malborow i.e. Antwerp 	1
+5 	1531 	London 	1
+
+[121 rows x 3 columns]
 
 Timelapse data can be visualised as a line plot with years on x axis and counts
 on y axis.
 
 ```python
-ggplot(aes(x = 'Publication', y = 'Freq'),data = authors_complete) + \
+ggplot(aes(x = 'year', y = 'count'),data = yearly_counts) + \
      geom_line()
 ```
 
-![png](../fig/output_35_0.png)
+![png](../fig/figure09.png)
 
 <ggplot: (-9223372036580461736)>
 
 Unfortunately this does not work, because we plot data for all the species
 together. We need to tell ggplot to draw a line for each species by modifying
-the aesthetic function to include `group = species_id`.
+the aesthetic function to include `group = Place`.
 
 ```python
-ggplot(aes(x = 'Date', y = 'Author', group='Author'),data = yearly) + geom_line()
+ggplot(aes(x = 'year', y = 'count', group='place', color='place'),data = yearly_counts) + geom_line()
 ```
 
 # Faceting
@@ -331,18 +333,18 @@ into multiple plots based on a factor included in the dataset. We will use it to
 make one plot for a time series for each species.
 
 ```python
-ggplot(aes(x = "Date", y = "Author"),data = yearly) + \
+ggplot(aes(x = "year", y = "count", colour = "place"),data = yearly_counts) + \
     geom_line() + \
-    facet_wrap("EEBO")
+    facet_wrap("place")
 
 ```
 
-Now we would like to split line in each plot by sex of each individual
-measured. To do that we need to make counts in data frame grouped by year,
-species_id, and sex:
+Now we would like to split line in each plot by status of each place of
+publication. To do that we need to make counts in data frame grouped by year,
+place, and status:
 
 ```python
-yearly_status = sub_complete.groupby( ['Date','Author', 'Status']).count()
+yearly_status = authors_complete.groupby( ['Date','Place', 'Status']).count()
 yearly_status["n"] = yearly_status["EEBO"]
 yearly_status = yearly_status["n"].reset_index()
 yearly_status
@@ -351,9 +353,9 @@ yearly_status
 We can now make the faceted plot splitting further by sex (within a single plot):
 
 ```python
- ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status ) + \
-     geom_line() + \
-         facet_wrap( "Date")
+ggplot(aes(x = "Date", y = "n", group = "Status", color="Place"), data = yearly_status ) + \
+    geom_line() + \
+    facet_wrap( "Place")
 ```
 
 Usually plots with white background look more readable when printed.  We can set
@@ -368,13 +370,13 @@ the grid.
                 theme()
 ```
 
-To make the plot easier to read, we can color by sex instead of species (species
+To make the plot easier to read, we can color by status instead of Places (Places
 are already in separate plots, so we don't need to distinguish them further).
 
 ```python
-ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status) + \
+ggplot(aes(x = "Date", y = "n", group = "Status", color="Status"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap("species_id") + \
+    facet_wrap("Place") + \
     theme_bw()
 ```
 
@@ -386,15 +388,15 @@ ggplot(aes(x = "Date", y = "n", group = "Status"), data = yearly_status) + \
 >> ## Solution
 >>
 >> ```python
->> yearly_weight = sub_complete[["Date", "EEBO","Pages"]].groupby(["Date", "EEBO"]).mean().reset_index()
->> yearly_weight.columns =   ["year", "EEBO","avg_length"]  
->> yearly_weight
+>> yearly_length = authors_complete[["Date", "Place","Page Count"]].groupby(["Date", "Place"]).mean().reset_index()
+>> yearly_length.columns =   ["year", "Place","Pages"]
+>> yearly_length
 >> ```
 >>
 >> ```python
->> ggplot( aes(x="year", y="avg_length", group = "year"),data = yearly_weight) + \
+>> ggplot( aes(x="year", y="Pages", color = "Place", group = "Place"),data = yearly_length) + \
 >>    geom_line() + \
->>    facet_wrap("year") + \
+>>    facet_wrap("Place") + \
 >>    theme_bw()
 >> ```
 > {: .solution}
@@ -406,25 +408,27 @@ geometry allows you to explicitly specify how you want your plots to be
 arranged via formula notation (`rows ~ columns`; a `.` can be used as
 a placeholder that indicates only one row or column).
 
-Let's modify the previous plot to compare how the weights of male and females
-has changed through time.
+Let's modify the previous plot to compare how the page length has changed 
+through time.
 
 ```python
 ## One column, facet by rows
-yearly_status = sub_complete[["Date", "Status", "EEBO", "Pages"]].groupby(["Date", "Status", "EEBO"]).mean().reset_index()
-yearly_status.columns = ["year", "Status", "EEBO","avg_length"]
+yearly_status = authors_complete[["Date", "Status", "Page Count"]].groupby(["Date", "Status"]).mean().reset_index()
+yearly_status.columns = ["year", "Status", "Length"]
 yearly_status
 ```
 
 ```python
 # One row, facet by column
-ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + geom_line() + facet_grid("Status")
+ggplot( aes(x="year", y="Length", color = "Place", group = "Place"),data = yearly_status) + \
+    geom_line() + \
+    facet_grid("Place")
 ```
 ```python
 # One row, facet by column
-ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
+ggplot( aes(x="year", y="Length", color = "Place", group = "Place"),data = yearly_status) + \
     geom_line() + \
-    facet_grid(None, "Status")
+    facet_grid(None, "Place")
 ```
 
 # Customization
@@ -438,9 +442,9 @@ Now, let's change names of axes to something more informative than 'year'
 and 'n' and add a title to this figure:
 
 ```python
-ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
+ggplot(aes(x="year", y="Length", group = "Place"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap( "Status" ) + \
+    facet_wrap( "Place" ) + \
     labs(title = 'Number of pages in EEBO/TCP texts by publication',
          x = 'Number of texts',
          y = 'Publication Date') + \
@@ -451,9 +455,9 @@ The axes have more informative names, but their readability can be improved by
 increasing the font size. While we are at it, we'll also change the font family:
 
 ```python
-ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
+ggplot(aes(x="year", y="Length", group = "Place"), data = yearly_status) + \
     geom_line() + \
-    facet_wrap( "Status" ) + \
+    facet_wrap( "Place" ) + \
     theme_bw() + \
     theme(axis_title_x = element_text(size=16, family="Arial"),
          axis_title_y = element_text(size=16, family="Arial")) + \
@@ -471,10 +475,10 @@ labels.
 
 
 ```python
-ggplot(aes(x="year", y="avg_length", group = "Status"), data = yearly_status) + \
+ggplot(aes(x="year", y="Length", group = "Place"), data = yearly_status) + \
     geom_line() + \
     facet_wrap( "Status" ) + \
-    labs(title = 'Number of pages by status',
+    labs(title = 'Number of Pages by Place of Publication',
         x = 'Number of Pages',
         y = 'Year of Publication') + \
     theme_bw() + \
@@ -490,7 +494,7 @@ an object to easily apply them to other plots you may create:
 ```python
 arial_grey_theme = theme(axis_text_x = element_text(color="grey", size=10, angle=90, hjust=.5, vjust=.5),
                           axis_text_y = element_text(color="grey", size=10))
-ggplot(yearly_status, aes(x="year", y="avg_length")) + \
+ggplot(yearly_status, aes(x="year", y="Length")) + \
     geom_boxplot() + \
     arial_grey_theme
 ```
@@ -512,9 +516,9 @@ adjusting the appropriate arguments (`width`, `height` and `dpi`):
 
 
 ```python
-my_plot =  ggplot(yearly_status, aes(x = "year", y = "avg_length", group = "Status"))
+my_plot =  ggplot(yearly_status, aes(x = "year", y = "Length", group = "Place"))
 my_plot += geom_line()
-my_plot += facet_wrap("Status")
+my_plot += facet_wrap("Place")
 my_plot += labs(title = 'Number of pages per year',
                 x = 'Number of Pages',
                 y = 'Year of Publication')
