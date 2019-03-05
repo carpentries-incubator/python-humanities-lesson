@@ -77,7 +77,7 @@ exportable plots
 ggplot( aesthetics= aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 ```
 
-![png](../fig/output_6_0.png)
+![png](../fig/figure01.png)
 
 <ggplot: (-9223372036552543572)>
 
@@ -88,7 +88,7 @@ ggplot( aesthetics= aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete) + geom_point()
 ```
 
-![png](../fig/figure01.png)
+![png](../fig/figure02.png)
 
 <ggplot: (295366541)>
 
