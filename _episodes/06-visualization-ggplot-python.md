@@ -88,7 +88,7 @@ ggplot( aesthetics= aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete) + geom_point()
 ```
 
-![png](../fig/output_8_0.png)
+![png](../fig/figure01.png)
 
 <ggplot: (295366541)>
 
@@ -105,7 +105,7 @@ eebo_plot = ggplot( aes(x = 'Date', y = 'Page Count'), data = authors_complete)
 eebo_plot + geom_point()
 ```
 
-![png](../fig/output_10_0.png)
+![png](../fig/figure02.png)
 
 <ggplot: (295593725)>
 
@@ -126,7 +126,7 @@ defining the dataset we'll use, lay the axes, and choose a geom.
 ggplot(aes(x = 'Publication', y = 'Freq'), data = authors_complete, ) + geom_point()
 ```
 
-![png](../fig/figure2.png)
+![png](../fig/figure03.png)
 
 <ggplot: (-9223372036581788156)>
 
