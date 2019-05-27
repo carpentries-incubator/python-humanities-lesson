@@ -11,9 +11,7 @@ Data for this lesson is from the Humanities Lesson data -
 
 For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
 
-- [TCP.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/TCP.csv)
-- [subCatalogue.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/subCatalogue.csv)
-- [Places.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/places.csv)
+- [eebo.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/openrefine/openrefine.csv)
 - [SQL Database](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/subcatalogue.db)
 
 
@@ -76,7 +74,7 @@ From the terminal, type:
 
 ```
 conda install -y numpy pandas matplotlib jupyter
-conda install -c bokeh ggplot
+conda install -c conda-forge ggplot
 ```
 
 ## Launch a Jupyter notebook
