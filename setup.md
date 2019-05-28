@@ -46,7 +46,7 @@ Anaconda will install the workshop packages for you.
 
 #### Download and install Anaconda
 
-Download and install [Anaconda](https://www.continuum.io/downloads).
+Download and install [Anaconda](https://www.anaconda.com/distribution/).
 Remember to download and install the installer for Python 3.x.
 
 ### Miniconda installation
