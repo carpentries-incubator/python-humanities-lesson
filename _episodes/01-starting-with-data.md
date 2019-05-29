@@ -40,13 +40,13 @@ directory structure, however, that is not our focus today.
 
 ### Our Data
 
-For this lesson, we will be using the Portal Teaching data, a subset of the data
+For this lesson, we will be using the EEBO catalogue data, a subset of the data
 from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
 We will be using files from the [Data repository](https://github.com/iaine/humanities-lesson-data).
 This section will use the `eebo.csv` file that can be downloaded here:
-[https://github.com/iaine/eebo.csv/blob/master/eebo.csv?raw=true](https://github.com/iaine/eebo.csv/blob/master/eebo.csv?raw=true)
+[https://raw.githubusercontent.com/iaine/python-humanities-lesson/gh-pages/data/eebo.csv](https://raw.githubusercontent.com/iaine/python-humanities-lesson/gh-pages/data/eebo.csv)
 
 We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a
 single title, and the columns represent:
