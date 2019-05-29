@@ -42,7 +42,7 @@ import pandas as pd
 
 # read in the survey csv
 authors_df = pd.read_csv("eebo.csv")
-``
+```
 
 ## Indexing and Slicing in Python
 
