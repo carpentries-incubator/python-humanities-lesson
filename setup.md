@@ -168,6 +168,13 @@ This workflow has several advantages:
 - It allows you to display figures next to the code that produces them
   to tell a complete story of the analysis.
 
+### Changing the Title
+
+- You can change the Notebooks's title by clicking on the title cell
+  ![Original notebook title](../fig/00_9_jupyter_original_title)
+- Rename the folder in the box and click "Rename"
+  ![Renamed notebook title](../fig/00_10_jupyter_rename_title)
+
 ### How the notebook is stored
 
 * The notebook file is stored in a format called JSON and has the suffix
