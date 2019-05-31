@@ -318,12 +318,6 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.
 >    - `authors_df[:4]`
 >    - `authors_df[:-1]`
 >
-> 2. What happens when you call:
->
->    - `dat.iloc[0:4, 1:4]`
->    - `dat.loc[0:4, 1:4]`
->
-> - How are the two commands different?
 {: .challenge}
 
 
@@ -333,28 +327,22 @@ We can also select a subset of our data using criteria. For example, we can
 select all rows that have a status value of Free:
 
 ```python
-authors_df[authors_df.Status == "Free"]
+authors_df.loc[authors_df["Terms"].str.contains("sermon", na=False)]
 ```
 
 Which produces the following output:
 
 ```python
-          TCP        EEBO    VID                           STC Status  \
-0      A00002  99850634.0  15849      STC 1000.5; ESTC S115415   Free   
-1      A00005  99842408.0   7058       STC 10000; ESTC S106695   Free   
-2      A00007  99844302.0   9101       STC 10002; ESTC S108645   Free   
-3      A00008  99848896.0  14017       STC 10003; ESTC S113665   Free   
-4      A00011  99837000.0   1304       STC 10008; ESTC S101178   Free
-...
-32849  N37435         NaN    NaN                 Shipton 49067   Free   
-32850  N37474         NaN    NaN                 Shipton 49118   Free   
-32851  N37478         NaN    NaN                 Shipton 49123   Free   
-32852  N37535         NaN    NaN     Evans 1728; Shipton 39607   Free 
+        TCP      EEBO  ...  Page Count   Place
+23   A00156  99851064  ...           8  London
+27   A00164  99851065  ...           7  London
+113  A00426  99857357  ...          72  London
+141  A00510  99852090  ...          48  London
 
-[32853 rows x 10 columns]
+[4 rows x 11 columns]
 ```
 
-Or we can select all rows wiht a page length greater than 100:
+Or we can select all rows with a page length greater than 100:
 
 ```python
 authors_df[authors_df["Page Count"] > 100]
