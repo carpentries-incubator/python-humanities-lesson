@@ -94,14 +94,7 @@ sure, we can check that the new directory was created within the `data` folder:
 
 ```python
 >>> os.listdir('data')
-['plots.csv',
- 'portal_mammals.sqlite',
- 'species.csv',
- 'survey2001.csv',
- 'survey2002.csv',
- 'TCP.csv',
- 'surveys2002_temp.csv',
- 'yearly_files']
+['authors.csv', 'yearly_files', 'places.csv', 'eebo.db', 'eebo.csv']
 ```
 
 The command `os.listdir` is equivalent to `ls` in the shell.
@@ -117,11 +110,11 @@ import pandas as pd
 # Load the data into a DataFrame
 authors_df = pd.read_csv('data/eebo.csv')
 
-# Select only data for 1640
-authors1640 = authors_df[authors_df.Date == "1640"]
+# Select only data for 1636
+authors1636 = authors_df[authors_df.Date == "1636"]
 
 # Write the new DataFrame to a csv file
-authors1640.to_csv('yearly_files/authors1640.csv')
+authors1636.to_csv('yearly_files/authors1636.csv')
 ```
 
 To create yearly data files, we could repeat the last two commands over and
