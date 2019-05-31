@@ -140,9 +140,7 @@ columns of information to the Survey data.
 
 Storing data in this way has many benefits including:
 
-
-# import a small subset of the species data designed for this part of the lesson.
-# It is stored in the data folder.
+```
 cat_sub = pd.read_csv('eebo.csv', keep_default_na=False, na_values=[""])
 ```
 
