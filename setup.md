@@ -12,7 +12,7 @@ Data for this lesson is from the Humanities Lesson data -
 For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
 
 - [eebo.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/openrefine/openrefine.csv)
-- [SQL Database](https://github.com/iaine/humanities-lesson-data/blob/master/data/data/subcatalogue.db)
+- [SQL Database](https://github.com/iaine/python-humanities-lesson/blob/gh-pages/data/eebo.db)
 
 
 
