@@ -34,7 +34,7 @@ perform all kinds of operations with `.execute()`.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/subcatalogue.db")
+con = sqlite3.connect("data/eebo.db")
 
 cur = con.cursor()
 
