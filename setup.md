@@ -171,9 +171,11 @@ This workflow has several advantages:
 ### Changing the Title
 
 - You can change the Notebooks's title by clicking on the title cell
-  ![Original notebook title](../fig/00_9_jupyter_original_title)
+
+  ![Original notebook title](../fig/00_9_jupyter_original_title.png)
 - Rename the folder in the box and click "Rename"
-  ![Renamed notebook title](../fig/00_10_jupyter_rename_title)
+
+  ![Renamed notebook title](../fig/00_10_jupyter_rename_title.png)
 
 ### How the notebook is stored
 
