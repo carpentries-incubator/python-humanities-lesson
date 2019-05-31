@@ -136,17 +136,9 @@ SQL database.
 
 The `places.csv` file is table that contains the place and EEBO id for some titles. 
 When we want to access that information, we can create a query that joins the additional 
-columns of information to the Survey data.
+columns of information to the author data.
 
 Storing data in this way has many benefits including:
-
-```
-cat_sub = pd.read_csv('eebo.csv', keep_default_na=False, na_values=[""])
-```
-
-In this example, `cat_sub` is the lookup table containing catalogue data that we want 
-to join with the data in `place_sub` to produce a new DataFrame that contains all of the 
-columns from both places *and* the subCatalogue.
 
 
 ## Identifying join keys
@@ -159,11 +151,11 @@ identify a (differently-named) column in each DataFrame that contains the same
 information.
 
 ```python
->>> cat_sub.columns
+>>> authors_df.columns
 
 Index([u'TCP', u'EEBO', u'VID', u'STC', u'Status', u'Author', u'Date', u'Title', u'Terms', u'Pages'], dtype='object')
 
->>> place_sub.columns
+>>> places_df.columns
 
 Index([u'EEBO', u'Place'], dtype='object')
 
@@ -193,7 +185,7 @@ The pandas function for performing joins is called `merge` and an Inner join is
 the default option:  
 
 ```python
-merged_inner = pd.merge(left=cat_sub,right=place_sub, left_on='TCP', right_on='TCP')
+merged_inner = pd.merge(left=authors_df,right=places_df, left_on='TCP', right_on='TCP')
 # in this case `species_id` is the only column name in  both dataframes, so if we skippd `left_on`
 # and `right_on` arguments we would still get the same result
 
@@ -205,33 +197,34 @@ merged_inner
 **OUTPUT:**
 
 ```
-      TCP      EEBO    VID        ...        Page Count           Place_x           Place_y
-0  A00002  99850634  15849        ...               134            London            London
-1  A00005  99842408   7058        ...               302            London            London
-2  A00007  99844302   9101        ...               386            London            London
-3  A00008  99848896  14017        ...                14  The Netherlands?  The Netherlands?
+      TCP                                             Author             Place
+0  A00002                         Aylett, Robert, 1583-1655?            London
+1  A00005  Higden, Ranulf, d. 1364. Polycronicon. English...            London
+2  A00007             Higden, Ranulf, d. 1364. Polycronicon.            London
+3  A00008          Wood, William, fl. 1623, attributed name.  The Netherlands?
+4  A00011                                                NaN         Amsterdam
 ```
 
-The result of an inner join of `place_sub` and `cat_sub` is a new DataFrame
-that contains the combined set of columns from `place_sub` and `cat_sub`. It
+The result of an inner join of `authors_df` and `places_df` is a new DataFrame
+that contains the combined set of columns from those tables. It
 *only* contains rows that have two-letter species codes that are the same in
-both the `cat_sub` and `place_sub` DataFrames. In other words, if a row in
-`cat_sub` has a value of `TCP` that does *not* appear in the `TCP`
+both the `authos_df` and `place_df` DataFrames. In other words, if a row in
+`authors_df` has a value of `TCP` that does *not* appear in the `TCP`
 column of `TCP`, it will not be included in the DataFrame returned by an
-inner join.  Similarly, if a row in `species_sub` has a value of `species_id`
-that does *not* appear in the `species_id` column of `survey_sub`, that row will not
+inner join.  Similarly, if a row in `places_df` has a value of `TCP`
+that does *not* appear in the `TCP` column of `places_df`, that row will not
 be included in the DataFrame returned by an inner join.
 
 The two DataFrames that we want to join are passed to the `merge` function using
-the `left` and `right` argument. The `left_on='species'` argument tells `merge`
-to use the `species_id` column as the join key from `survey_sub` (the `left`
-DataFrame). Similarly , the `right_on='species_id'` argument tells `merge` to
-use the `species_id` column as the join key from `species_sub` (the `right`
+the `left` and `right` argument. The `left_on='TCP'` argument tells `merge`
+to use the `TCP` column as the join key from `places_df` (the `left`
+DataFrame). Similarly , the `right_on='TCP'` argument tells `merge` to
+use the `TCP` column as the join key from `authors_df` (the `right`
 DataFrame). For inner joins, the order of the `left` and `right` arguments does
 not matter.
 
-The result `merged_inner` DataFrame contains all of the columns from `cat_sub`
-(TCP, EEBO, title and so on) as well as all the columns from `place_sub`
+The result `merged_inner` DataFrame contains all of the columns from `authors`
+(TCP, Person) as well as all the columns from `places_df`
 (TCP, Place).
 
 Notice that `merged_inner` has fewer rows than `place_sub`. This is an
@@ -260,16 +253,16 @@ A left join is performed in pandas by calling the same `merge` function used for
 inner join, but using the `how='left'` argument:
 
 ```python
-merged_left = pd.merge(left=place_sub,right=cat_sub, how='left', left_on='TCP', right_on='TCP')
+merged_left = pd.merge(left=places_df,right=authors_df, how='left', left_on='TCP', right_on='TCP')
 merged_left
 
 **OUTPUT:**
-
-      TCP           Place_x        ...         Page Count           Place_y
-0  A00002            London        ...                134            London
-1  A00005            London        ...                302            London
-2  A00007            London        ...                386            London
-3  A00008  The Netherlands?        ...                 14  The Netherlands?
+      TCP             Place                                             Author
+0  A00002            London                         Aylett, Robert, 1583-1655?
+1  A00005            London  Higden, Ranulf, d. 1364. Polycronicon. English...
+2  A00007            London             Higden, Ranulf, d. 1364. Polycronicon.
+3  A00008  The Netherlands?          Wood, William, fl. 1623, attributed name.
+4  A00011         Amsterdam                                                NaN
 ```
 
 The result DataFrame from a left join (`merged_left`) looks very much like the
@@ -277,21 +270,18 @@ result DataFrame from an inner join (`merged_inner`) in terms of the columns it
 contains. However, unlike `merged_inner`, `merged_left` contains the **same
 number of rows** as the original `place_sub` DataFrame. When we inspect
 `merged_left`, we find there are rows where the information that should have
-come from `species_sub` (i.e., `species_id`, `genus`, and `taxa`) is
-missing (they contain NaN values):
+come from `authors_df` (i.e., `Author`) is missing (they contain NaN values):
 
 ```python
  merged_inner[ pd.isnull(merged_inner.Author) ]
 **OUTPUT:**
-
-      TCP      EEBO    VID    ...     Page Count    Place_x    Place_y
-4  A00011  99837000   1304    ...             54  Amsterdam  Amsterdam
-6  A00014  33143147  28259    ...              1     London     London
-8  A00018  99850740  15965    ...             26   Germany?   Germany?
+        TCP Author      Place
+4    A00011    NaN  Amsterdam
+6    A00014    NaN     London
+8    A00018    NaN   Germany?
 ```
 
-These rows are the ones where the value of `Author` from `cat_sub ` does not occur 
-in `place_sub`.
+These rows are the ones where the value of `Author` from `authors_df` does not occur in `places_df`.
 
 
 ## Other join types
@@ -304,15 +294,13 @@ The pandas `merge` function supports two other join types:
   discarded.
 * Full (outer) join: Invoked by passing `how='outer'` as an argument. This join
   type returns the all pairwise combinations of rows from both DataFrames; i.e.,
-  the result DataFrame will `NaN` where data is missing in one of the dataframes. This join type is
-  very rarely used.
+  the result DataFrame will `NaN` where data is missing in one of the dataframes. This join type is very rarely used.
 
 # Final Challenges
 
 > ## Challenge - Distributions
-> Create a new DataFrame by joining the contents of the `TCP.csv` and
+> Create a new DataFrame by joining the contents of the `eebo.csv` and
 > `places.csv` tables. Then calculate and plot the distribution of:
 >
-> 1. place by author
-> 2. title by author by place
+> 1. title by author by place
 {: .challenge}
