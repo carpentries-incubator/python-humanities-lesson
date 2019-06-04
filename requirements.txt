@@ -1,5 +1,5 @@
 matplotlib==3.0.3
-numpy==1.16.2
+numpy==1.14.2
 pandas==0.22.0
 pyparsing==2.2.0
 scipy==1.2.1
