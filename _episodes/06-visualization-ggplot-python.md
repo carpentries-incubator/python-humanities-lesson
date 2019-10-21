@@ -1,5 +1,5 @@
 ---
-title: Plotting with ggplot
+title: Plotting with bokeh
 teaching: 20
 exercises: 25
 questions:
