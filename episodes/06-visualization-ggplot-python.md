@@ -158,8 +158,7 @@ show(p3)
 
 # Customization
 
-Now, let's change names of axes to something more informative than 'year'
-and 'n' and add a title to this figure:
+Now, let's add a title to this figure:
 
 ```python
 from bokeh.models import ColumnDataSource, Range1d, LabelSet, Label
@@ -174,7 +173,9 @@ p4.yaxis[0].axis_label = 'Page Count'
 show(p4)
 ```
 
-or we can change the font size for the labels
+![png](../fig/figure06.png)
+
+or we canadd labels to the axes and change the font size for the labels
 
 ```python
 p5 = figure(title="Plot of Page Counts by Year", plot_width=400, plot_height=400)
@@ -188,6 +189,8 @@ p5.xaxis[0].axis_label_text_font_size = "24pt"
 show(p5)
 ```
 
+![png](../fig/figure07.png)
+
 With all of this information in hand, please take another five minutes to either
 improve one of the plots generated in this exercise or create a beautiful graph
 of your own.
@@ -197,9 +200,7 @@ Here are some ideas:
 * Can you find a way to change the name of the legend? What about its labels?
 * Use a different color palette.
 
-After creating your plot, you can save it to a file in your favourite format.
-You can easily change the dimension (and its resolution) of your plot by
-adjusting the appropriate arguments (`width`, `height` and `dpi`):
+After creating your plot, you can save it to a file as a png file:
 
 
 ```python
