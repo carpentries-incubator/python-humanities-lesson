@@ -154,7 +154,7 @@ p3 = figure(plot_width=800, plot_height=250)
 p3.line(yearly['Date'], yearly['Page Count'], color='navy', alpha=0.5)
 show(p3)
 ```
-![png](../fig/figure09.png)
+![png](../fig/figure05.png)
 
 # Customization
 
