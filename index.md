@@ -3,8 +3,7 @@ layout: lesson
 root: .
 
 maintainers:
-  - April Wright
-  - John Gosset
+  - Iain Emsley
 ---
 
 **Lesson Maintainers:** {{ page.maintainers | join: ', ' }}
