@@ -197,7 +197,7 @@ of your own.
 
 Here are some ideas:
 
-* Can you find a way to change the name of the legend? What about its labels?
+* Can you find a way to change its labels?
 * Use a different color palette.
 
 After creating your plot, you can save it to a file as a png file:
