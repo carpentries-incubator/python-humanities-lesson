@@ -20,12 +20,9 @@ objectives:
 #### Disclaimer
 
 Python has powerful built-in plotting capabilities such as `matplotlib`, but
-for this exercise, we will be using the [`ggplot`](http://ggplot.yhathq.com/)
+for this exercise, we will be using the [`bokeh`](https://docs.bokeh.org/en/latest/)
 package, which facilitates the creation of highly-informative plots of
-structured data based on the R implementation of
-[`ggplot2`](http://ggplot2.org/) and [The Grammar of
-Graphics](http://link.springer.com/book/10.1007%2F0-387-28695-0) by Leland
-Wilkinson.
+structured data.
 
 ```python
 import pandas as pd
