@@ -3,13 +3,13 @@
 #------------------------------------------------------------
 
 # Which carpentry is this ("swc" or "dc")?
-carpentry: "dc"
+carpentry: "incubator"
 
 # Overall title for pages.
 title: "Python for Humanities"
 
 # Contact email address.
-email: lessons@software-carpentry.org
+email: "team@carpentries.org"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -20,7 +20,7 @@ kind: "lesson"
 
 # Magic to make URLs resolve both locally and on GitHub.
 # See https://help.github.com/articles/repository-metadata-on-github-pages/.
-repository: datacarpentry/python-ecology-lesson
+repository: <USERNAME>/<PROJECT>
 
 # Sites.
 amy_site: "https://amy.software-carpentry.org/workshops"
@@ -39,31 +39,45 @@ training_site: "https://swcarpentry.github.io/instructor-training"
 pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
 post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
 
-# Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am)
+# Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
 start_time: 0
 
 # Specify that things in the episodes collection should be output.
 collections:
   episodes:
     output: true
-    permalink: /:path/
+    permalink: /:path/index.html
   extras:
     output: true
+    permalink: /:path/index.html
 
 # Set the default layout for things in the episodes collection.
 defaults:
   - values:
-      root: ..
+      root: .
+      layout: page
   - scope:
       path: ""
       type: episodes
     values:
+      root: ..
       layout: episode
+  - scope:
+      path: ""
+      type: extras
+    values:
+      root: ..
+      layout: page
 
 # Files and directories that are not to be copied.
 exclude:
   - Makefile
   - bin
+  - .Rproj.user/
+
 
 # Turn off built-in syntax highlighting.
-highlighter: false
+highlighter: rouge
+
+# remote theme
+remote_theme: carpentries/carpentries-theme
