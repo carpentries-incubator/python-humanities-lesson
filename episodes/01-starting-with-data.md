@@ -44,7 +44,7 @@ For this lesson, we will be using the EEBO catalogue data, a subset of the data
 from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
-We will be using files from the [Data repository](https://github.com/iaine/humanities-lesson-data).
+We will be using files from the [data folder](../data).
 This section will use the `eebo.csv` file that can be downloaded here:
 [../data/eebo.csv](../data/eebo.csv)
 
