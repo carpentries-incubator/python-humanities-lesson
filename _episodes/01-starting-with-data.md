@@ -45,8 +45,7 @@ from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
 We will be using files from the [data folder](../data).
-This section will use the `eebo.csv` file that can be downloaded here:
-[../data/eebo.csv](../data/eebo.csv)
+This section will use the `eebo.csv` file that can be found in the data folder.
 
 We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a single title, and the columns represent:
 
