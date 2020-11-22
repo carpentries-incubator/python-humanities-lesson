@@ -46,7 +46,7 @@ Alex can do some of this work using spreadsheet systems but this can be time con
 
 The next steps show how Python can be used to automate some of the processes. 
 
-As a result of creating the Python scripts, the data can be re-run in the future. 
+As a result of creating Python scripts, the data can be re-run in the future. 
 
 ### Our Data
 
