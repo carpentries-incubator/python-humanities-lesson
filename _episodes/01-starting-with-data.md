@@ -38,13 +38,23 @@ A quick aside that there are Python libraries like [OS
 Library](https://docs.python.org/3/library/os.html) that can work with our
 directory structure, however, that is not our focus today.
 
+### Alex's Processing
+
+Alex is a researcher who is interested in Early English books. Alex knows the EEBO dataset and refers to it to find data such as titles, places, and authors. As well as searching for titles, they want to create some exploratory plots and intermediate datasets. 
+
+Alex can do some of this work using spreadsheet systems but this can be time consuming to do  and check. It can lead to mistakes that are hard to detect. 
+
+The next steps show how Python can be used to automate some of the processes. 
+
+As a result of creating the Python scripts, the data can be re-run in the future. 
+
 ### Our Data
 
 For this lesson, we will be using the EEBO catalogue data, a subset of the data
 from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
-We will be using files from the [data folder](../data).
+We will be using files from the data folder.
 This section will use the `eebo.csv` file that can be found in the data folder.
 
 We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a single title, and the columns represent:
