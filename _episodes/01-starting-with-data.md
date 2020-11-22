@@ -46,10 +46,9 @@ from EEBO/TCP
 
 We will be using files from the [Data repository](https://github.com/iaine/humanities-lesson-data).
 This section will use the `eebo.csv` file that can be downloaded here:
-[https://raw.githubusercontent.com/iaine/python-humanities-lesson/gh-pages/data/eebo.csv](https://raw.githubusercontent.com/iaine/python-humanities-lesson/gh-pages/data/eebo.csv)
+[../data/eebo.csv](../data/eebo.csv)
 
-We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a
-single title, and the columns represent:
+We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a single title, and the columns represent:
 
 | Column           | Description                        |
 |------------------|------------------------------------|
