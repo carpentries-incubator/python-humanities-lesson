@@ -299,7 +299,9 @@ The pandas `merge` function supports two other join types:
 
 > ## Challenge - Distributions
 > Create a new DataFrame by joining the contents of the `eebo.csv` and
-> `places.csv` tables. Calculate the 
+> `places.csv` tables. Calculate the:
 >
-> number of authors by place
+> 1. number of unique places
+
+
 {: .challenge}
