@@ -19,11 +19,11 @@ DataFrames](http://pandas.pydata.org/pandas-docs/stable/merging.html) including
 `merge` and `concat`.
 
 To work through the examples below, we first need to load the species and
-surveys files into pandas DataFrames. In iPython:
+surveys files into pandas DataFrames. The authors.csv and places.csv data can be found in the data folder. 
 
 ```python
 import pandas as pd
-authors_df = pd.read_csv("authors.csv",
+authors_df = pd.read_csv("data/authors.csv",
                          keep_default_na=False, na_values=[""])
 authors_df
 
@@ -34,7 +34,7 @@ authors_df
 3    A00008          Wood, William, fl. 1623, attributed name.
 4    A00011
 
-places_df = pd.read_csv("places.csv",
+places_df = pd.read_csv("data/places.csv",
                          keep_default_na=False, na_values=[""])
 places_df
     A00002                         London
