@@ -115,10 +115,9 @@ new_output = pd.read_csv('out.csv', keep_default_na=False, na_values=[""])
 
 > ## Challenge - Combine Data
 >
-> In the data folder, there are two catalogue data files: `1640.csv` and
-> `1641.csv`. Read the data into python and combine the files to make one
-> new data frame. Create a plot of average plot weight by year grouped by sex.
-> Export your results as a CSV and make sure it reads back into python properly.
+> In the data folder, there are two catalogue data files: `1635.csv` and
+> `1640.csv`. Read the data into python and combine the files to make one
+> new data frame. 
 {: .challenge}
 
 # Joining DataFrames
@@ -300,7 +299,7 @@ The pandas `merge` function supports two other join types:
 
 > ## Challenge - Distributions
 > Create a new DataFrame by joining the contents of the `eebo.csv` and
-> `places.csv` tables. Then calculate and plot the distribution of:
+> `places.csv` tables. Calculate the 
 >
-> 1. title by author by place
+> number of authors by place
 {: .challenge}
