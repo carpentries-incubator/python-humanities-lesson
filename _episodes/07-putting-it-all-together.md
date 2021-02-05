@@ -27,7 +27,7 @@ through as well as the Python documentation to help you along.
 There are many repositories online from which you can obtain data. We are
 providing you with one data file to use with these exercises, but feel free to
 use any data that is relevant to your research. The file
-`TCP.csv` contains the complete EEBO metadata of books between 1300-1700. If you'd
+`eebo.csv` contains the complete EEBO metadata of books between 1300-1700. If you'd
 like to use this dataset, please find it in the data folder.
 
 ## 2. Clean up your data and open it using Python and Pandas

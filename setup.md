@@ -9,10 +9,17 @@ permalink: /setup/
 Data for this lesson is from the Humanities Lesson data -
 [available on Github](https://github.com/iaine/humanities-lesson-data).
 
-For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
-
-- [eebo.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/openrefine/openrefine.csv)
-- [SQL Database](https://github.com/iaine/python-humanities-lesson/blob/gh-pages/data/eebo.db)
+In this course, several data files will be used as examples. You can download
+these example data files by rightclicking on the following links and selecting
+"Save as". You should save them in a memorabl location, as you will need to
+tell Python where they are later
+- For lessons 2-4, and 6-8: [eebo.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv)
+- For lesson 5,
+    - [authors.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/authors.csv)
+    - [places.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/places.csv)
+    - [1635.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1635.csv)
+    - [1640.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1640.csv)
+- For lesson 9: [eebo database](https://github.com/carpentries-incubator/python-humanities-lesson/raw/gh-pages/data/eebo.db)
 
 
 
@@ -31,7 +38,7 @@ For this workshop we use Python version 3.x.
 * [Jupyter notebook](http://jupyter.org/)
 * [Numpy](http://www.numpy.org/)
 * [Matplotlib](http://matplotlib.org/)
-* [GGPlot2]
+* [Bokeh](https://bokeh.org/)
 
 ## Install the workshop packages
 
@@ -42,7 +49,7 @@ With Miniconda you will need to install the required packages.
 
 ### Anaconda installation
 
-Anaconda will install the workshop packages for you.
+Anaconda will install the workshop packages for you. You only need one of the two.
 
 #### Download and install Anaconda
 
@@ -74,7 +81,7 @@ From the terminal, type:
 
 ```
 conda install -y numpy pandas matplotlib jupyter
-conda install -c conda-forge ggplot
+conda install -y -c conda-forge bokeh
 ```
 
 ## Launch a Jupyter notebook

@@ -34,7 +34,7 @@ perform all kinds of operations with `.execute()`.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/eebo.db")
+con = sqlite3.connect("eebo.db")
 
 cur = con.cursor()
 
@@ -57,7 +57,7 @@ statement to filter your results based on some parameter.
 import sqlite3
 
 # Create a SQL connection to our SQLite database
-con = sqlite3.connect("data/eebo.db")
+con = sqlite3.connect("eebo.db")
 
 cur = con.cursor()
 
@@ -84,7 +84,7 @@ import pandas as pd
 import sqlite3
 
 # Read sqlite query results into a pandas DataFrame
-con = sqlite3.connect("data/eebo.db")
+con = sqlite3.connect("eebo.db")
 df = pd.read_sql_query("SELECT * from eebo", con)
 
 # verify that result of SQL query is stored in the dataframe
@@ -118,7 +118,7 @@ We can also us pandas to create new tables within an SQLite database. Here, we r
 import pandas as pd
 import sqlite3
 
-con = sqlite3.connect("data/eebo.db")
+con = sqlite3.connect("eebo.db")
 
 # Load the data into a DataFrame
 books_df = pd.read_sql_query("SELECT * from eebo", con)
