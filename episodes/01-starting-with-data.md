@@ -127,6 +127,17 @@ We will begin by locating and reading our survey data which are in CSV format.
 We can use Pandas' `read_csv` function to pull the file directly into a
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
+In order to read data in, we need to know where the data is stored on your computer.
+It is recommended to place the data files in the same directory as the Jupyter notebook
+
+```python
+# note that pd.read_csv is used because we imported pandas as pd
+# note that this assumes that the data file is in the same location
+# as the Jupyter notebook
+pd.read_csv("eebo.csv")
+```
+
+
 ## So What's a DataFrame?
 
 A DataFrame is a 2-dimensional data structure that can store data of different
@@ -135,10 +146,7 @@ in columns. It is similar to a spreadsheet or an SQL table or the `data.frame` i
 R. A DataFrame always has an index (0-based). An index refers to the position of
 an element in the data structure.
 
-```python
-# note that pd.read_csv is used because we imported pandas as pd
-pd.read_csv("eebo.csv")
-```
+
 
 The above command yields the **output** below:
 
@@ -164,18 +172,18 @@ we haven't saved any data to memory so we can work with it.We need to assign the
 DataFrame to a variable. Remember that a variable is a name for a value, such as `x`,
 or  `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
 
-Let's call the imported survey data `tcp_df`:
+Let's call the imported survey data `eebo_df`:
 
 ```python
-tcp_df = pd.read_csv("eebo.csv")
+eebo_df = pd.read_csv("eebo.csv")
 ```
 
 Notice when you assign the imported DataFrame to a variable, Python does not
-produce any output on the screen. We can print the value of the `tcp_df`
+produce any output on the screen. We can print the value of the `eebo_df`
 object by typing its name into the Python command prompt.
 
 ```python
-tcp_df
+eebo_df
 ```
 
 which prints contents like above
@@ -183,20 +191,20 @@ which prints contents like above
 ## Manipulating Our Index Data
 
 Now we can start manipulating our data. First, let's check the data type of the
-data stored in `tcp_df` using the `type` method. **The `type` method and
-`__class__` attribute** tell us that `tcp_df` is `<class 'pandas.core.frame.DataFrame'>`.
+data stored in `eebo_df` using the `type` method. **The `type` method and
+`__class__` attribute** tell us that `eebo_df` is `<class 'pandas.core.frame.DataFrame'>`.
 
 ```python
-type(tcp_df)
+type(eebo_df)
 # this does the same thing as the above!
-tcp_df.__class__
+eebo_df.__class__
 ```
-We can also enter `tcp_df.dtypes` at our prompt to view the data type for each
+We can also enter `eebo_df.dtypes` at our prompt to view the data type for each
 column in our DataFrame. `int64` represents numeric integer values - `int64` cells
 can not store decimals. `object` represents strings (letters and numbers). `float64`
 represents numbers with decimals.
 
-	tcp_df.dtypes
+	eebo_df.dtypes
 
 which returns:
 
@@ -222,29 +230,29 @@ There are many ways to summarize and access the data stored in DataFrames,
 using attributes and methods provided by the DataFrame object.
 
 To access an attribute, use the DataFrame object name followed by the attribute
-name `df_object.attribute`. Using the DataFrame `tcp_df` and attribute
+name `df_object.attribute`. Using the DataFrame `eebo_df` and attribute
 `columns`, an index of all the column names in the DataFrame can be accessed
-with `tcp_df.columns`.
+with `eebo_df.columns`.
 
 Methods are called in a similar fashion using the syntax `df_object.method()`.
-As an example, `tcp_df.head()` gets the first few rows in the DataFrame
-`tcp_df` using **the `head()` method**. With a method, we can supply extra
+As an example, `eebo_df.head()` gets the first few rows in the DataFrame
+`eebo_df` using **the `head()` method**. With a method, we can supply extra
 information in the parens to control behaviour.
 
 Let's look at the data using these.
 
 > ## Challenge - DataFrames
 >
-> Using our DataFrame `tcp_df`, try out the attributes & methods below to see
+> Using our DataFrame `eebo_df`, try out the attributes & methods below to see
 > what they return.
 >
-> 1. `tcp_df.columns`
-> 2. `tcp_df.shape` Take note of the output of `shape` - what format does it
+> 1. `eebo_df.columns`
+> 2. `eebo_df.shape` Take note of the output of `shape` - what format does it
 >    return the shape of the DataFrame in?
 >    
 >    HINT: [More on tuples, here](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
-> 3. `tcp_df.head()` Also, what does `tcp_df.head(15)` do?
-> 4. `tcp_df.tail()`
+> 3. `eebo_df.head()` Also, what does `eebo_df.head(15)` do?
+> 4. `eebo_df.tail()`
 {: .challenge}
 
 
@@ -260,7 +268,7 @@ Let's begin by exploring our data:
 
 ```python
 # Look at the column names
-tcp_df.columns.values
+eebo_df.columns.values
 ```
 
 which **returns**:
@@ -274,7 +282,7 @@ Let's get a list of all the page counts. The `pd.unique` function tells us all o
 the unique values in the `Pages` column.
 
 ```python
-pd.unique(tcp_df['Page Count'])
+pd.unique(eebo_df['Page Count'])
 ```
 
 which **returns**:
@@ -292,10 +300,9 @@ array([134, 302, 386,  14,  54,  99,   1,  16,  26,  62,  50,  66,  30,
 > ## Challenge - Statistics
 >
 > 1. Create a list of unique locations found in the index data. Call it
->   `places`. How many unique location are there in the data? How many unique
->   species are in the data?
+>   `places`. How many unique location are there in the data?
 >
-> 2. What is the difference between `len(places)` and `tcp_df['Place'].nunique()`?
+> 2. What is the difference between `len(places)` and `eebo_df['Place'].nunique()`?
 {: .challenge}
 
 # Groups in Pandas
@@ -308,7 +315,7 @@ We can calculate basic statistics for all records in a single column using the
 syntax below:
 
 ```python
-tcp_df['Page Count'].describe()
+eebo_df['Page Count'].describe()
 ```
 gives **output**
 
@@ -327,11 +334,11 @@ Name: Page Count, dtype: float64
 We can also extract one specific metric if we wish:
 
 ```python
-tcp_df['Page Count'].min()
-tcp_df['Page Count'].max()
-tcp_df['Page Count'].mean()
-tcp_df['Page Count'].std()
-tcp_df['Page Count'].count()
+eebo_df['Page Count'].min()
+eebo_df['Page Count'].max()
+eebo_df['Page Count'].mean()
+eebo_df['Page Count'].std()
+eebo_df['Page Count'].count()
 ```
 
 But if we want to summarize by one or more variables, for example sex, we can
@@ -340,7 +347,7 @@ can quickly calculate summary statistics by a group of our choice.
 
 ```python
 # Group data by status
-grouped_data = tcp_df.groupby('Place')
+grouped_data = eebo_df.groupby('Place')
 ```
 
 The **pandas function `describe`** will return descriptive stats including: mean,
@@ -376,11 +383,11 @@ summary stats.
 > 1. What is the mean page length for books published in `Amsterdam` and how many for `London`
 > 2. What happens when you group by two columns using the following syntax and
 >    then grab mean values:
->	- `grouped_data2 = tcp_df.groupby(['EEBO','Page Count'])`
+>	- `grouped_data2 = eebo_df.groupby(['EEBO','Page Count'])`
 >	- `grouped_data2.mean()`
 > 3. Summarize the Date values in your data. HINT: you can use the
 >   following syntax to only create summary statistics for one column in your data
->   `tcp_df['Page Count'].describe()`
+>   `eebo_df['Page Count'].describe()`
 >
 >
 >> ## Did you get #3 right?
@@ -409,14 +416,14 @@ ways, but we'll use `groupby` combined with **a `count()` method**.
 
 ```python
 # count the number of texts by authors
-author_counts = tcp_df.groupby('Author')['EEBO'].count()
+author_counts = eebo_df.groupby('Author')['EEBO'].count()
 print(author_counts)
 ```
 
 Or, we can also count just the rows that have the author "A. B.":
 
 ```python
-tcp_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
+eebo_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
 ```
 
 > ## Challenge - Make a list
@@ -434,38 +441,45 @@ be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
 	# multiply all page length values by 2
-	tcp_df['Page Count']*2
+	eebo_df['Page Count']*2
 
 # Quick & Easy Plotting Data Using Pandas
 
 We can plot our summary stats using Pandas, too.
 
-	# make sure figures appear inline in Ipython Notebook
-	%matplotlib inline
-	# create a quick bar chart
-	author_counts.plot(kind='bar')
-
-![Weight by Species Plot](../fig/weightBySpecies.png)
-Weight by species plot
-
-We can also look at how many animals were captured in each plot:
-
 ```python
-total_count = tcp_df.groupby('Terms')['Place'].nunique()
-# let's plot that too
-total_count.plot(kind='bar')
+# when using a Jupyter notebook, force graphs to appear in line
+%matplotlib inline
+# Collect data together
+date_count = eebo_df.groupby("Date")["Status"].count()
+date_count.plot(kind="bar")
+```
+
+![Weight by Species Plot](../fig/01_weight_by_date.png)
+
+What does this graph show? Let's step through
+* `eebo_df.groupby("Date")` : This groups the texts by the date in which they
+were published
+* `eebo_df.groupby("Date")["Status"]` : This chooses a single column to count,
+rather than counting all columns
+* `eebo_df.groupby("Date")["Status"].count()` : this counts the instances, i.e. 
+how many texts in a given year have a status?
+* `date_count.plot(kind="bar")` : this plots that data as a bar chart
+
 ```
 
 > ## Challenge - Plots
 >
-> 1. Create a plot of Authors across all Places per plot.
+> 1. Create a plot of Authors across all Places per plot. Does it look how you
+expect it to look?
 {: .challenge}
 
 > ## Summary Plotting Challenge
 >
-> Create a stacked bar plot, with page count on the Y axis, and the stacked variable
-> being author. The plot should show total weight by sex for each plot. Some
-> tips are below to help you solve this challenge:
+> Create a stacked bar plot, showing the total pages published, per year, with
+> the different publishing locations stacked on top of each other. The Date
+> should go on the X axis, and the Page Count on the Y axis. Some tips are below
+> to help you solve this challenge:
 >
 > * [For more on Pandas plots, visit this link.](http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot)
 > * You can use the code that follows to create a stacked bar plot but the data to stack
@@ -492,7 +506,7 @@ total_count.plot(kind='bar')
 > ```
 > # plot stacked data so columns 'one' and 'two' are stacked
 > my_df = pd.DataFrame(d)
-> my_df.plot(kind='bar',stacked=True,title="The title of my graph")
+> my_df.plot(kind='bar', stacked=True, title="The title of my graph")
 > ```
 >
 > ![Stacked Bar Plot](../fig/stackedBar1.png)
@@ -501,63 +515,38 @@ total_count.plot(kind='bar')
 > for each plotting.  Try running `.unstack()` on some DataFrames above and see
 > what it yields.
 >
-> Start by transforming the grouped data (by plot and sex) into an unstacked layout, then create
+> Start by transforming the grouped data into an unstacked layout, then create
 > a stacked plot.
 >
 >
 >> ## Solution to Summary Challenge
 >>
->> First we group data by plot and by sex, and then calculate a total for each plot.
+>> First we group data by date and then by place. 
 >>
 >> ```python
->> tcp_author = tcp_df.groupby(['Place','Author'])
->> author_count = tcp_author['Page Count'].sum()
+>> date_place = eebo_df.groupby(['Date','Place'])
+>> page_sum = date_place['Page Count'].sum()
 >> ```
 >>
->> This calculates the sums for each author for each author as a table
+>> This calculates the sums for each place, for each date, as a table
 >>
 >> ```
->> plot  sex
->> plot_id  sex
->> Place                          Author  
-Antverpi                       Evans, Lewis, fl. 1574.              34
-Antwerp                        Verstegan, Richard, ca. 1550-1640.   40
+>> page_sum
+>> Date    Place
+>> 1515    London    302
+>> 1519    Londini   74
+>> 1526     London   150
+>> 1528    London    386
 >> <other plots removed for brevity>
 >> ```
->>
->> Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
->>
+>> 
+>> After that, we use the `.unstack()` function on our grouped data to figure
+>> out the total contribution of each place, to each year, and then plot the
+>> data
 >> ```python
->> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
->> plot_sex_count = by_plot_sex['weight'].sum()
->> plot_sex_count.unstack()
+>> table = page_sum.unstack()
+>> plot = table.plot(kind="bar", stacked=True, title="Pages published per year", figsize=(10,5))
+>> plot.set_ylabel("Pages")
 >> ```
->>
->> The `unstack` function above will display the following output:
->>
->> ```
->> sex          F      M
->> plot_id              
->> 1        38253  59979
->> 2        50144  57250
->> 3        27251  28253
->> 4        39796  49377
->> <other plots removed for brevity>
->> ```
->>
->> Now, create a stacked bar plot with that data where the weights for each sex are stacked by plot.
->>
->> Rather than display it as a table, we can plot the above data by stacking the values of each sex as follows:
->>
->> ```python
->> by_plot_sex = tcp_df.groupby(['plot_id','sex'])
->> plot_sex_count = by_plot_sex['weight'].sum()
->> spc = plot_sex_count.unstack()
->> s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by plot and sex")
->> s_plot.set_ylabel("Weight")
->> s_plot.set_xlabel("Plot")
->> ```
->>
->> ![Stacked Bar Plot](../fig/stackedBar.png)
 > {: .solution}
 {: .challenge}

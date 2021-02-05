@@ -23,7 +23,7 @@ surveys files into pandas DataFrames. The authors.csv and places.csv data can be
 
 ```python
 import pandas as pd
-authors_df = pd.read_csv("data/authors.csv",
+authors_df = pd.read_csv("authors.csv",
                          keep_default_na=False, na_values=[""])
 authors_df
 
@@ -34,7 +34,7 @@ authors_df
 3    A00008          Wood, William, fl. 1623, attributed name.
 4    A00011
 
-places_df = pd.read_csv("data/places.csv",
+places_df = pd.read_csv("places.csv",
                          keep_default_na=False, na_values=[""])
 places_df
     A00002                         London
@@ -60,7 +60,7 @@ one DataFrame to another.  Let's grab two subsets of our data to see how this
 works.
 
 ```python
-# read in first 10 lines of surveys table
+# read in first 10 lines of the places table
 place_sub = places_df.head(10)
 # grab the last 20 rows 
 place_sub_last10 = places_df.tail(20)
@@ -118,6 +118,15 @@ new_output = pd.read_csv('out.csv', keep_default_na=False, na_values=[""])
 > In the data folder, there are two catalogue data files: `1635.csv` and
 > `1640.csv`. Read the data into python and combine the files to make one
 > new data frame. 
+>
+>> ## Solution to Challenge
+>> 
+>> ```python
+>>  csv_1 = pd.read_csv("1635.csv")
+>>  csv_2 = pd.read_csv("1640.csv")
+>>  combined = pd.concat( [csv_1, csv_2], axis=0).reset_index(drop=True)
+>>  ```
+> {: .solution}
 {: .challenge}
 
 # Joining DataFrames
@@ -152,11 +161,11 @@ information.
 ```python
 >>> authors_df.columns
 
-Index([u'TCP', u'EEBO', u'VID', u'STC', u'Status', u'Author', u'Date', u'Title', u'Terms', u'Pages'], dtype='object')
+Index(['TCP', 'Author'], dtype='object')
 
 >>> places_df.columns
 
-Index([u'EEBO', u'Place'], dtype='object')
+Index(['TCP', 'Place'], dtype='object')
 
 ```
 
@@ -293,15 +302,42 @@ The pandas `merge` function supports two other join types:
   discarded.
 * Full (outer) join: Invoked by passing `how='outer'` as an argument. This join
   type returns the all pairwise combinations of rows from both DataFrames; i.e.,
-  the result DataFrame will `NaN` where data is missing in one of the dataframes. This join type is very rarely used.
+  the result DataFrame will `NaN` where data is missing in one of the dataframes.
+  This join type is very rarely used.
 
 # Final Challenges
 
 > ## Challenge - Distributions
-> Create a new DataFrame by joining the contents of the `eebo.csv` and
+> Create a new DataFrame by joining the contents of the `authors.csv` and
 > `places.csv` tables. Calculate the:
 >
-> 1. number of unique places
-
-
+> 1. Number of unique places
+> 2. Number of books that do not have a known place
+> 3. Number of books that do not have either a known place or author
+>
+>> ## Solution to challenge
+>> 
+>> 
+>> ```python
+>> merged = pd.merge(
+>>                   left=pd.read_csv("authors.csv"),
+>>                   right=pd.read_csv("places.csv"),
+>>                   left_on="TCP",
+>>                   right_on="TCP"
+>>                   )
+>> # Part 1: number of unique places - we can use the .nunique() method
+>> num_unique_places = merged["Place"].nunique()
+>> # Part 2: we can take advantage of the behaviour that the .count() method
+>> #         excludes NaN values. So .count() gives us the number that have place
+>> #         values
+>> num_no_place = len(merged) - merged["Place"].count()
+>> # Part 3: This needs us to check both columns and combine the resulting masks
+>> #         Then  we can use the trick of converting boolean to int, and summing, 
+>> #         to convert the combined mask to a number of True values
+>> no_author = pd.isnull(merged["Author"]) # True where is null
+>> no_place = pd.isnull(merged["Place"])
+>> neither = no_author & no_place
+>> num_neither = sum(neither)
+>> ```
+> {: .solution}
 {: .challenge}

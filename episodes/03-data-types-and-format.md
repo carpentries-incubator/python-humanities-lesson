@@ -78,13 +78,13 @@ same `surveys.csv` dataset that we've used in previous lessons.
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
-authors_df = pd.read_csv("eebo.csv")
+eebo_df = pd.read_csv("eebo.csv")
 ```
 
 Remember that we can check the type of an object like this:
 
 ```python
-type(authors_df)
+type(eebo_df)
 ```
 
 **OUTPUT:** `pandas.core.frame.DataFrame`
@@ -94,7 +94,7 @@ the type of one column in a DataFrame using the syntax
 `dataFrameName[column_name].dtype`:
 
 ```python
-authors_df['TCP'].dtype
+eebo_df['TCP'].dtype
 ```
 
 **OUTPUT:** `dtype('O')`
@@ -103,7 +103,7 @@ A type 'O' just stands for "object" which in Pandas' world is a string
 (text).
 
 ```python
-authors_df['EEBO'].dtype
+eebo_df['EEBO'].dtype
 ```
 
 **OUTPUT:** `dtype('int64')`
@@ -113,7 +113,7 @@ as a 64 bit integer. We can use the `dat.dtypes` command to view the data type
 for each column in a DataFrame (all at once).
 
 ```python
-authors_df.dtypes
+eebo_df.dtypes
 ```
 
 which **returns**:
@@ -189,24 +189,13 @@ values.
 
 ```python
 # convert the record_id field from an integer to a float
-authors_df['Page Count'] = authors_df['Page Count'].astype('float64')
-authors_df['Page Count'].dtype
+eebo_df['Page Count'] = eebo_df['Page Count'].astype('float64')
+eebo_df['Page Count'].dtype
 ```
 
 **OUTPUT:** `dtype('float64')`
 
 
-> ## Challenge - Changing Types
->
-> Try converting the column `plot_id` to floats using
->
-> ```python
-> authors_df.EEBO.astype("float")
-> ```
->
-> Next try converting `EEBO` to an integer. What goes wrong here? What is Pandas telling you?
-> We will talk about some solutions to this later.
-{: .challenge}
 
 ## Missing Data Values - NaN
 
@@ -219,7 +208,7 @@ were to average the `weight` column without replacing our NaNs, Python would kno
 over those cells.
 
 ```python
-authors_df['EEBO'].mean()
+eebo_df['EEBO'].mean()
 84280511.94630873
 ```
 Dealing with missing data values is always a challenge. It's sometimes hard to
@@ -245,16 +234,16 @@ weight. We can also create a new subset from our data that only contains rows
 with weight values > 0 (ie select meaningful weight values):
 
 ```python
-len(authors_df[pd.isnull(authors_df.EEBO)])
+len(eebo_df[pd.isnull(eebo_df.EEBO)])
 # how many rows have weight values?
-len(authors_df[authors_df.EEBO > 0])
+len(eebo_df[eebo_df.EEBO > 0])
 ```
 
 We can replace all NaN values with zeroes using the `.fillna()` method (after
 making a copy of the data so we don't lose our work):
 
 ```python
-df1 = authors_df.copy()
+df1 = eebo_df.copy()
 # fill all NaN values with 0
 df1['EEBO'] = df1['EEBO'].fillna(0)
 ```
@@ -272,7 +261,7 @@ We can fill NaN values with any value that we chose. The code below fills all
 NaN values with a mean for all weight values.
 
 ```python
- df1['EEBO'] = authors_df['EEBO'].fillna(authors_df['EEBO'].mean())
+ df1['EEBO'] = eebo_df['EEBO'].fillna(eebo_df['EEBO'].mean())
 ```
 
 We could also chose to create a subset of our data, only keeping rows that do
