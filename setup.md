@@ -9,10 +9,10 @@ permalink: /setup/
 Data for this lesson is from the Humanities Lesson data -
 [available on Github](https://github.com/iaine/humanities-lesson-data).
 
-For this lesson, we will use two files for the data. Download these files to your computer. Once you click on them they will be automatically downloaded to your default download directory.
+For this lesson, we will use two files for the data. Download these files to your computer. Right click on the link and choose "Save as". 
 
-- [eebo.csv](https://github.com/iaine/humanities-lesson-data/blob/master/data/openrefine/openrefine.csv)
-- [SQL Database](https://github.com/iaine/python-humanities-lesson/blob/gh-pages/data/eebo.db)
+- [eebo.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv)
+- [SQL Database](https://github.com/carpentries-incubator/python-humanities-lesson/raw/gh-pages/data/eebo.db)
 
 
 
