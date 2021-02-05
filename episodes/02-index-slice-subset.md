@@ -41,7 +41,7 @@ lesson. Let's reopen and read in the data again:
 import pandas as pd
 
 # read in the survey csv
-authors_df = pd.read_csv("eebo.csv")
+eebo_df = pd.read_csv("eebo.csv")
 ```
 
 ## Indexing and Slicing in Python
@@ -59,10 +59,10 @@ DataFrame by name. There are two ways to do this:
 
 ```python
 # Method 1: select a 'subset' of the data using the column name
-authors_df['Place']
+eebo_df['Place']
 
 # Method 2: use the column name as an 'attribute'; gives the same output
-authors_df.Place
+eebo_df.Place
 ```
 
 We can also create a new object that contains only the data within the
@@ -70,7 +70,7 @@ We can also create a new object that contains only the data within the
 
 ```python
 # creates an object, texts_species, that only contains the `status_id` column
-texts_status = authors_df['Status']
+texts_status = eebo_df['Status']
 ```
 
 We can pass a list of column names too, as an index to select columns in that
@@ -81,13 +81,13 @@ order. This is useful when we need to reorganize our data.
 
 ```python
 # select the author and EEBO columns from the DataFrame
-authors_df[['Author', 'EEBO']]
+eebo_df[['Author', 'EEBO']]
 
 # what happens when you flip the order?
-authors_df[['EEBO', 'Author']]
+eebo_df[['EEBO', 'Author']]
 
 #what happens if you ask for a column that doesn't exist?
-authors_df['Texts']
+eebo_df['Texts']
 ```
 
 
@@ -143,7 +143,7 @@ want to select rows 0, 1 and 2 your code would look like this:
 
 ```python
 # select rows 0, 1, 2 (row 3 is not selected)
-authors_df[0:3]
+eebo_df[0:3]
 ```
 
 The stop bound in Python is different from what you might be used to in
@@ -151,12 +151,12 @@ languages like Matlab and R.
 
 ```python
 # select the first 5 rows (rows 0, 1, 2, 3, 4)
-authors_df[:5]
+eebo_df[:5]
 
 # select the last element in the list
 # (the slice starts at the last element,
 # and ends at the end of the list)
-authors_df[-1:]
+eebo_df[-1:]
 ```
 
 We can also reassign values within subsets of our DataFrame.
@@ -170,13 +170,13 @@ Let's start with an example:
 
 ```python
 # using the 'copy() method'
-true_copy_authors_df = authors_df.copy()
+true_copy_eebo_df = eebo_df.copy()
 
 # using '=' operator
-ref_authors_df = authors_df
+ref_eebo_df = eebo_df
 ```
 
-You might think that the code `ref_authors_df = authors_df` creates a fresh
+You might think that the code `ref_eebo_df = eebo_df` creates a fresh
 distinct copy of the `surveys_df` DataFrame object. However, using the `=`
 operator in the simple statement `y = x` does **not** create a copy of our
 DataFrame. Instead, `y = x` creates a new variable `y` that references the
@@ -191,17 +191,17 @@ DataFrame that references another DataFrame object:
 
    ```
     # Assign the value `0` to the first three rows of data in the DataFrame
-    ref_authors_df[0:3] = 0
+    ref_eebo_df[0:3] = 0
     ```
 
 Let's try the following code:
 
     ```
-   # ref_authors_df was created using the '=' operator
-    ref_authors_df.head()
+   # ref_eebo_df was created using the '=' operator
+    ref_eebo_df.head()
 
     # surveys_df is the original dataframe
-    authors_df.head()
+    eebo_df.head()
 ```
 
 What is the difference between these two dataframes?
@@ -218,25 +218,27 @@ the other will see the same changes to the reference object.
 - **Copy** uses the dataframe's `copy()` method
 
     ```
-    true_copy_authors_df = authors_df.copy()
+    true_copy_eebo_df = eebo_df.copy()
     ```
 - A **Reference** is created using the `=` operator
 
     ```python
-    ref_authors_df = authors_df
+    ref_eebo_df = eebo_df
     ```
 
 Okay, that's enough of that. Let's create a brand new clean dataframe from
 the original data CSV file.
 
 ```python
-authors_df = pd.read_csv("eebo.csv")
+eebo_df = pd.read_csv("eebo.csv")
 ```
 
 ## Slicing Subsets of Rows and Columns in Python
 
 We can select specific ranges of our data in both the row and column directions
-using either label or integer-based indexing.
+using either label or integer-based indexing. Columns can be selected either
+by their name, or by the index of their location in the dataframe. Rows can only
+be selected by their index.
 
 - `loc` is primarily *label* based indexing. *Integers* may be used but
   they are interpreted as a *label*.
@@ -248,7 +250,7 @@ and 4 if we start counting at 1), like this:
 
 ```python
 # iloc[row slicing, column slicing]
-authors_df.iloc[0:3, 1:4]
+eebo_df.iloc[0:3, 1:4]
 ```
 
 which gives the **output**
@@ -268,13 +270,13 @@ Let's explore some other ways to index and select subsets of data:
 
 ```python
 # select all columns for rows of index values 0 and 10
-authors_df.loc[[0, 10], :]
+eebo_df.loc[[0, 10], :]
 
 # what does this do?
-authors_df.loc[0, ['Author', 'Title', 'Status']]
+eebo_df.loc[0, ['Author', 'Title', 'Status']]
 
 # What happens when you type the code below?
-authors_df.loc[[0, 10, 149], :]
+eebo_df.loc[[0, 10, 149], :]
 ```
 
 **NOTE**: Labels must be found in the DataFrame or you will get a `KeyError`.
@@ -296,7 +298,7 @@ dat.iloc[row, column]
 In this `iloc` example,
 
 ```python
-authors_df.iloc[2, 6]
+eebo_df.iloc[2, 6]
 ```
 
 gives the **output**
@@ -312,11 +314,12 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.
 
 > ## Challenge - Range
 >
-> 1. What happens when you execute:
+> 1. Given the three range indicies below, what do you expect to get back? Does
+> it match what you actually get back?
 >
->    - `authors_df[0:1]`
->    - `authors_df[:4]`
->    - `authors_df[:-1]`
+>    - `eebo_df[0:1]`
+>    - `eebo_df[:4]`
+>    - `eebo_df[:-1]`
 >
 {: .challenge}
 
@@ -327,7 +330,7 @@ We can also select a subset of our data using criteria. For example, we can
 select all rows that have a status value of Free:
 
 ```python
-authors_df.loc[authors_df["Terms"].str.contains("sermon", na=False)]
+eebo_df.loc[eebo_df["Terms"].str.contains("sermon", na=False)]
 ```
 
 Which produces the following output:
@@ -345,13 +348,13 @@ Which produces the following output:
 Or we can select all rows with a page length greater than 100:
 
 ```python
-authors_df[authors_df["Page Count"] > 100]
+eebo_df[eebo_df["Page Count"] > 100]
 ```
 
 We can define sets of criteria too:
 
 ```python
-authors_df[(authors_df.Date >= 1500) & (authors_df.Date <= 1550)]
+eebo_df[(eebo_df.Date >= 1500) & (eebo_df.Date <= 1550)]
 ```
 
 ### Python Syntax Cheat Sheet
@@ -368,15 +371,19 @@ Experiment with selecting various subsets of the "surveys" data.
 
 > ## Challenge - Queries
 >
-> 1. Select a subset of rows in the `authors_df` DataFrame that contain data from
+> 1. Select a subset of rows in the `eebo_df` DataFrame that contain data from
 >   the year 1500 and that contain page count values less than or equal to 8. How
 >   many rows did you end up with? What did your neighbor get?
 >
 > 2. You can use the `isin` command in Python to query a DataFrame based upon a
->   list of values as follows:
+>   list of values as follows. Notice how the indexing relies on a reference to
+>   the dataframe _being indexed_. Think about the _order_ in which the computer
+>   must evaluate these statements.
 >
 >    ```python
->    authors_df[authors_df['Date'].isin([listGoesHere])]
+>    eebo_df[
+>            eebo_df['Date'].isin([listGoesHere])
+>            ]
 >    ```
 >
 >   Use the `isin` function to find all plots that contain particular species
@@ -429,7 +436,7 @@ The `isnull` method will compare each cell with a null value. If an element
 has a null value, it will be assigned a value of  `True` in the output object.
 
 ```python
-pd.isnull(authors_df)
+pd.isnull(eebo_df)
 ```
 
 A snippet of the output is below:
@@ -449,7 +456,9 @@ the mask as an index to subset our data as follows:
 
 ```python
 # To select just the rows with NaN values, we can use the 'any()' method
-authors_df[pd.isnull(authors_df).any(axis=1)]
+eebo_df[
+        pd.isnull(eebo_df).any(axis=1)
+        ]
 ```
 
 Note that the `weight` column of our DataFrame contains many `null` or `NaN`
@@ -459,12 +468,14 @@ We can run `isnull` on a particular column too. What does the code below do?
 
 ```python
 # what does this do?
-empty_authors = authors_df[pd.isnull(authors_df['Author'])]['Author']
+empty_authors = eebo_df[
+                        pd.isnull(eebo_df['Author'])
+                        ]['Author']
 print(empty_authors)
 ```
 
 Let's take a minute to look at the statement above. We are using the Boolean
-object `pd.isnull(authors_df['Author'])` as an index to `authors_df`. We are
+object `pd.isnull(eebo_df['Author'])` as an index to `eebo_df`. We are
 asking Python to select rows that have a `NaN` value of author.
 
 
