@@ -76,45 +76,45 @@ the loop. The statement `pass` in the body of the loop just means "do nothing".
 
 ## Automating data processing using For Loops
 
-The file we've been using so far, `TCP.csv`, contains 25 years of data and is
-very large. We would like to separate the data for each year into a separate
-file.
+Suppose that we were working with a much larger set of books. It might be useful
+to split them out into smaller groups, e.g., by date of publication. 
 
-Let's start by making a new directory inside the folder `data` to store all of
-these files using the module `os`:
+Let's start by making a new directory inside our current working folder. Python has
+a built-in library called `os` for this sort of operating-system dependent behaviour.
 
 ```python
     import os
 
-    os.mkdir('data/yearly_files')
+    os.mkdir('yearly_files')
 ```
 
-The command `os.mkdir` is equivalent to `mkdir` in the shell. Just so we are
-sure, we can check that the new directory was created within the `data` folder:
+We can check that the folder was created by listing the contents of the current directory:
 
 ```python
->>> os.listdir('data')
-['authors.csv', 'yearly_files', 'places.csv', 'eebo.db', 'eebo.csv']
+>>> os.listdir()
+['authors.csv', 'yearly_files', 'places.csv', 'eebo.db', 'eebo.csv', '1635.csv', '1640.csv']
 ```
-
-The command `os.listdir` is equivalent to `ls` in the shell.
 
 In previous lessons, we saw how to use the library pandas to load the species
 data into memory as a DataFrame, how to select a subset of the data using some
 criteria, and how to write the DataFrame into a csv file. Let's write a script
-that performs those three steps in sequence for the year 2002:
+that performs those three steps in sequence to write out records for the year
+1636 as a single csv in the `yearly_files` directory
 
 ```python
 import pandas as pd
 
 # Load the data into a DataFrame
-authors_df = pd.read_csv('data/eebo.csv')
+eebo_df = pd.read_csv('eebo.csv')
 
 # Select only data for 1636
-authors1636 = authors_df[authors_df.Date == "1636"]
+authors1636 = eebo_df[eebo_df.Date == "1636"]
 
 # Write the new DataFrame to a csv file
 authors1636.to_csv('yearly_files/authors1636.csv')
+
+# Then check that that file now exists:
+os.listdir("yearly_files")
 ```
 
 To create yearly data files, we could repeat the last two commands over and
@@ -132,7 +132,7 @@ We have seen that we can loop over a list of items, so we need a list of years
 to loop over. We can get the years in our DataFrame with:
 
 ```python
->>> authors_df['Date']
+>>> eebo_df['Date']
 
 0      1625
 1      1515
@@ -156,7 +156,7 @@ but we want only unique years, which we can get using the `unique` function
 which we have already seen.  
 
 ```python
->>> authors_df['Date'].unique()
+>>> eebo_df['Date'].unique()
 array([1625, 1515, 1528, 1623, 1640, 1624, 1607, 1558, 1599, 1622, 1613,
        1600, 1635, 1569, 1579, 1597, 1538, 1559, 1563, 1577, 1580, 1626,
        1631, 1565, 1632, 1571, 1554, 1615, 1549, 1567, 1605, 1636, 1591,
@@ -170,8 +170,8 @@ array([1625, 1515, 1528, 1623, 1640, 1624, 1607, 1558, 1599, 1622, 1613,
 Putting this into our for loop we get
 
 ```python
->>> for year in authors_df['Date'].unique():
-...    filename='data/yearly_files/authors' + str(year) + '.csv'
+>>> for year in eebo_df['Date'].unique():
+...    filename = 'yearly_files/authors{}.csv'.format(year)
 ...    print(filename)
 ...
 yearly_files/authors1625.csv
@@ -187,40 +187,41 @@ We can now add the rest of the steps we need to create separate text files:
 
 ```python
 # Load the data into a DataFrame
-authors_df = pd.read_csv('data/eebo.csv')
+eebo_df = pd.read_csv('data/eebo.csv')
 
-for year in authors_df['Data'].unique():
+for year in eebo_df['Date'].unique():
 
     # Select data for the year
-    publish_year = authors_df[authors_df.Date == year]
+    publish_year = eebo_df[eebo_df.Date == year]
 
     # Write the new DataFrame to a csv file
-    filename = 'yearly_files/authors' + str(year) + '.csv'
+    filename = 'yearly_files/authors{}.csv'.format(year)
     publish_year.to_csv(filename)
 ```
 
 Look inside the `yearly_files` directory and check a couple of the files you
 just created to confirm that everything worked as expected.
 
-## Writing Unique FileNames
+## Writing Unique Filenames
 
 Notice that the code above created a unique filename for each year.
 
-	filename = 'data/yearly_files/authors' + str(year) + '.csv'
+	filename = 'yearly_files/authors{}.csv'.format(year)
 
 Let's break down the parts of this name:
 
 * The first part is simply some text that specifies the directory to store our
-  data file in (data/yearly_files/) and the first part of the file name
-  (authors): `'data/yearly_files/authors'`
-* We can concatenate this with the value of a variable, in this case `year` by
-  using the plus `+` sign and the variable we want to add to the file name: `+
-  str(year)`
-* Then we add the file extension as another text string: `+ '.csv'`
+  data file in `yearly_files/` and the first part of the file name
+  (authors): `'yearly_files/authors'`
+* We want to dynamically insert the value of the year into the filename. We can
+  do this by indicating a placeholder location inside the string with `{}`, and
+  then specifying the value that will go there with `.format(value)`
+* Finally, we specify a file type with `.csv`. Since the `.` is inside the
+  string, it doesn't behave the same way as dot notation in Python commands. 
 
-Notice that we use single quotes to add text strings. The variable is not
-surrounded by quotes. This code produces the string
-`data/yearly_files/authors1607.csv` which contains the path to the new filename
+Notice the difference between the filename - wrapped in quote marks - and the
+variable (`year`), which is not wrapped in quote marks. The result looks like
+`'yearly_files/authors1607.csv'` which contains the path to the new filename
 AND the file name itself.
 
 > ## Challenge - Modifying loops
@@ -230,12 +231,9 @@ AND the file name itself.
 > files). Modify the for loop so that the entries with null values are not
 > included in the yearly files.
 >
-> 2. What happens if there is no data for a year in the sequence (for example,
-> imagine we had used 1800 as the start year in `range`)?
+> 2. What happens if there is no data for a year?
 >
-> 3. Let's say you only want to look at data from a given multiple of years. How would you modify your loop in order to generate a data file for only every 5th year, starting from 1500?
->
-> 4. Instead of splitting out the data by years, a colleague wants to analyse each place separately. How would you write a unique csv file for each location?
+> 3. Instead of splitting out the data by years, a colleague wants to analyse each place separately. How would you write a unique csv file for each location?
 {: .challenge}
 
 ## Building reusable and modular code with functions
@@ -263,8 +261,13 @@ Functions are declared following this general structure:
 
 ```python
 def this_is_the_function_name(input_argument1, input_argument2):
-
     # The body of the function is indented
+    """This is the docstring of the function. Wrapped in triple-quotes,
+    it can span across multiple lines. This is what is shown if you ask
+    for help about the function like this:
+    >>> help(this_is_the_function_name)
+    """
+    
     # This function prints the two arguments to screen
     print('The function arguments are:', input_argument1, input_argument2, '(this is done inside the function!)')
 
@@ -308,9 +311,17 @@ function that separates data for just one year and saves that data to a file:
 def one_year_csv_writer(this_year, all_data):
     """
     Writes a csv file for data from a given year.
-
-    this_year --- year for which data is extracted
-    all_data --- DataFrame with multi-year data
+    
+    Parameters
+    ----------
+    this_year: int
+        year for which data is extracted
+    all_data: pandas Dataframe
+        DataFrame with multi-year data
+    
+    Returns
+    -------
+    None
     """
 
     # Select data for the year
@@ -321,7 +332,7 @@ def one_year_csv_writer(this_year, all_data):
     texts_year.to_csv(filename)
 ```
 
-The text between the two sets of triple double quotes is called a docstring and
+The text between the two sets of triple quotes is called a docstring and
 contains the documentation for the function. It does nothing when the function
 is running and is therefore not necessary, but it is good practice to include
 docstrings as a reminder of what the code does. Docstrings in functions also
@@ -332,7 +343,7 @@ one_year_csv_writer?
 ```
 
 ```python
-one_year_csv_writer('1607',authors_df)
+one_year_csv_writer('1607',eebo_df)
 ```
 
 We changed the root of the name of the csv file so we can distinguish it from
@@ -350,9 +361,18 @@ def yearly_data_csv_writer(start_year, end_year, all_data):
     """
     Writes separate csv files for each year of data.
 
-    start_year --- the first year of data we want
-    end_year --- the last year of data we want
-    all_data --- DataFrame with multi-year data
+    Parameters
+    ----------
+    start_year: int
+        the first year of data we want
+    end_year: int
+        the last year of data we want
+    all_data: pandas Dataframe
+        DataFrame with multi-year data
+
+    Returns
+    -------
+    None
     """
 
     # "end_year" is the last year of data we want to pull, so we loop to end_year+1
@@ -370,10 +390,10 @@ function:
 
 ```python
 # Load the data into a DataFrame
-authors_df = pd.read_csv('data/eebo.csv')
+eebo_df = pd.read_csv('data/eebo.csv')
 
 # Create csv files
-yearly_data_csv_writer(1500, 1650, authors_df)
+yearly_data_csv_writer(1500, 1650, eebo_df)
 ```
 
 BEWARE! If you are using IPython Notebooks and you modify a function, you MUST
@@ -412,28 +432,42 @@ values (here, `all_data`) is a required argument and MUST come before the
 argument with default values (which are optional in the function call).
 
 ```python
-    def yearly_data_arg_test(all_data, start_year = '1500', end_year = '1650'):
-        """
-        Modified from yearly_data_csv_writer to test default argument values!
+def yearly_data_arg_test(all_data, start_year=1000, end_year=2000):
+    """
+    Test function with default values. Doesn't actually do anything
+    except return the arguments, to check what they end up as
 
-        start_year --- the first year of data we want --- default: 1300
-        end_year --- the last year of data we want --- default: 1700
-        all_data --- DataFrame with multi-year data
-        """
+    Parameters
+    ----------
+    all_data: pandas Dataframe
+        DataFrame with multi-year data
+    start_year: int, optional
+        the first year of data we want
+        Default 1000
+    end_year: int, optional
+        the last year of data we want
 
-        return start_year, end_year
+    Returns
+    -------
+    int
+        start_year
+    int: 
+        end_year
+    """
+
+    return start_year, end_year
 
 
-    start,end = yearly_data_arg_test (authors_df, '1600', '1660')
-    print('Both optional arguments:\t', start, end)
+start,end = yearly_data_arg_test (eebo_df, 1600, 1660)
+print('Both optional arguments:\t', start, end)
 
-    start,end = yearly_data_arg_test (authors_df)
-    print('Default values:\t\t\t', start, end)
+start,end = yearly_data_arg_test (eebo_df)
+print('Default values:\t\t\t', start, end)
 ```
 
 ```
-    Both optional arguments:	1600 1660
-    Default values:			1300 1700
+Both optional arguments:	1600 1660
+Default values:			    1000 2000
 ```
 
 The "\t" in the `print` statements are tabs, used to make the text align and be
@@ -444,32 +478,47 @@ function so that it looks for the start and end years in the dataset if those
 dates are not provided:
 
 ```python
-    def yearly_data_arg_test(all_data, start_year = None, end_year = None):
-        """
-        Modified from yearly_data_csv_writer to test default argument values!
+def yearly_data_arg_test(all_data, start_year=None, end_year=None):
+    """
+    Test function with default values. Doesn't actually do anything
+    except return the arguments, to check what they end up as
 
-        start_year --- the first year of data we want --- default: None - check all_data
-        end_year --- the last year of data we want --- default: None - check all_data
-        all_data --- DataFrame with multi-year data
-        """
+    Parameters
+    ----------
+    all_data: pandas Dataframe
+        DataFrame with multi-year data
+    start_year: int, optional
+        the first year of data we want.
+        Defaults to earliest year in `all_data`
+    end_year: int, optional
+        the last year of data we want
+        Defaults to latest year in `all_data`
 
-        if not start_year:
-            start_year = min(all_data.Date)
-        if not end_year:
-            end_year = max(all_data.Date)
+    Returns
+    -------
+    int
+        start_year
+    int: 
+        end_year
+    """
 
-        return start_year, end_year
+    if start_year is None:
+        start_year = min(all_data.Date)
+    if end_year is None:
+        end_year = max(all_data.Date)
+
+    return start_year, end_year
 
 
-    start,end = yearly_data_arg_test (authors_df, '1600', '1660')
-    print('Both optional arguments:\t', start, end)
+start,end = yearly_data_arg_test (eebo_df, '1600', '1660')
+print('Both optional arguments:\t', start, end)
 
-    start,end = yearly_data_arg_test (authors_df)
-    print('Default values:\t\t\t', start, end)
+start,end = yearly_data_arg_test (eebo_df)
+print('Default values:\t\t\t', start, end)
 ```
 ```
-    Both optional arguments:	1600 1660
-    Default values:		1500 1650
+Both optional arguments:	1600 1660
+Default values:		        1500 1650
 ```
 
 The default values of the `start_year` and `end_year` arguments in the function
@@ -500,28 +549,28 @@ check the values of `start_year` and `end_year`. If loops execute the body of
 the loop when some condition is met. They commonly look something like this:
 
 ```python
-    a = 5
+a = 5
 
-    if a<0: # meets first condition?
+if a<0: # meets first condition?
 
-        # if a IS less than zero
-        print('a is a negative number')
+    # if a IS less than zero
+    print('a is a negative number')
 
-    elif a>0: # did not meet first condition. meets second condition?
+elif a>0: # did not meet first condition. meets second condition?
 
-        # if a ISN'T less than zero and IS more than zero
-        print('a is a positive number')
+    # if a ISN'T less than zero and IS more than zero
+    print('a is a positive number')
 
-    else: # met neither condition
+else: # met neither condition
 
-        # if a ISN'T less than zero and ISN'T more than zero
-        print('a must be zero!')
+    # if a ISN'T less than zero and ISN'T more than zero
+    print('a must be zero!')
 ```
 
 Which would return:
 
 ```
-    a is a positive number
+a is a positive number
 ```
 
 Change the value of `a` to see how this function works. The statement `elif`
@@ -546,48 +595,32 @@ function definition is associated with a keyword and the function call passes
 values to the function using these keywords:
 
 ```python
-    def yearly_data_arg_test(all_data, start_year = None, end_year = None):
-        """
-        Modified from yearly_data_csv_writer to test default argument values!
 
-        start_year --- the first year of data we want --- default: None - check all_data
-        end_year --- the last year of data we want --- default: None - check all_data
-        all_data --- DataFrame with multi-year data
-        """
+start,end = yearly_data_arg_test (eebo_df)
+print('Default values:\t\t\t', start, end)
 
-        if not start_year:
-            start_year = min(all_data.Date)
-        if not end_year:
-            end_year = max(all_data.Date)
+start,end = yearly_data_arg_test (eebo_df, 1600, 1660)
+print('No keywords:\t\t\t', start, end)
 
-        return start_year, end_year
+start,end = yearly_data_arg_test (eebo_df, start_year=1600, end_year=1660)
+print('Both keywords, in order:\t', start, end)
 
+start,end = yearly_data_arg_test (eebo_df, end_year=1660, start_year=1600)
+print('Both keywords, flipped:\t\t', start, end)
 
-    start,end = yearly_data_arg_test (authors_df)
-    print('Default values:\t\t\t', start, end)
+start,end = yearly_data_arg_test (eebo_df, start_year=1600)
+print('One keyword, default end:\t', start, end)
 
-    start,end = yearly_data_arg_test (authors_df, 1600, 1660)
-    print('No keywords:\t\t\t', start, end)
-
-    start,end = yearly_data_arg_test (authors_df, start_year = 1600, end_year = 1660)
-    print('Both keywords, in order:\t', start, end)
-
-    start,end = yearly_data_arg_test (authors_df, end_year = 1660, start_year = 1600)
-    print('Both keywords, flipped:\t\t', start, end)
-
-    start,end = yearly_data_arg_test (authors_df, start_year = 1600)
-    print('One keyword, default end:\t', start, end)
-
-    start,end = yearly_data_arg_test (authors_df, end_year = 1660)
-    print('One keyword, default start:\t', start, end)
+start,end = yearly_data_arg_test (eebo_df, end_year=1660)
+print('One keyword, default start:\t', start, end)
 ```
 ```
-    Default values:			1515 1640
-    No keywords:			1600 1640
-    Both keywords, in order:	        1600 1660
-    Both keywords, flipped:		1600 1660
-    One keyword, default end:	        1600 1640
-    One keyword, default start:	        1515 1660
+Default values:			1515 1640
+No keywords:			1600 1640
+Both keywords, in order:	        1600 1660
+Both keywords, flipped:		1600 1660
+One keyword, default end:	        1600 1640
+One keyword, default start:	        1515 1660
 ```
 
 > ## Challenge - Modifying functions
