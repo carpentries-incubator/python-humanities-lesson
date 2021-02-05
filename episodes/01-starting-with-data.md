@@ -300,8 +300,7 @@ array([134, 302, 386,  14,  54,  99,   1,  16,  26,  62,  50,  66,  30,
 > ## Challenge - Statistics
 >
 > 1. Create a list of unique locations found in the index data. Call it
->   `places`. How many unique location are there in the data? How many unique
->   species are in the data?
+>   `places`. How many unique location are there in the data?
 >
 > 2. What is the difference between `len(places)` and `eebo_df['Place'].nunique()`?
 {: .challenge}

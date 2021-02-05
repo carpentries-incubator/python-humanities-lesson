@@ -369,10 +369,10 @@ Experiment with selecting various subsets of the "surveys" data.
 * Less than or equal to `<=`
 
 
-> ## Challenge - Queries
+> ## Challenge - Advanced Queries
 >
 > 1. Select a subset of rows in the `eebo_df` DataFrame that contain data from
->   the year 1500 and that contain page count values less than or equal to 8. How
+>   the year 1540 and that contain page count values less than or equal to 8. How
 >   many rows did you end up with? What did your neighbor get?
 >
 > 2. You can use the `isin` command in Python to query a DataFrame based upon a
@@ -386,8 +386,8 @@ Experiment with selecting various subsets of the "surveys" data.
 >            ]
 >    ```
 >
->   Use the `isin` function to find all plots that contain particular species
->   in the "authors" DataFrame. How many records contain these values?
+>   Use the `isin` function to find all books written by Robert Aylett and
+>   Robert Aytoun. How many are there?
 >
 > 3. Experiment with other queries. Create a query that finds all rows with a
 >   Page Count value > or equal to 1.
@@ -395,7 +395,7 @@ Experiment with selecting various subsets of the "surveys" data.
 > 4. The `~` symbol in Python can be used to return the OPPOSITE of the
 >   selection that you specify in Python. It is equivalent to **is not in**.
 >   Write a query that selects all rows with Date NOT equal to 1500 or 1600 in
->   the "authors" data.
+>   the eebo data.
 {: .challenge}
 
 
