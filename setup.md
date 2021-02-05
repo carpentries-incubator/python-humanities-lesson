@@ -31,7 +31,7 @@ For this workshop we use Python version 3.x.
 * [Jupyter notebook](http://jupyter.org/)
 * [Numpy](http://www.numpy.org/)
 * [Matplotlib](http://matplotlib.org/)
-* [GGPlot2]
+* [Bokeh](https://bokeh.org/)
 
 ## Install the workshop packages
 
@@ -42,7 +42,7 @@ With Miniconda you will need to install the required packages.
 
 ### Anaconda installation
 
-Anaconda will install the workshop packages for you.
+Anaconda will install the workshop packages for you. You only need one of the two.
 
 #### Download and install Anaconda
 
@@ -74,7 +74,7 @@ From the terminal, type:
 
 ```
 conda install -y numpy pandas matplotlib jupyter
-conda install -c conda-forge ggplot
+conda install -y -c conda-forge bokeh
 ```
 
 ## Launch a Jupyter notebook
