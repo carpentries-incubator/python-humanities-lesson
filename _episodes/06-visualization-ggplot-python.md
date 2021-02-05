@@ -27,7 +27,7 @@ structured data.
 ```python
 import pandas as pd
 
-authors_complete = pd.read_csv( '../data/eebo.csv', index_col=0)
+authors_complete = pd.read_csv( 'eebo.csv', index_col=0)
 authors_complete.index.name = 'X'
 authors_complete
 ```
