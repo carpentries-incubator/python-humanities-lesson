@@ -533,23 +533,21 @@ expect it to look?
 >>
 >> ```
 >> page_sum
-   Date    Place
-   1515    London    302
-   1519    Londini   74
-   1526     London   150
-   1528    London    386
-   <other plots removed for brevity>
+>> Date    Place
+>> 1515    London    302
+>> 1519    Londini   74
+>> 1526     London   150
+>> 1528    London    386
+>> <other plots removed for brevity>
 >> ```
 >> 
 >> After that, we use the `.unstack()` function on our grouped data to figure
 >> out the total contribution of each place, to each year, and then plot the
 >> data
 >> ```python
-   table = page_sum.unstack()
-   plot = table.plot(kind="bar", stacked=True, title="Pages published per year", figsize=(10,5))
-   plot.set_ylabel("Pages")
+>> table = page_sum.unstack()
+>> plot = table.plot(kind="bar", stacked=True, title="Pages published per year", figsize=(10,5))
+>> plot.set_ylabel("Pages")
 >> ```
-
-
 > {: .solution}
 {: .challenge}
