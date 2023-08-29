@@ -5,40 +5,44 @@ permalink: /setup/
 ---
 
 > ## Data
+> Data for this lesson is from the Humanities Lesson data - 
+> [available on Github](https://github.com/iaine/humanities-lesson-data).
+> 
+> In this course, several data files will be used as examples. You can download
+> these example data files by right-clicking on the following links and selecting
+> "Save as" (or clicking on the link, then right-clicking on the file and selecting 
+> "Save as" if you are on a windows machine). You should save them in a memorable location, 
+> as you will need to tell Python where they are later.
+> - For lessons 2-4, and 6-8: [eebo.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv)
+> - For lesson 5,
+>   - [authors.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/authors.csv)
+>   - [places.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/places.csv)
+>   - [1635.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1635.csv)
+>   - [1640.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1640.csv)
+>   - For lesson 9: [eebo database](https://github.com/carpentries-incubator/python-humanities-lesson/raw/gh-pages/data/eebo.db)
 {: .prereq}
-Data for this lesson is from the Humanities Lesson data -
-[available on Github](https://github.com/iaine/humanities-lesson-data).
 
-In this course, several data files will be used as examples. You can download
-these example data files by rightclicking on the following links and selecting
-"Save as". You should save them in a memorabl location, as you will need to
-tell Python where they are later
-- For lessons 2-4, and 6-8: [eebo.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv)
-- For lesson 5,
-    - [authors.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/authors.csv)
-    - [places.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/places.csv)
-    - [1635.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1635.csv)
-    - [1640.csv](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/1640.csv)
-- For lesson 9: [eebo database](https://github.com/carpentries-incubator/python-humanities-lesson/raw/gh-pages/data/eebo.db)
+Python is a popular language for scientific computing, and great for general-purpose programming as well. Installing all of the scientific packages we use in the lesson individually can be a bit cumbersome, and therefore recommend the all-in-one installer Anaconda.
 
-
+Regardless of how you choose to install it, please make sure you install Python version 3.x (e.g., 3.6 is fine).
 
 > ## Software
+> [Python](http://python.org) is a popular language for scientific computing, and great for
+> general-purpose programming as well. Installing all of the scientific packages we use in this lesson
+> individually can be a bit cumbersome, and therefore we recommend the all-in-one
+> installer [Anaconda][[anaconda](https://www.anaconda.com/)].
+>
+> Regardless of how you choose to install it, please make sure you install Python
+> version 3.x (e.g., 3.6 is fine).
+> 
+> ## Required Python Packages for this workshop
+> 
+> * [Pandas](http://pandas.pydata.org/)
+> * [Jupyter notebook](http://jupyter.org/)
+> * [Numpy](http://www.numpy.org/)
+> * [Matplotlib](http://matplotlib.org/)
+> * [Bokeh](https://bokeh.org/)
 {: .prereq}
-[Python](http://python.org) is a popular language for
-scientific computing, and great for general-purpose programming as
-well.  Installing all of its scientific packages individually can be
-a bit difficult, so we recommend an all-in-one installer.
-
-For this workshop we use Python version 3.x.
-
-## Required Python Packages for this workshop
-
-* [Pandas](http://pandas.pydata.org/)
-* [Jupyter notebook](http://jupyter.org/)
-* [Numpy](http://www.numpy.org/)
-* [Matplotlib](http://matplotlib.org/)
-* [Bokeh](https://bokeh.org/)
 
 ## Install the workshop packages
 
