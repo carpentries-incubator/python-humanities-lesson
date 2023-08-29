@@ -21,11 +21,11 @@ objectives:
 
 # Working With Pandas DataFrames in Python
 
-We can automate the process above using Python. It's efficient to spend time
-building the code to perform these tasks because once it's built, we can use it
-over and over on different datasets that use a similar format. This makes our
-methods easily reproducible. We can also easily share our code with colleagues
-and they can replicate the same analysis.
+We can automate the processes listed above using Python. It is efficient to spend time
+building code to perform these tasks because once it is built, we can use our code
+over and over on different datasets that share a similar format. This makes our
+methods easily reproducible. We can also share our code with colleagues
+so they can replicate our analysis.
 
 ### Starting in the same spot
 
@@ -42,7 +42,7 @@ directory structure, however, that is not our focus today.
 
 Alex is a researcher who is interested in Early English books. Alex knows the EEBO dataset and refers to it to find data such as titles, places, and authors. As well as searching for titles, they want to create some exploratory plots and intermediate datasets. 
 
-Alex can do some of this work using spreadsheet systems but this can be time consuming to do  and check. It can lead to mistakes that are hard to detect. 
+Alex can do some of this work using spreadsheet systems but this can be time consuming to do  and revise. It can lead to mistakes that are hard to detect. 
 
 The next steps show how Python can be used to automate some of the processes. 
 
@@ -55,25 +55,25 @@ from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
 We will be using files from the data folder.
-This section will use the `eebo.csv` file that can be found in the data folder.
+This section will use the `eebo.csv` file that can be found in your data folder.
 
-We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a `.csv` file: each row holds information for a single title, and the columns represent:
+We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a comma separated (`.csv`) file, where each row holds information for a single title, and the columns represent diferent aspects (variables) of each entry:
 
-| Column           | Description                        |
-|------------------|------------------------------------|
-| TCP              | TCP identity                       |
-| EEBO             | EEBO identity                      |
-| VID              | VID identity                       |
-| STC              | STC identity                       |
-| status           | Whether the book is free or not    |
-| Author           | Author(s)                          |
-| Date             | Date of publication                |
-| Title            | The Book title                     |
-| Terms            | Terms associated with the text     |
-| Page Count       | Number of pages in the text        |
-| Place            | Location where published           |
+| Column           | Description                                     |
+|------------------|-------------------------------------------------|
+| TCP              | TCP identity                                    |
+| EEBO             | EEBO identity                                   |
+| VID              | VID identity                                    |
+| STC              | STC identity                                    |
+| status           | Whether the book is free or not                 |
+| Author           | Author(s)                                       |
+| Date             | Date of publication                             |
+| Title            | The Book title                                  |
+| Terms            | Terms associated with the text                  |
+| Page Count       | Number of pages in the text                     |
+| Place            | Location where the work was published           |
 
-The first few rows of our first file look like this:
+If we open the `eebo.csv` data file using a text editor, the first few rows of our first file look like this:
 
 ```
 TCP,EEBO,VID,STC,Status,Author,Date,Title,Terms,Page Count,Place
@@ -87,27 +87,28 @@ A00014,33143147,28259,STC 10011.6; ESTC S3200,Free,,1624,Greate Brittaines noble
 A00015,99837006,1310,STC 10011; ESTC S101184,Free,"Jones, William, of Usk.",1607,"Gods vvarning to his people of England By the great ouer-flowing of the vvaters or floudes lately hapned in South-wales and many other places. Wherein is described the great losses, and wonderfull damages, that hapned thereby: by the drowning of many townes and villages, to the vtter vndooing of many thousandes of people.",Floods -- Wales -- Early works to 1800.,16, London
 A00018,99850740,15965,STC 10015; ESTC S115521,Free,,1558,The lame[n]tacion of England; Lamentacion of England.,"Great Britain -- History -- Mary I, 1553-1558 -- Early works to 1800.",26,Germany?
 ```
-
 ---
 
 ## About Libraries
-A library in Python contains a set of tools (called functions) that perform
-tasks on our data. Importing a library is like getting a piece of lab equipment
-out of a storage locker and setting it up on the bench for use in a project.
-Once a library is set up, it can be used or called to perform many tasks.
+A library in Python contains a set of tools (functions) that perform different
+actions on our data. Importing a library is like getting a set of particular tools
+out of a storage locker and setting them up on the bench for use in a project.
+Once a library is set up, its functions can be used or called to perform different tasks.
 
 ## Pandas in Python
 One of the best options for working with tabular data in Python is to use the
-[Python Data Analysis Library](http://pandas.pydata.org/) (a.k.a. Pandas). The
-Pandas library provides data structures, produces high quality plots with
-[matplotlib](http://matplotlib.org/) and integrates nicely with other libraries
-that use [NumPy](http://www.numpy.org/) (which is another Python library) arrays.
+[Python Data Analysis Library](http://pandas.pydata.org/) (a.k.a. Pandas Library). The
+Pandas library provides structures to sort our data, can produce high quality plots in conjunction with other libraries such as
+[matplotlib](http://matplotlib.org/), and integrates nicely with libraries
+that use [NumPy](http://www.numpy.org/) (which is another common Python library) arrays.
 
 Python doesn't load all of the libraries available to it by default. We have to
-add an `import` statement to our code in order to use library functions. To import
-a library, we use the syntax `import libraryName`. If we want to give the
+add an `import` statement to our code in order to use library functions required for our project. To import
+a library, we use the syntax `import libraryName`, where `libraryName` represents the name of the specific library we want to use. Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that does not exist in our local system, the command will throw and error when executed. In this case, you can use `pip` command in another termina window to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this.
+
+Moreover, if we want to give the
 library a nickname to shorten the command, we can add `as nickNameHere`.  An
-example of importing the pandas library using the common nickname `pd` is below.
+example of importing the pandas library using the common nickname `pd` is:
 
 
 ```python
@@ -124,11 +125,11 @@ time we call a Pandas function.
 # Reading CSV Data Using Pandas
 
 We will begin by locating and reading our survey data which are in CSV format.
-We can use Pandas' `read_csv` function to pull the file directly into a
+We can use Pandas' `read_csv` function to pull either a local (a file in our machine) or a remote (one that is available for downloading from the web) file into a Pandas table or
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
-In order to read data in, we need to know where the data is stored on your computer.
-It is recommended to place the data files in the same directory as the Jupyter notebook
+In order to read data in, we need to know where the data is stored on your computer or its URL address if the file is available on the web.
+It is recommended to place the data files in the same directory as the Jupyter notebook if working with local files
 
 ```python
 # note that pd.read_csv is used because we imported pandas as pd
@@ -142,13 +143,13 @@ pd.read_csv("eebo.csv")
 
 A DataFrame is a 2-dimensional data structure that can store data of different
 types (including characters, integers, floating point values, factors and more)
-in columns. It is similar to a spreadsheet or an SQL table or the `data.frame` in
+in columns. It is similar to a spreadsheet or a `data.frame` in
 R. A DataFrame always has an index (0-based). An index refers to the position of
 an element in the data structure.
 
 
 
-The above command yields the **output** below:
+In a terminal window the above command yields the **output** below. However, the output may differ slightly if using Jupyter Notebooks:
 
 ```
           TCP        EEBO     VID  \
@@ -165,11 +166,11 @@ The above command yields the **output** below:
 ```
 
 We can see that there were 149 rows parsed. Each row has 11
-columns. The first column is the index of the DataFrame. The index is used to
+columns. The first column displayed is the **index** of the DataFrame. The index is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
-we haven't saved any data to memory so we can work with it.We need to assign the
-DataFrame to a variable. Remember that a variable is a name for a value, such as `x`,
+we haven't saved any data to memory so we can not work with it yet. We need to assign the
+DataFrame to a variable so we can call and use the data. Remember that a variable is a name given to a value, such as `x`,
 or  `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
 
 Let's call the imported survey data `eebo_df`:
@@ -178,7 +179,7 @@ Let's call the imported survey data `eebo_df`:
 eebo_df = pd.read_csv("eebo.csv")
 ```
 
-Notice when you assign the imported DataFrame to a variable, Python does not
+Notice that when you assign the imported DataFrame to a variable, Python does not
 produce any output on the screen. We can print the value of the `eebo_df`
 object by typing its name into the Python command prompt.
 
@@ -210,15 +211,16 @@ which returns:
 
 ```
 TCP         object
-EEBO        float64
-VID         object
+EEBO        int64
+VID         int64
 STC         object
 Status      object
 Author      object
-Date        object
+Date        int64
 Title       object
 Terms       object
 Page Count  int64
+Place       object
 dtype: object
 ```
 
@@ -226,18 +228,21 @@ We'll talk a bit more about what the different formats mean in a different lesso
 
 ### Useful Ways to View DataFrame objects in Python
 
-There are many ways to summarize and access the data stored in DataFrames,
-using attributes and methods provided by the DataFrame object.
+We can use attributes and methods provided by the DataFrame object to summarize and access the data stored in it.
 
 To access an attribute, use the DataFrame object name followed by the attribute
-name `df_object.attribute`. Using the DataFrame `eebo_df` and attribute
-`columns`, an index of all the column names in the DataFrame can be accessed
-with `eebo_df.columns`.
+name `df_object.attribute`. For example, we can access the [Index object](https://pandas.pydata.org/docs/reference/indexing.html) containing the column names of `eebo_df` by using its `columns` attribute 
 
-Methods are called in a similar fashion using the syntax `df_object.method()`.
+```python
+eebo_df.columns
+```
+As we will see later, we can use the contents of the Index object to extract (slice) specific records from our DataFrame based on their values.
+
+Methods are called by using the syntax `df_object.method()`. Note the inclusion of open brackets at the end of the method. Python treats methods as **functions** associated with a dataframe rather than just a property of the object as with attributes. Similarly to functions, methods can include optional parameters inside the brackets to change their default behaviour.
+
 As an example, `eebo_df.head()` gets the first few rows in the DataFrame
 `eebo_df` using **the `head()` method**. With a method, we can supply extra
-information in the parens to control behaviour.
+information within the open brackets to control its behaviour.
 
 Let's look at the data using these.
 
@@ -260,8 +265,7 @@ Let's look at the data using these.
 
 We've read our data into Python. Next, let's perform some quick summary
 statistics to learn more about the data that we're working with. We might want
-to know how many animals were collected in each plot, or how many of each
-species were caught. We can perform summary stats quickly using groups. But
+to know how many different authors are included in our dataset, or how many works were published in a given year. We can perform summary stats quickly using groups. But
 first we need to figure out what we want to group by.
 
 Let's begin by exploring our data:
@@ -309,9 +313,9 @@ array([134, 302, 386,  14,  54,  99,   1,  16,  26,  62,  50,  66,  30,
 
 We often want to calculate summary statistics grouped by subsets or attributes
 within fields of our data. For example, we might want to calculate the average
-weight of all individuals per plot.
+number of pages of the works in our DataFrame.
 
-We can calculate basic statistics for all records in a single column using the
+We can calculate basic statistics for all records in a single column by using the
 syntax below:
 
 ```python
@@ -331,7 +335,7 @@ max      884.000000
 Name: Page Count, dtype: float64
 ```
 
-We can also extract one specific metric if we wish:
+We can also extract specific metrics for one or various columns if we wish:
 
 ```python
 eebo_df['Page Count'].min()
@@ -341,19 +345,16 @@ eebo_df['Page Count'].std()
 eebo_df['Page Count'].count()
 ```
 
-But if we want to summarize by one or more variables, for example sex, we can
-use **Pandas' `.groupby` method**. Once we've created a groupby DataFrame, we
-can quickly calculate summary statistics by a group of our choice.
+But if we want to summarize by one or more variables, for example author or publication date, we can
+use the **`.groupby` method**. When executed, this method creates a DataFrameGroupBy object containing a subset of the original DataFrame. Once we've created it, we
+can quickly calculate summary statistics by a group of our choice. For example the following code will group our data by place of publication.
 
 ```python
 # Group data by status
 grouped_data = eebo_df.groupby('Place')
 ```
 
-The **pandas function `describe`** will return descriptive stats including: mean,
-median, max, min, std and count for a particular column in the data. Pandas'
-`describe` function will only return summary values for columns containing
-numeric data.
+If we execute the **pandas function `describe`** on this new object we will obtain descriptive stats for all the numerical columns in `eebo_df` grouped by the different cities available in the `Place` column of the DataFrame.
 
 ```python
 # summary statistics for all numeric columns by place
@@ -435,10 +436,8 @@ eebo_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
 
 ## Basic Math Functions
 
-If we wanted to, we could perform math on an entire column of our data. For
-example let's multiply all weight values by 2. A more practical use of this might
-be to normalize the data according to a mean, area, or some other value
-calculated from our data.
+If we wanted to, we could perform math on an entire numerical column of our data. For example, we might
+normalize the page number of each work in our data according to the mean of the entire DataFrame.
 
 	# multiply all page length values by 2
 	eebo_df['Page Count']*2
