@@ -5,8 +5,7 @@ permalink: /setup/
 ---
 
 > ## Data
-> Data for this lesson is from the Humanities Lesson data - 
-> [available on Github](https://github.com/iaine/humanities-lesson-data).
+> Data for this lesson is from the Humanities Lesson data.
 > 
 > In this course, several data files will be used as examples. You can download
 > these example data files by right-clicking on the following links and selecting
