@@ -6,4 +6,4 @@ on how to contribute updates, bug fixes, or other corrections.
 
 ### Maintainers
 
-- Iain Emsley ([@iaine](https://github.com/iaine))
+- Needs a new maintainer
