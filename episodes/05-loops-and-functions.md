@@ -2,16 +2,24 @@
 title: Data workflows and automation
 teaching: 40
 exercises: 50
-questions:
-  - " Can I automate operations in Python? "
-  - " What are functions and why should I use them? "
-objectives:
-    - Describe why for loops are used in Python.
-    - Employ for loops to automate data analysis.
-    - Write unique filenames in Python.
-    - Build reusable code in Python.
-    - Write functions using conditional statements (if, then, else).
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Describe why for loops are used in Python.
+- Employ for loops to automate data analysis.
+- Write unique filenames in Python.
+- Build reusable code in Python.
+- Write functions using conditional statements (if, then, else).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- Can I automate operations in Python?
+- What are functions and why should I use them?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 So far, we've used Python and the pandas library to explore and manipulate
 individual datasets by hand, much like we would do in a spreadsheet. The beauty
@@ -65,19 +73,23 @@ We are not asking python to print the value of the loop variable anymore, but
 the for loop still runs and the value of `creature` changes on each pass through
 the loop. The statement `pass` in the body of the loop just means "do nothing".
 
-> ## Challenge - Loops
->
-> 1. What happens if we don't include the `pass` statement?
->
-> 2. Rewrite the loop so that the animals are separated by commas, not new lines
-> (Hint: You can concatenate strings using a plus sign. For example,
-> `print(string1 + string2)` outputs 'string1string2').
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Loops
+
+1. What happens if we don't include the `pass` statement?
+
+2. Rewrite the loop so that the animals are separated by commas, not new lines
+  (Hint: You can concatenate strings using a plus sign. For example,
+  `print(string1 + string2)` outputs 'string1string2').
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Automating data processing using For Loops
 
 Suppose that we were working with a much larger set of books. It might be useful
-to split them out into smaller groups, e.g., by date of publication. 
+to split them out into smaller groups, e.g., by date of publication.
 
 Let's start by making a new directory inside our current working folder. Python has
 a built-in library called `os` for this sort of operating-system dependent behaviour.
@@ -153,7 +165,7 @@ Name: Date, Length: 149, dtype: int64
 ```
 
 but we want only unique years, which we can get using the `unique` function
-which we have already seen.  
+which we have already seen.
 
 ```python
 >>> eebo_df['Date'].unique()
@@ -206,35 +218,41 @@ just created to confirm that everything worked as expected.
 
 Notice that the code above created a unique filename for each year.
 
-	filename = 'yearly_files/authors{}.csv'.format(year)
+```
+filename = 'yearly_files/authors{}.csv'.format(year)
+```
 
 Let's break down the parts of this name:
 
-* The first part is simply some text that specifies the directory to store our
+- The first part is simply some text that specifies the directory to store our
   data file in `yearly_files/` and the first part of the file name
   (authors): `'yearly_files/authors'`
-* We want to dynamically insert the value of the year into the filename. We can
+- We want to dynamically insert the value of the year into the filename. We can
   do this by indicating a placeholder location inside the string with `{}`, and
   then specifying the value that will go there with `.format(value)`
-* Finally, we specify a file type with `.csv`. Since the `.` is inside the
-  string, it doesn't behave the same way as dot notation in Python commands. 
+- Finally, we specify a file type with `.csv`. Since the `.` is inside the
+  string, it doesn't behave the same way as dot notation in Python commands.
 
 Notice the difference between the filename - wrapped in quote marks - and the
 variable (`year`), which is not wrapped in quote marks. The result looks like
 `'yearly_files/authors1607.csv'` which contains the path to the new filename
 AND the file name itself.
 
-> ## Challenge - Modifying loops
->
-> 1. Some of the surveys you saved are missing data (they have null values that
-> show up as NaN - Not A Number - in the DataFrames and do not show up in the text
-> files). Modify the for loop so that the entries with null values are not
-> included in the yearly files.
->
-> 2. What happens if there is no data for a year?
->
-> 3. Instead of splitting out the data by years, a colleague wants to analyse each place separately. How would you write a unique csv file for each location?
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Modifying loops
+
+1. Some of the surveys you saved are missing data (they have null values that
+  show up as NaN - Not A Number - in the DataFrames and do not show up in the text
+  files). Modify the for loop so that the entries with null values are not
+  included in the yearly files.
+
+2. What happens if there is no data for a year?
+
+3. Instead of splitting out the data by years, a colleague wants to analyse each place separately. How would you write a unique csv file for each location?
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Building reusable and modular code with functions
 
@@ -290,17 +308,21 @@ The function arguments are: 2 5 (this is done inside the function!)
 Their product is: 10 (this is done outside the function!)
 ```
 
-> ## Challenge - Functions
->
-> 1. Change the values of the arguments in the function and check its output
-> 2. Try calling the function by giving it the wrong number of arguments (not 2)
->   or not assigning the function call to a variable (no `product_of_inputs =`)
-> 3. Declare a variable inside the function and test to see where it exists (Hint:
->   can you print it from outside the function?)
-> 4. Explore what happens when a variable both inside and outside the function
->   have the same name. What happens to the global variable when you change the
->   value of the local variable?
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Functions
+
+1. Change the values of the arguments in the function and check its output
+2. Try calling the function by giving it the wrong number of arguments (not 2)
+  or not assigning the function call to a variable (no `product_of_inputs =`)
+3. Declare a variable inside the function and test to see where it exists (Hint:
+  can you print it from outside the function?)
+4. Explore what happens when a variable both inside and outside the function
+  have the same name. What happens to the global variable when you change the
+  value of the local variable?
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We can now turn our code for saving yearly data files into a function. There are
 many different "chunks" of this code that we can turn into functions, and we can
@@ -355,7 +377,6 @@ having to request them one by one. Let's write another function that replaces
 the entire For loop by simply looping through a sequence of years and repeatedly
 calling the function we just wrote, `one_year_csv_writer`:
 
-
 ```python
 def yearly_data_csv_writer(start_year, end_year, all_data):
     """
@@ -403,24 +424,28 @@ simply defining a function without *calling* it doesn't produce an output. Any
 cells that use the now-changed functions will also have to be re-run for their
 output to change.
 
-> ## Challenge- More functions
->
-> 1. Add two arguments to the functions we wrote that take the path of the
->    directory where the files will be written and the root of the file name.
->    Create a new set of files with a different name in a different directory.
-> 2. How could you use the function `yearly_data_csv_writer` to create a csv file
->    for only one year? (Hint: think about the syntax for `range`)
-> 3. Make the functions return a list of the files they have written. There are
->    many ways you can do this (and you should try them all!): either of the
->    functions can print to screen, either can use a return statement to give back
->    numbers or strings to their function call, or you can use some combination of
->    the two. You could also try using the `os` library to list the contents of
->    directories.
-> 4. Explore what happens when variables are declared inside each of the functions
->    versus in the main (non-indented) body of your code. What is the scope of the
->    variables (where are they visible)? What happens when they have the same name
->   but are given different values?
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge- More functions
+
+1. Add two arguments to the functions we wrote that take the path of the
+  directory where the files will be written and the root of the file name.
+  Create a new set of files with a different name in a different directory.
+2. How could you use the function `yearly_data_csv_writer` to create a csv file
+  for only one year? (Hint: think about the syntax for `range`)
+3. Make the functions return a list of the files they have written. There are
+  many ways you can do this (and you should try them all!): either of the
+  functions can print to screen, either can use a return statement to give back
+  numbers or strings to their function call, or you can use some combination of
+  the two. You could also try using the `os` library to list the contents of
+  directories.
+4. Explore what happens when variables are declared inside each of the functions
+  versus in the main (non-indented) body of your code. What is the scope of the
+  variables (where are they visible)? What happens when they have the same name
+  but are given different values?
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 The functions we wrote demand that we give them a value for every argument.
 Ideally, we would like these functions to be as flexible and independent as
@@ -470,7 +495,7 @@ Both optional arguments:	1600 1660
 Default values:			    1000 2000
 ```
 
-The "\t" in the `print` statements are tabs, used to make the text align and be
+The "\\t" in the `print` statements are tabs, used to make the text align and be
 easier to read.
 
 But what if our dataset doesn't start in 1300 and end in 1700? We can modify the
@@ -516,6 +541,7 @@ print('Both optional arguments:\t', start, end)
 start,end = yearly_data_arg_test (eebo_df)
 print('Default values:\t\t\t', start, end)
 ```
+
 ```
 Both optional arguments:	1600 1660
 Default values:		        1500 1650
@@ -527,20 +553,24 @@ that indicates the absence of a value - essentially, that the variable exists in
 the namespace of the function (the directory of variable names) but that it
 doesn't correspond to any existing object.
 
-> ## Challenge - Variables
->
-> 1. What type of object corresponds to a variable declared as `None`? (Hint:
-> create a variable set to `None` and use the function `type()`)
->
-> 2. Compare the behavior of the function `yearly_data_arg_test` when the
-> arguments have `None` as a default and when they do not have default values.
->
-> 3. What happens if you only include a value for `start_year` in the function
-> call? Can you write the function call with only a value for `end_year`? (Hint:
-> think about how the function must be assigning values to each of the arguments -
-> this is related to the need to put the arguments without default values before
-> those with default values in the function definition!)
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Variables
+
+1. What type of object corresponds to a variable declared as `None`? (Hint:
+  create a variable set to `None` and use the function `type()`)
+
+2. Compare the behavior of the function `yearly_data_arg_test` when the
+  arguments have `None` as a default and when they do not have default values.
+
+3. What happens if you only include a value for `start_year` in the function
+  call? Can you write the function call with only a value for `end_year`? (Hint:
+  think about how the function must be assigning values to each of the arguments -
+  this is related to the need to put the arguments without default values before
+  those with default values in the function definition!)
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## If Loops
 
@@ -614,6 +644,7 @@ print('One keyword, default end:\t', start, end)
 start,end = yearly_data_arg_test (eebo_df, end_year=1660)
 print('One keyword, default start:\t', start, end)
 ```
+
 ```
 Default values:			1515 1640
 No keywords:			1600 1640
@@ -623,35 +654,41 @@ One keyword, default end:	        1600 1640
 One keyword, default start:	        1515 1660
 ```
 
-> ## Challenge - Modifying functions
->
-> 1. Rewrite the `one_year_csv_writer` and `yearly_data_csv_writer` functions to
-> have keyword arguments with default values
->
-> 2. Modify the functions so that they don't create yearly files if there is no
-> data for a given year and display an alert to the user (Hint: use conditional
-> statements and if loops to do this. For an extra challenge, use `try`
-> statements!)
->
-> 3. The code below checks to see whether a directory exists and creates one if it
-> doesn't. Add some code to your function that writes out the CSV files, to check
-> for a directory to write to.
->
-> ```Python
->	if 'dir_name_here' in os.listdir('.'):
->	    print('Processed directory exists')
->	else:
->	    os.mkdir('dir_name_here')
->	    print('Processed directory created')
-> ```
->
-> 4. The code that you have written so far to loop through the years is good,
-> however it is not necessarily reproducible with different datasets.
-> For instance, what happens to the code if we have additional years of data
-> in our CSV files? Using the tools that you learned in the previous activities,
-> make a list of all years represented in the data. Then create a loop to process
-> your data, that begins at the earliest year and ends at the latest year using
-> that list.
->
-> HINT: you can create a loop with a list as follows: `for years in year_list:`
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Modifying functions
+
+1. Rewrite the `one_year_csv_writer` and `yearly_data_csv_writer` functions to
+  have keyword arguments with default values
+
+2. Modify the functions so that they don't create yearly files if there is no
+  data for a given year and display an alert to the user (Hint: use conditional
+  statements and if loops to do this. For an extra challenge, use `try`
+  statements!)
+
+3. The code below checks to see whether a directory exists and creates one if it
+  doesn't. Add some code to your function that writes out the CSV files, to check
+  for a directory to write to.
+
+```Python
+  if 'dir_name_here' in os.listdir('.'):
+      print('Processed directory exists')
+  else:
+      os.mkdir('dir_name_here')
+      print('Processed directory created')
+```
+
+4. The code that you have written so far to loop through the years is good,
+  however it is not necessarily reproducible with different datasets.
+  For instance, what happens to the code if we have additional years of data
+  in our CSV files? Using the tools that you learned in the previous activities,
+  make a list of all years represented in the data. Then create a loop to process
+  your data, that begins at the earliest year and ends at the latest year using
+  that list.
+
+HINT: you can create a loop with a list as follows: `for years in year_list:`
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

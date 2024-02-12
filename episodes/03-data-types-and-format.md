@@ -2,19 +2,26 @@
 title: Data Types and Formats
 teaching: 20
 exercises: 25
-questions:
-  - " What types of data can be contained in a DataFrame?
-  "
-  - " Why is the data type important? "
-objectives:
-    - Describe how information is stored in a Python DataFrame.
-    - "Define the two main types of data in Python: text and numerics."
-    - Examine the structure of a DataFrame.
-    - Modify the format of values in a DataFrame.
-    - Describe how data types impact operations.
-    - Define, manipulate, and interconvert integers and floats in Python.
-    - Analyze datasets having missing/null values (NaN values).
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Describe how information is stored in a Python DataFrame.
+- Define the two main types of data in Python: text and numerics.
+- Examine the structure of a DataFrame.
+- Modify the format of values in a DataFrame.
+- Describe how data types impact operations.
+- Define, manipulate, and interconvert integers and floats in Python.
+- Analyze datasets having missing/null values (NaN values).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What types of data can be contained in a DataFrame?
+- Why is the data type important?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 The format of individual columns and rows will impact analysis performed on a
 dataset read into python. For example, you can't perform mathematical
@@ -26,14 +33,14 @@ numeric data, you get an error.
 In this lesson we will review ways to explore and better understand the
 structure and format of our data.
 
-# Types of Data
+## Types of Data
 
 How information is stored in a
 DataFrame or a python object affects what we can do with it and the outputs of
 calculations as well. There are two main types of data that we're explore in
 this lesson: numeric and text data types.
 
-## Numeric Data Types
+### Numeric Data Types
 
 Numeric data types include integers and floats. A **floating point** (known as a
 float) number has decimal points even if that decimal point value is 0. For
@@ -48,7 +55,7 @@ simply refers to the memory allocated to store data in each cell which effective
 relates to how many digits it can store in each "cell". Allocating space ahead of time
 allows computers to optimize storage and processing efficiency.
 
-## Text Data Type
+### Text Data Type
 
 Text data type is known as Strings in Python, or Objects in Pandas. Strings can
 contain numbers and / or characters. For example, a string might be a word, a
@@ -60,17 +67,14 @@ numbers can not be used for mathematical operations**!
 Pandas and base Python use slightly different names for data types. More on this
 is in the table below:
 
-| Pandas Type | Native Python Type | Description |
-|-------------|--------------------|-------------|
-| object | string | The most general dtype. Will be assigned to your column if column has mixed types (numbers and strings). |
-| int64  | int | Numeric characters. 64 refers to the memory allocated to hold this character. |
-| float64 | float | Numeric characters with decimals. If a column contains numbers and NaNs(see below), pandas will default to float64, in case your missing value has a decimal. |
-| datetime64, timedelta[ns] | N/A (but see the [datetime] module in Python's standard library) | Values meant to hold time data. Look into these for time series experiments. |
+| Pandas Type           | Native Python Type                    | Description                                                                                                                                                   | 
+| --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| object                | string                                | The most general dtype. Will be assigned to your column if column has mixed types (numbers and strings).                                                      | 
+| int64                 | int                                   | Numeric characters. 64 refers to the memory allocated to hold this character.                                                                                 | 
+| float64               | float                                 | Numeric characters with decimals. If a column contains numbers and NaNs(see below), pandas will default to float64, in case your missing value has a decimal. | 
+| datetime64, timedelta[ns] | N/A (but see the [datetime] module in Python's standard library)                     | Values meant to hold time data. Look into these for time series experiments.                                                                                  | 
 
-[datetime]: http://doc.python.org/2/library/datetime.html
-
-
-## Checking the format of our data
+### Checking the format of our data
 
 Now that we're armed with a basic understanding of numeric and text data
 types, let's explore the format of our survey data. We'll be working with the
@@ -137,7 +141,7 @@ Note that most of the columns in our Survey data are of type `object`. This mean
 that they are strings. But the EEBO column is a integer value
 which means it contains whole numbers.
 
-## Working With Integers and Floats
+### Working With Integers and Floats
 
 So we've learned that computers store numbers in one of two ways: as integers or
 as floating-point numbers (or floats). Integers are the numbers we usually count
@@ -181,7 +185,7 @@ float(b)
 7.0
 ```
 
-# Working With Our Index Data
+## Working With Our Index Data
 
 Getting back to our data, we can modify the format of values within our data, if
 we want. For instance, we could convert the `EEBO` field to integer
@@ -195,9 +199,7 @@ eebo_df['Page Count'].dtype
 
 **OUTPUT:** `dtype('float64')`
 
-
-
-## Missing Data Values - NaN
+### Missing Data Values - NaN
 
 What happened in the last challenge activity? Notice that this throws a value error:
 `ValueError: Cannot convert NA to integer`. If we look at the `weight` column in the surveys
@@ -211,6 +213,7 @@ over those cells.
 eebo_df['EEBO'].mean()
 84280511.94630873
 ```
+
 Dealing with missing data values is always a challenge. It's sometimes hard to
 know why values are missing - was it because of a data entry error? Or data that
 someone was unable to collect? Should the value be 0? We need to know how
@@ -226,7 +229,7 @@ NaN. However it is good practice to get in the habit of intentionally marking
 cells that have no data, with a no data value! That way there are no questions
 in the future when you (or someone else) explores your data.
 
-### Where Are the NaN's?
+#### Where Are the NaN's?
 
 Let's explore the NaN values in our data a bit further. Using the tools we
 learned in lesson 02, we can figure out how many rows contain NaN values for
@@ -275,16 +278,26 @@ Python gives us all of the tools that we need to account for these issues. We
 just need to be cautious about how the decisions that we make impact scientific
 results.
 
-> ## Challenge - Counting
-> Count the number of missing values per column. Hint: The method .count() gives you
-> the number of non-NA observations per column. Try looking to the .isnull() method.
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Recap
+### Challenge - Counting
+
+Count the number of missing values per column. Hint: The method .count() gives you
+the number of non-NA observations per column. Try looking to the .isnull() method.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Recap
 
 What we've learned:
 
-+ How to explore the data types of columns within a DataFrame
-+ How to change the data type
-+ What NaN values are, how they might be represented, and what this means for your work
-+ How to replace NaN values, if desired
+- How to explore the data types of columns within a DataFrame
+- How to change the data type
+- What NaN values are, how they might be represented, and what this means for your work
+- How to replace NaN values, if desired
+
+[datetime]: https://doc.python.org/2/library/datetime.html
+
+
+

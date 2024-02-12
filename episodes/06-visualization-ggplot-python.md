@@ -2,22 +2,30 @@
 title: Plotting with bokeh
 teaching: 20
 exercises: 25
-questions:
-    - " Can I use Python to create plots? "
-    - " How can I customize plots generated in Python? "
-objectives:
-    - Create a ggplot object
-    - Set universal plot settings
-    - Modify an existing ggplot object
-    - Change the aesthetics of a plot such as colour
-    - Edit the axis labels
-    - Build complex plots using a step-by-step approach
-    - Create scatter plots, box plots, and time series plots
-    - Use the `facet_wrap` and `facet_grid` commands to create a collection of plots splitting the data by a factor variable
-    - Create customized plot styles to meet their needs
 ---
 
-#### Disclaimer
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Create a ggplot object
+- Set universal plot settings
+- Modify an existing ggplot object
+- Change the aesthetics of a plot such as colour
+- Edit the axis labels
+- Build complex plots using a step-by-step approach
+- Create scatter plots, box plots, and time series plots
+- Use the `facet_wrap` and `facet_grid` commands to create a collection of plots splitting the data by a factor variable
+- Create customized plot styles to meet their needs
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- Can I use Python to create plots?
+- How can I customize plots generated in Python?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+##### Disclaimer
 
 Python has powerful built-in plotting capabilities such as `matplotlib`, but
 for this exercise, we will be using the [`bokeh`](https://docs.bokeh.org/en/latest/)
@@ -31,8 +39,12 @@ authors_complete = pd.read_csv( 'eebo.csv', index_col=0)
 authors_complete.index.name = 'X'
 authors_complete
 ```
-            EEBO    VID  ... Page Count             Place
-X                        ...                             
+
+```
+        EEBO    VID  ... Page Count             Place
+```
+
+X                        ...  
 A00002  99850634  15849  ...        134            London
 A00005  99842408   7058  ...        302            London
 A00007  99844302   9101  ...        386            London
@@ -50,7 +62,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.io import output_notebook
 ```
 
-# Plotting with bokeh
+## Plotting with bokeh
 
 We will make the same plot using the `bokeh` package.
 
@@ -65,9 +77,9 @@ To build a bokeh plot we need to:
 - bind the plot to a specific data frame using the `data` argument
 
 - define figure (`figure`), by selecting the variables to be plotted and the variables to define the presentation
-     such as plotting size, title etc.,
+  such as plotting size, title etc.,
 
-We also set some notebook settings with a "output_notebook()" statement to get interactive 
+We also set some notebook settings with a "output\_notebook()" statement to get interactive
 and exportable plots
 
 ```python
@@ -77,9 +89,9 @@ p = figure(plot_width=400, plot_height=400)
 
 ```
 
-![png](../fig/figure01.png)
+![](fig/figure01.png){alt='png'}
 
-We can add simple points to create a scatter plot using circle. 
+We can add simple points to create a scatter plot using circle.
 
 ```python
 list_dates = authors_complete['Date']
@@ -88,14 +100,15 @@ p.circle(list_dates, list_numbers)
 show(p)
 ```
 
-![png](../fig/figure02.png)
+![](fig/figure02.png){alt='png'}
 
-# Building your plots
+## Building your plots
 
 We can add extra arguments into circle's argument.
 
 For comparison, we create a new figure and then add the
 alpha argument to circle to change the opacity of the points.
+
 ```python
 p1 = figure(plot_width=400, plot_height=400)
 
@@ -104,7 +117,7 @@ p1.circle(list_dates, list_numbers, alpha=0.1)
 show(p1)
 ```
 
-![png](../fig/figure03.png)
+![](fig/figure03.png){alt='png'}
 
 We can also add colors for all the points.
 
@@ -116,10 +129,9 @@ p2.circle(list_dates, list_numbers, color="blue", alpha=0.1)
 show(p2)
 ```
 
-![png](../fig/figure04.png)
+![](fig/figure04.png){alt='png'}
 
-
-# Plotting time series data
+## Plotting time series data
 
 Let's calculate number of counts per year across the dataset. To do that we need
 to group data first and count records within each group.
@@ -136,7 +148,10 @@ p3.line(yearly['Date'], yearly['Page Count'], color='navy', alpha=0.5)
 show(p3)
 ```
 
-	year 	place 	count
+```
+year 	place 	count
+```
+
 0 	1515 	London 	1
 1 	1519 	Londini 	1
 2 	1526 	London 	2
@@ -154,9 +169,10 @@ p3 = figure(plot_width=800, plot_height=250)
 p3.line(yearly['Date'], yearly['Page Count'], color='navy', alpha=0.5)
 show(p3)
 ```
-![png](../fig/figure05.png)
 
-# Customization
+![](fig/figure05.png){alt='png'}
+
+## Customization
 
 Now, let's add a title to this figure:
 
@@ -173,7 +189,7 @@ p4.yaxis[0].axis_label = 'Page Count'
 show(p4)
 ```
 
-![png](../fig/figure06.png)
+![](fig/figure06.png){alt='png'}
 
 or we canadd labels to the axes and change the font size for the labels
 
@@ -189,7 +205,7 @@ p5.xaxis[0].axis_label_text_font_size = "24pt"
 show(p5)
 ```
 
-![png](../fig/figure07.png)
+![](fig/figure07.png){alt='png'}
 
 With all of this information in hand, please take another five minutes to either
 improve one of the plots generated in this exercise or create a beautiful graph
@@ -197,14 +213,15 @@ of your own.
 
 Here are some ideas:
 
-* Can you find a way to change its labels?
-* Use a different color palette.
+- Can you find a way to change its labels?
+- Use a different color palette.
 
 After creating your plot, you can save it to a file as a png file:
-
 
 ```python
 from bokeh.io import export_png
 
 export_png(p4, filename="plot.png")
 ```
+
+

@@ -2,20 +2,28 @@
 title: Indexing, Slicing and Subsetting DataFrames in Python
 teaching: 30
 exercises: 30
-questions:
-    - " How can I access specific data within my data set? "
-    - " How  can Python and Pandas help me to analyse my data?"
-objectives:
-    - Describe what 0-based indexing is.
-    - Manipulate and extract data using column headings and index locations.
-    - Employ slicing to select sets of data from a DataFrame.
-    - Employ label and integer-based indexing to select ranges of data in a dataframe.
-    - Reassign values within subsets of a DataFrame.
-    - Create a copy of a DataFrame.
-    - "Query /select a subset of data using a set of criteria using the following operators: =, !=, >, <, >=, <=."
-    - Locate subsets of data using masks.
-    - Describe BOOLEAN objects in Python and manipulate data using BOOLEANs.
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Describe what 0-based indexing is.
+- Manipulate and extract data using column headings and index locations.
+- Employ slicing to select sets of data from a DataFrame.
+- Employ label and integer-based indexing to select ranges of data in a dataframe.
+- Reassign values within subsets of a DataFrame.
+- Create a copy of a DataFrame.
+- Query /select a subset of data using a set of criteria using the following operators: =, !=, >, \<, >=, \<=.
+- Locate subsets of data using masks.
+- Describe BOOLEAN objects in Python and manipulate data using BOOLEANs.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I access specific data within my data set?
+- How  can Python and Pandas help me to analyse my data?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 In lesson 01, we read a CSV into a Python pandas DataFrame.  We learned:
 
@@ -49,7 +57,6 @@ eebo_df = pd.read_csv("eebo.csv")
 We often want to work with subsets of a **DataFrame** object. There are
 different ways to accomplish this including: using labels (column headings),
 numeric ranges, or specific x,y index locations.
-
 
 ## Selecting data using Labels (Column Headings)
 
@@ -90,14 +97,13 @@ eebo_df[['EEBO', 'Author']]
 eebo_df['Texts']
 ```
 
-
 ## Extracting Range based Subsets: Slicing
 
 **REMINDER**: Python Uses 0-based Indexing
 
 Let's remind ourselves that Python uses 0-based
 indexing. This means that the first element in an object is located at position
-0. This is different from other tools like R and Matlab that index elements
+0\. This is different from other tools like R and Matlab that index elements
 within objects starting at 1.
 
 ```python
@@ -105,33 +111,34 @@ within objects starting at 1.
 a = [1, 2, 3, 4, 5]
 ```
 
-![indexing diagram](../fig/slicing-indexing.svg)
-![slicing diagram](../fig/slicing-slicing.svg)
+![](fig/slicing-indexing.svg){alt='indexing diagram'}
+![](fig/slicing-slicing.svg){alt='slicing diagram'}
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Challenge - Extracting data
->
-> 1. What value does the code below return?
->
->    ```python
->    a[0]
->    ```
->
-> 2. How about this:
->
->    ```python
->    a[5]
->    ```
->
-> 3. In the example above, calling `a[5]` returns an error. Why is that?
->
-> 4. What about?
->
->    ```python
->    a[len(a)]
->    ```
-{: .challenge}
+## Challenge - Extracting data
 
+1. What value does the code below return?
+  
+  ```python
+  a[0]
+  ```
+
+2. How about this:
+  
+  ```python
+  a[5]
+  ```
+
+3. In the example above, calling `a[5]` returns an error. Why is that?
+
+4. What about?
+  
+  ```python
+  a[len(a)]
+  ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Slicing Subsets of Rows in Python
 
@@ -189,20 +196,20 @@ DataFrame.
 Let's look at what happens when we reassign the values within a subset of the
 DataFrame that references another DataFrame object:
 
-   ```
-    # Assign the value `0` to the first three rows of data in the DataFrame
-    ref_eebo_df[0:3] = 0
-    ```
+````
+ # Assign the value `0` to the first three rows of data in the DataFrame
+ ref_eebo_df[0:3] = 0
+ ```
 
 Let's try the following code:
 
-    ```
-   # ref_eebo_df was created using the '=' operator
-    ref_eebo_df.head()
+ ```
+# ref_eebo_df was created using the '=' operator
+ ref_eebo_df.head()
 
-    # surveys_df is the original dataframe
-    eebo_df.head()
-```
+ # surveys_df is the original dataframe
+ eebo_df.head()
+````
 
 What is the difference between these two dataframes?
 
@@ -216,15 +223,16 @@ the other will see the same changes to the reference object.
 **To review and recap**:
 
 - **Copy** uses the dataframe's `copy()` method
+  
+  ```
+  true_copy_eebo_df = eebo_df.copy()
+  ```
 
-    ```
-    true_copy_eebo_df = eebo_df.copy()
-    ```
 - A **Reference** is created using the `=` operator
-
-    ```python
-    ref_eebo_df = eebo_df
-    ```
+  
+  ```python
+  ref_eebo_df = eebo_df
+  ```
 
 Okay, that's enough of that. Let's create a brand new clean dataframe from
 the original data CSV file.
@@ -310,19 +318,18 @@ gives the **output**
 Remember that Python indexing begins at 0. So, the index location [2, 6]
 selects the element that is 3 rows down and 7 columns over in the DataFrame.
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## Challenge - Range
 
-> ## Challenge - Range
->
-> 1. Given the three range indicies below, what do you expect to get back? Does
-> it match what you actually get back?
->
->    - `eebo_df[0:1]`
->    - `eebo_df[:4]`
->    - `eebo_df[:-1]`
->
-{: .challenge}
+1. Given the three range indicies below, what do you expect to get back? Does
+  it match what you actually get back?
+  
+  - `eebo_df[0:1]`
+  - `eebo_df[:4]`
+  - `eebo_df[:-1]`
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Subsetting Data using Criteria
 
@@ -362,44 +369,46 @@ eebo_df[(eebo_df.Date >= 1500) & (eebo_df.Date <= 1550)]
 Use can use the syntax below when querying data by criteria from a DataFrame.
 Experiment with selecting various subsets of the "surveys" data.
 
-* Equals: `==`
-* Not equals: `!=`
-* Greater than, less than: `>` or `<`
-* Greater than or equal to `>=`
-* Less than or equal to `<=`
+- Equals: `==`
+- Not equals: `!=`
+- Greater than, less than: `>` or `<`
+- Greater than or equal to `>=`
+- Less than or equal to `<=`
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Challenge - Advanced Queries
->
-> 1. Select a subset of rows in the `eebo_df` DataFrame that contain data from
->   the year 1540 and that contain page count values less than or equal to 8. How
->   many rows did you end up with? What did your neighbor get?
->
-> 2. You can use the `isin` command in Python to query a DataFrame based upon a
->   list of values as follows. Notice how the indexing relies on a reference to
->   the dataframe _being indexed_. Think about the _order_ in which the computer
->   must evaluate these statements.
->
->    ```python
->    eebo_df[
->            eebo_df['Date'].isin([listGoesHere])
->            ]
->    ```
->
->   Use the `isin` function to find all books written by Robert Aylett and
->   Robert Aytoun. How many are there?
->
-> 3. Experiment with other queries. Create a query that finds all rows with a
->   Page Count value > or equal to 1.
->
-> 4. The `~` symbol in Python can be used to return the OPPOSITE of the
->   selection that you specify in Python. It is equivalent to **is not in**.
->   Write a query that selects all rows with Date NOT equal to 1500 or 1600 in
->   the eebo data.
-{: .challenge}
+## Challenge - Advanced Queries
 
+1. Select a subset of rows in the `eebo_df` DataFrame that contain data from
+  the year 1540 and that contain page count values less than or equal to 8. How
+  many rows did you end up with? What did your neighbor get?
 
-# Using masks to identify a specific condition
+2. You can use the `isin` command in Python to query a DataFrame based upon a
+  list of values as follows. Notice how the indexing relies on a reference to
+  the dataframe *being indexed*. Think about the *order* in which the computer
+  must evaluate these statements.
+  
+  ```python
+  eebo_df[
+          eebo_df['Date'].isin([listGoesHere])
+          ]
+  ```
+
+Use the `isin` function to find all books written by Robert Aylett and
+Robert Aytoun. How many are there?
+
+3. Experiment with other queries. Create a query that finds all rows with a
+  Page Count value > or equal to 1.
+
+4. The `~` symbol in Python can be used to return the OPPOSITE of the
+  selection that you specify in Python. It is equivalent to **is not in**.
+  Write a query that selects all rows with Date NOT equal to 1500 or 1600 in
+  the eebo data.
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Using masks to identify a specific condition
 
 A **mask** can be useful to locate where a particular subset of values exist or
 don't exist - for example,  NaN, or "Not a Number" values. To understand masks,
@@ -478,13 +487,18 @@ Let's take a minute to look at the statement above. We are using the Boolean
 object `pd.isnull(eebo_df['Author'])` as an index to `eebo_df`. We are
 asking Python to select rows that have a `NaN` value of author.
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Challenge - Putting it all together
->
-> 1. Create a new DataFrame that only contains titles with status values that
->   are **not** from London. Assign each status value in the new DataFrame to a
->   new value of 'x'. Determine the number of null values in the subset.
->   
-> 2. Create a new DataFrame that contains only observations that are of status free
->   and where page count values are greater than 100.
-{: .challenge}
+## Challenge - Putting it all together
+
+1. Create a new DataFrame that only contains titles with status values that
+  are **not** from London. Assign each status value in the new DataFrame to a
+  new value of 'x'. Determine the number of null values in the subset.
+
+2. Create a new DataFrame that contains only observations that are of status free
+  and where page count values are greater than 100.
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

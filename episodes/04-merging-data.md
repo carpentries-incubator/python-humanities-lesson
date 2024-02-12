@@ -2,24 +2,32 @@
 title: Combining DataFrames with pandas
 teaching: 20
 exercises: 25
-questions:
-- " Can I work with data from multiple sources? "
-- " How can I combine data from different data sets? "
-objectives:
-    - Combine data from multiple files into a single DataFrame using merge and concat.
-    - Combine two DataFrames using a unique ID found in both DataFrames.
-    - Employ `to_csv` to export a DataFrame in CSV format.
-    - Join DataFrames using common fields (join keys).
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Combine data from multiple files into a single DataFrame using merge and concat.
+- Combine two DataFrames using a unique ID found in both DataFrames.
+- Employ `to_csv` to export a DataFrame in CSV format.
+- Join DataFrames using common fields (join keys).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- Can I work with data from multiple sources?
+- How can I combine data from different data sets?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 In many "real world" situations, the data that we want to use come in multiple
 files. We often need to combine these files into a single DataFrame to analyze
 the data. The pandas package provides [various methods for combining
-DataFrames](http://pandas.pydata.org/pandas-docs/stable/merging.html) including
+DataFrames](https://pandas.pydata.org/pandas-docs/stable/merging.html) including
 `merge` and `concat`.
 
 To work through the examples below, we first need to load the species and
-surveys files into pandas DataFrames. The authors.csv and places.csv data can be found in the data folder. 
+surveys files into pandas DataFrames. The authors.csv and places.csv data can be found in the data folder.
 
 ```python
 import pandas as pd
@@ -51,9 +59,9 @@ Take note that the `read_csv` method we used can take some additional options wh
 we didn't use previously. Many functions in python have a set of options that
 can be set by the user if needed. In this case, we have told Pandas to assign
 empty values in our CSV to NaN `keep_default_na=False, na_values=[""]`.
-[More about all of the read_csv options here.](http://pandas.pydata.org/pandas-docs/dev/generated/pandas.io.parsers.read_csv.html)
+[More about all of the read\_csv options here.](https://pandas.pydata.org/pandas-docs/dev/generated/pandas.io.parsers.read_csv.html)
 
-# Concatenating DataFrames
+## Concatenating DataFrames
 
 We can use the `concat` function in Pandas to append either columns or rows from
 one DataFrame to another.  Let's grab two subsets of our data to see how this
@@ -86,12 +94,13 @@ vertical_stack = pd.concat([place_sub, place_sub_last10], axis=0)
 horizontal_stack = pd.concat([place_sub, place_sub_last10], axis=1)
 ```
 
-### Row Index Values and Concat
+#### Row Index Values and Concat
+
 Have a look at the `vertical_stack` dataframe? Notice anything unusual?
 The row indexes for the two data frames `place_sub` and `place_sub_last10`
 have been repeated. We can reindex the new dataframe using the `reset_index()` method.
 
-## Writing Out Data to CSV
+### Writing Out Data to CSV
 
 We can use the `to_csv` command to do export a DataFrame in CSV format. Note that the code
 below will by default save the data into the current working directory. We can
@@ -113,23 +122,29 @@ it imports properly.
 new_output = pd.read_csv('out.csv', keep_default_na=False, na_values=[""])
 ```
 
-> ## Challenge - Combine Data
->
-> In the data folder, there are two catalogue data files: `1635.csv` and
-> `1640.csv`. Read the data into python and combine the files to make one
-> new data frame. 
->
->> ## Solution to Challenge
->> 
->> ```python
->>  csv_1 = pd.read_csv("1635.csv")
->>  csv_2 = pd.read_csv("1640.csv")
->>  combined = pd.concat( [csv_1, csv_2], axis=0).reset_index(drop=True)
->>  ```
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-# Joining DataFrames
+### Challenge - Combine Data
+
+In the data folder, there are two catalogue data files: `1635.csv` and
+`1640.csv`. Read the data into python and combine the files to make one
+new data frame.
+
+:::::::::::::::  solution
+
+### Solution to Challenge
+
+```python
+ csv_1 = pd.read_csv("1635.csv")
+ csv_2 = pd.read_csv("1640.csv")
+ combined = pd.concat( [csv_1, csv_2], axis=0).reset_index(drop=True)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Joining DataFrames
 
 When we concatenated our DataFrames we simply added them to each other -
 stacking them either vertically or side by side. Another way to combine
@@ -142,14 +157,13 @@ table" containing additional data that we want to include in the other.
 NOTE: This process of joining tables is similar to what we do with tables in an
 SQL database.
 
-The `places.csv` file is table that contains the place and EEBO id for some titles. 
-When we want to access that information, we can create a query that joins the additional 
+The `places.csv` file is table that contains the place and EEBO id for some titles.
+When we want to access that information, we can create a query that joins the additional
 columns of information to the author data.
 
 Storing data in this way has many benefits including:
 
-
-## Identifying join keys
+### Identifying join keys
 
 To identify appropriate join keys we first need to know which field(s) are
 shared between the files (DataFrames). We might inspect both DataFrames to
@@ -173,24 +187,24 @@ In our example, the join key is the column containing the identifier, which is c
 
 Now that we know the fields with the common TCP ID attributes in each
 DataFrame, we are almost ready to join our data. However, since there are
-[different types of joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/), we
+[different types of joins](https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/), we
 also need to decide which type of join makes sense for our analysis.
 
-## Inner joins
+### Inner joins
 
-The most common type of join is called an _inner join_. An inner join combines
+The most common type of join is called an *inner join*. An inner join combines
 two DataFrames based on a join key and returns a new DataFrame that contains
 **only** those rows that have matching values in *both* of the original
 DataFrames.
 
 Inner joins yield a DataFrame that contains only rows where the value being
 joins exists in BOTH tables. An example of an inner join, adapted from [this
-page](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/) is below:
+page](https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/) is below:
 
-![Inner join -- courtesy of codinghorror.com](http://blog.codinghorror.com/content/images/uploads/2007/10/6a0120a85dcdae970b012877702708970c-pi.png)
+![](https://blog.codinghorror.com/content/fig/uploads/2007/10/6a0120a85dcdae970b012877702708970c-pi.png){alt='Inner join -- courtesy of codinghorror.com'}
 
 The pandas function for performing joins is called `merge` and an Inner join is
-the default option:  
+the default option:
 
 ```python
 merged_inner = pd.merge(left=authors_df,right=places_df, left_on='TCP', right_on='TCP')
@@ -239,7 +253,7 @@ Notice that `merged_inner` has fewer rows than `place_sub`. This is an
 indication that there were rows in `place_df` with value(s) for `EEBO` that
 do not exist as value(s) for `EEBO` in `authors_df`.
 
-## Left joins
+### Left joins
 
 What if we want to add information from `cat_sub` to `survey_sub` without
 losing any of the information from `survey_sub`? In this case, we use a different
@@ -255,7 +269,7 @@ for those columns in the resulting joined DataFrame.
 Note: a left join will still discard rows from the `right` DataFrame that do not
 have values for the join key(s) in the `left` DataFrame.
 
-![Left Join](http://blog.codinghorror.com/content/images/uploads/2007/10/6a0120a85dcdae970b01287770273e970c-pi.png)
+![](https://blog.codinghorror.com/content/fig/uploads/2007/10/6a0120a85dcdae970b01287770273e970c-pi.png){alt='Left Join'}
 
 A left join is performed in pandas by calling the same `merge` function used for
 inner join, but using the `how='left'` argument:
@@ -291,53 +305,60 @@ come from `authors_df` (i.e., `Author`) is missing (they contain NaN values):
 
 These rows are the ones where the value of `Author` from `authors_df` does not occur in `places_df`.
 
-
-## Other join types
+### Other join types
 
 The pandas `merge` function supports two other join types:
 
-* Right (outer) join: Invoked by passing `how='right'` as an argument. Similar
+- Right (outer) join: Invoked by passing `how='right'` as an argument. Similar
   to a left join, except *all* rows from the `right` DataFrame are kept, while
   rows from the `left` DataFrame without matching join key(s) values are
   discarded.
-* Full (outer) join: Invoked by passing `how='outer'` as an argument. This join
+- Full (outer) join: Invoked by passing `how='outer'` as an argument. This join
   type returns the all pairwise combinations of rows from both DataFrames; i.e.,
   the result DataFrame will `NaN` where data is missing in one of the dataframes.
   This join type is very rarely used.
 
-# Final Challenges
+## Final Challenges
 
-> ## Challenge - Distributions
-> Create a new DataFrame by joining the contents of the `authors.csv` and
-> `places.csv` tables. Calculate the:
->
-> 1. Number of unique places
-> 2. Number of books that do not have a known place
-> 3. Number of books that do not have either a known place or author
->
->> ## Solution to challenge
->> 
->> 
->> ```python
->> merged = pd.merge(
->>                   left=pd.read_csv("authors.csv"),
->>                   right=pd.read_csv("places.csv"),
->>                   left_on="TCP",
->>                   right_on="TCP"
->>                   )
->> # Part 1: number of unique places - we can use the .nunique() method
->> num_unique_places = merged["Place"].nunique()
->> # Part 2: we can take advantage of the behaviour that the .count() method
->> #         excludes NaN values. So .count() gives us the number that have place
->> #         values
->> num_no_place = len(merged) - merged["Place"].count()
->> # Part 3: This needs us to check both columns and combine the resulting masks
->> #         Then  we can use the trick of converting boolean to int, and summing, 
->> #         to convert the combined mask to a number of True values
->> no_author = pd.isnull(merged["Author"]) # True where is null
->> no_place = pd.isnull(merged["Place"])
->> neither = no_author & no_place
->> num_neither = sum(neither)
->> ```
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+### Challenge - Distributions
+
+Create a new DataFrame by joining the contents of the `authors.csv` and
+`places.csv` tables. Calculate the:
+
+1. Number of unique places
+2. Number of books that do not have a known place
+3. Number of books that do not have either a known place or author
+
+:::::::::::::::  solution
+
+### Solution to challenge
+
+```python
+merged = pd.merge(
+                  left=pd.read_csv("authors.csv"),
+                  right=pd.read_csv("places.csv"),
+                  left_on="TCP",
+                  right_on="TCP"
+                  )
+# Part 1: number of unique places - we can use the .nunique() method
+num_unique_places = merged["Place"].nunique()
+# Part 2: we can take advantage of the behaviour that the .count() method
+#         excludes NaN values. So .count() gives us the number that have place
+#         values
+num_no_place = len(merged) - merged["Place"].count()
+# Part 3: This needs us to check both columns and combine the resulting masks
+#         Then  we can use the trick of converting boolean to int, and summing, 
+#         to convert the combined mask to a number of True values
+no_author = pd.isnull(merged["Author"]) # True where is null
+no_place = pd.isnull(merged["Place"])
+neither = no_author & no_place
+num_neither = sum(neither)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

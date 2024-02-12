@@ -2,34 +2,42 @@
 title: Short Introduction to Programming in Python
 teaching: 30
 exercises: 0
-questions:
-  - "What is Python?"
-  - "Why should I learn Python?"
-objectives:
-  - "Describe the advantages of using programming vs. completing repetitive tasks by hand."
-  - "Define the following data types in Python: strings, integers, and floats."
-  - "Perform mathematical operations in Python using basic operators."
-  - "Define the following as it relates to Python: lists, tuples, and dictionaries."
 ---
 
-# The Basics of Python
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Describe the advantages of using programming vs. completing repetitive tasks by hand.
+- Define the following data types in Python: strings, integers, and floats.
+- Perform mathematical operations in Python using basic operators.
+- Define the following as it relates to Python: lists, tuples, and dictionaries.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What is Python?
+- Why should I learn Python?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## The Basics of Python
 
 Python is a general purpose programming language that supports rapid development
 of scripts and applications.
 
 Python's main advantages:
 
-* Open Source software, supported by Python Software Foundation
-* Available on all platforms
-* It is a general-purpose programming language
-* Supports multiple programming paradigms
-* Very large community with a rich ecosystem of third-party packages
+- Open Source software, supported by Python Software Foundation
+- Available on all platforms
+- It is a general-purpose programming language
+- Supports multiple programming paradigms
+- Very large community with a rich ecosystem of third-party packages
 
 ## Interpreter
 
 Python is an interpreted language which can be used in two ways:
 
-* "Interactive" Mode: It functions like an "advanced calculator" Executing
+- "Interactive" Mode: It functions like an "advanced calculator" Executing
   one command at a time:
 
 ```python
@@ -43,14 +51,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 Hello World
 ```
 
-* "Scripting" Mode: Executing a series of "commands" saved in text file,
+- "Scripting" Mode: Executing a series of "commands" saved in text file,
   usually with a `.py` extension after the name of your file:
 
 ```bash
 user:host:~$ python my_script.py
 Hello World
 ```
-
 
 ## Introduction to Python built-in data types
 
@@ -80,13 +87,16 @@ interpreter:
 However, in a script, a `print` function is needed to output the `text`:
 
 *example.py*
+
 ```python
 # A Python script file
 # Comments in Python start with #
 # The next line uses the print function to print out the text string
 print(text)
 ```
+
 *Running the script*
+
 ```bash
 $ python example.py
 Data Carpentry
@@ -99,7 +109,7 @@ documentation is excellent for reference on the differences between them.
 ### Operators
 
 We can perform mathematical calculations in Python using the basic operators
- `+, -, /, *, %`:
+`+, -, /, *, %`:
 
 ```python
 >>> 2 + 2   #  addition
@@ -115,8 +125,7 @@ We can perform mathematical calculations in Python using the basic operators
 We can also use comparison and logic operators:
 `<, >, ==, !=, <=, >=` and statements of identity such as
 `and, or, not`. The data type returned by this is
-called a _boolean_.
-
+called a *boolean*.
 
 ```python
 >>> 3 > 4
@@ -200,12 +209,14 @@ another_tuple = ('blue', 'green', 'red')
 a_list = [1, 2, 3]
 ```
 
-> ## Challenge - Tuples
-> 1. What happens when you type `a_tuple[2]=5` vs `a_list[1]=5` ?
-> 2. Type `type(a_tuple)` into python - what is the object type?
->
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## Challenge - Tuples
+
+1. What happens when you type `a_tuple[2]=5` vs `a_list[1]=5` ?
+2. Type `type(a_tuple)` into python - what is the object type?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Dictionaries
 
@@ -216,6 +227,7 @@ A **dictionary** is a container that holds pairs of objects - keys and values.
 >>> translation['one']
 1
 ```
+
 Dictionaries work a lot like lists - except that you index them with *keys*.
 You can think about a key as a name for or a unique identifier for a set of values
 in the dictionary. Keys can only have particular types - they have to be
@@ -267,28 +279,29 @@ or
 >>>
 ```
 
-> ## Challenge - Can you do reassignment in a dictionary?
-> 
-> 1. First check what `rev` is right now (remember `rev` is the name of our dictionary). 
->     
->    Type:
-> ```python
-> >>> rev
-> ```
->
-> 2. Try to reassign the second value (in the *key value pair*) so that it no longer reads "two" but instead reads "apple-sauce". 
->
-> 3. Now display `rev` again to see if it has changed. 
->
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Can you do reassignment in a dictionary?
+
+1. First check what `rev` is right now (remember `rev` is the name of our dictionary).
+  
+  Type:
+
+```python
+>>> rev
+```
+
+2. Try to reassign the second value (in the *key value pair*) so that it no longer reads "two" but instead reads "apple-sauce".
+
+3. Now display `rev` again to see if it has changed.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 It is important to note that dictionaries are "unordered" and do not remember
 the sequence of their items (i.e. the order in which key:value pairs were
 added to the dictionary). Because of this, the order in which items are
 returned from loops over dictionaries might appear random and can even change
 with time.
-
-
 
 ## Functions
 
@@ -308,6 +321,8 @@ print(z)
 
 Key points about functions are:
 
-* definition starts with `def`
-* function body is indented
-* `return` keyword precedes returned value
+- definition starts with `def`
+- function body is indented
+- `return` keyword precedes returned value
+
+

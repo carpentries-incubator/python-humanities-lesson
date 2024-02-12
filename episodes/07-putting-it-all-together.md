@@ -2,13 +2,20 @@
 title: Data Ingest & Visualization - Matplotlib & Pandas
 teaching: 20
 exercises: 25
-questions:
- - " What other tools can I use to create plots apart from ggplot? "
- - " Why should I use Python to create plots?"
-objectives:
-    - Import the pyplot toolbox to create figures in Python.
 ---
 
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Import the pyplot toolbox to create figures in Python.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What other tools can I use to create plots apart from ggplot?
+- Why should I use Python to create plots?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Putting it all together
 
@@ -22,7 +29,7 @@ As opposed to the previous ones, this lesson does not give step-by-step
 directions to each of the tasks. Use the lesson materials you've already gone
 through as well as the Python documentation to help you along.
 
-## 1. Obtain data
+## 1\. Obtain data
 
 There are many repositories online from which you can obtain data. We are
 providing you with one data file to use with these exercises, but feel free to
@@ -30,7 +37,7 @@ use any data that is relevant to your research. The file
 `eebo.csv` contains the complete EEBO metadata of books between 1300-1700. If you'd
 like to use this dataset, please find it in the data folder.
 
-## 2. Clean up your data and open it using Python and Pandas
+## 2\. Clean up your data and open it using Python and Pandas
 
 To begin, import your data file into Python using Pandas. Did it fail? Your data
 file probably has a header that Pandas does not recognize as part of the data
@@ -53,8 +60,8 @@ delimiter or separator. Common delimiters are `','` for comma, `' '` for space,
 and `'\t'` for tab).
 
 Create a DataFrame that includes only the values of the data that are useful to
-you. In the streamgage file, those values might be the date, title, terms, and TCP. 
-Convert and joined strings into individual ones. You can also change the name of the 
+you. In the streamgage file, those values might be the date, title, terms, and TCP.
+Convert and joined strings into individual ones. You can also change the name of the
 columns in the DataFrame like this:
 
 ```python
@@ -82,7 +89,7 @@ columns in the DataFrame like this:
     1          200            20
 ```
 
-## 3. Make a line plot of your data
+## 3\. Make a line plot of your data
 
 Matplotlib is a Python library that can be used to visualize data. The
 toolbox `matplotlib.pyplot` is a collection of functions that make matplotlib
@@ -91,21 +98,26 @@ there are many other useful tools in matplotlib that you should explore.
 
 We will cover a few basic commands for formatting plots in this lesson. A great
 resource for help styling your figures is the matplotlib gallery
-(http://matplotlib.org/gallery.html), which includes plots in many different
+([http://matplotlib.org/gallery.html](https://matplotlib.org/gallery.html)), which includes plots in many different
 styles and the source code that creates them. The simplest of plots is the 2
 dimensional line plot. These examples walk through the basic commands for making
 line plots using pyplots.
 
-> ## Challenge - Lots of plots
-> Make a variety of line plots from your data. If you are using the streamgage
-> data, these could include (1) a hydrograph of the entire month of September
-> 2013, (2) the discharge record for the week of the 2013 Front Range flood
-> (September 9 through 15), (3) discharge vs. time of day, for every day in the
-> record in one figure (Hint: use loops to combine strings and give every line a
-> different style and color), and (4) minimum, maximum, and mean daily discharge
-> values. Add axis labels, titles, and legends to your figures. Make at least one
-> figure with multiple plots using the function `subplot()`.
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Lots of plots
+
+Make a variety of line plots from your data. If you are using the streamgage
+data, these could include (1) a hydrograph of the entire month of September
+2013, (2) the discharge record for the week of the 2013 Front Range flood
+(September 9 through 15), (3) discharge vs. time of day, for every day in the
+record in one figure (Hint: use loops to combine strings and give every line a
+different style and color), and (4) minimum, maximum, and mean daily discharge
+values. Add axis labels, titles, and legends to your figures. Make at least one
+figure with multiple plots using the function `subplot()`.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Using pyplot:
 
@@ -163,8 +175,7 @@ gallery for more examples.
     plt.show()
 ```
 
-The command `plt.axis()` sets the limits of the axes from a list of `[xmin,
-xmax, ymin, ymax]` values (the square brackets are needed because the argument
+The command `plt.axis()` sets the limits of the axes from a list of `[xmin, xmax, ymin, ymax]` values (the square brackets are needed because the argument
 for the function `axis()` is one list of values, not four separate numbers!).
 The functions `xlabel()` and `ylabel()` will label the axes, and `title()` will
 write a title above the figure.
@@ -259,18 +270,25 @@ the number of the space in the grid that particular plot is occupying:
     plt.show()
 ```
 
-## 4. Make other types of plots:
+## 4\. Make other types of plots:
 
 Matplotlib can make many other types of plots in much the same way that it makes
 2 dimensional line plots. Look through the examples in
-http://matplotlib.org/users/screenshots.html and try a few of them (click on the
+[http://matplotlib.org/users/screenshots.html](https://matplotlib.org/users/screenshots.html) and try a few of them (click on the
 "Source code" link and copy and paste into a new cell in ipython notebook or
 save as a text file with a `.py` extension and run in the command line).
 
-> ## Challenge - Final Plot
-> Display your data using one or more plot types from the example gallery. Which
-> ones to choose will depend on the content of your own data file. If you are
-> using the streamgage file, you could make a histogram of the number of days with
-> a given mean discharge, use bar plots to display daily discharge statistics, or
-> explore the different ways matplotlib can handle dates and times for figures.
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Final Plot
+
+Display your data using one or more plot types from the example gallery. Which
+ones to choose will depend on the content of your own data file. If you are
+using the streamgage file, you could make a histogram of the number of days with
+a given mean discharge, use bar plots to display daily discharge statistics, or
+explore the different ways matplotlib can handle dates and times for figures.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

@@ -2,13 +2,16 @@
 title: Accessing SQLite Databases Using Python & Pandas
 teaching: 20
 exercises: 25
-
-objectives:
-    - Use the sqlite3 module to interact with a SQL database.
-    - Access data stored in SQLite using Python.
-    - Describe the difference in interacting with data stored as a CSV file versus in SQLite.
-    - Describe the benefits of accessing data using a database compared to a CSV file.
 ---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Use the sqlite3 module to interact with a SQL database.
+- Access data stored in SQLite using Python.
+- Describe the difference in interacting with data stored as a CSV file versus in SQLite.
+- Describe the benefits of accessing data using a database compared to a CSV file.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Python and SQL
 
@@ -27,8 +30,6 @@ connection must be closed at the end of the session with the `.close()` command.
 While the connection is open, any interactions with the database require you to
 make a cursor object with the `.cursor()` command. The cursor is then ready to
 perform all kinds of operations with `.execute()`.
-
-[sqlite3]: https://docs.python.org/3/library/sqlite3.html
 
 ```python
 import sqlite3
@@ -98,17 +99,16 @@ con.close()
 Storing your data in an SQLite database can provide substantial performance
 improvements when reading/writing compared to CSV. The difference in performance
 becomes more noticable as the size of the dataset grows (see for example [these
-benchmarks]).
+benchmarks][these benchmarks]).
 
-[these benchmarks]: http://sebastianraschka.com/Articles/2013_sqlite_database.html#results-and-conclusions
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## Challenge - SQL
 
-> ## Challenge - SQL
->
-> 1. Create a query that contains title data published between 1550 - 1650 that 
->   includes book's Title, Author, and TCP id. How many records are returned?
->
-{: .challenge}
+1. Create a query that contains title data published between 1550 - 1650 that
+  includes book's Title, Author, and TCP id. How many records are returned?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Storing data: Create new tables using Pandas
 
@@ -132,11 +132,21 @@ titles1640.to_sql("titles1640", con, if_exists="replace")
 con.close()
 ```
 
-> ## Challenge - Saving your work
->
-> 1. For each of the challenges in the previous challenge block, modify your code to save the
->   results to their own tables in the eebo database.
->
-> 2. What are some of the reasons you might want to save the results of your queries back into the
->   database? What are some of the reasons you might avoid doing this.
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge - Saving your work
+
+1. For each of the challenges in the previous challenge block, modify your code to save the
+  results to their own tables in the eebo database.
+
+2. What are some of the reasons you might want to save the results of your queries back into the
+  database? What are some of the reasons you might avoid doing this.
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+[sqlite3]: https://docs.python.org/3/library/sqlite3.html
+[these benchmarks]: https://sebastianraschka.com/Articles/2013_sqlite_database.html#results-and-conclusions
+
+
+
