@@ -43,7 +43,13 @@
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/NEWS.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/discuss.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/images.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/index.html</loc>
@@ -91,16 +97,34 @@
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/NEWS.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/discuss.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/profiles.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/python-humanities-lesson/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/python-humanities-lesson/profiles.html</loc>
