@@ -1,9 +1,7 @@
 ---
-maintainers: Iain Emsley
+maintainers: David Palmquist, Iain Emsley
 site: sandpaper::sandpaper_site
 ---
-
-**Lesson Maintainers:** {{ page.maintainers | join: ', ' }}
 
 Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.
 
