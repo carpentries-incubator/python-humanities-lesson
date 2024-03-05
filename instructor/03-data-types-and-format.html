@@ -411,14 +411,14 @@ in previous lessons.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that pd.read_csv is used because we imported pandas as pd</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># note that pd.read_csv is used because we imported pandas as pd</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
 </div>
 <p>Remember that we can check the type of an object like this:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(eebo_df)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">type</span>(eebo_df)</span></code></pre>
 </div>
 <p><strong>OUTPUT:</strong> <code>pandas.core.frame.DataFrame</code></p>
 <p>Next, let’s look at the structure of our surveys data. In pandas, we
@@ -427,7 +427,7 @@ can check the type of one column in a DataFrame using the syntax
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'TCP'</span>].dtype</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>eebo_df[<span class="st">'TCP'</span>].dtype</span></code></pre>
 </div>
 <p><strong>OUTPUT:</strong> <code>dtype('O')</code></p>
 <p>A type ‘O’ just stands for “object” which in Pandas’ world is a
@@ -435,7 +435,7 @@ string (text).</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'EEBO'</span>].dtype</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>eebo_df[<span class="st">'EEBO'</span>].dtype</span></code></pre>
 </div>
 <p><strong>OUTPUT:</strong> <code>dtype('int64')</code></p>
 <p>The type <code>int64</code> tells us that python is storing each
@@ -445,7 +445,7 @@ a DataFrame (all at once).</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>eebo_df.dtypes</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>eebo_df.dtypes</span></code></pre>
 </div>
 <p>which <strong>returns</strong>:</p>
 <pre><code>TCP        object
@@ -475,11 +475,11 @@ multiplication work on floats and integers as we’d expect.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">+</span><span class="dv">5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">24</span><span class="op">-</span><span class="dv">4</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">+</span><span class="dv">5</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="dv">10</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">24</span><span class="op">-</span><span class="dv">4</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="dv">20</span></span></code></pre>
 </div>
 <p>If we divide one integer by another, we get a float. The result on
 python 3 is different than in python 2, where the result is an integer
@@ -487,11 +487,11 @@ python 3 is different than in python 2, where the result is an integer
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5555555555555556</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fl">3.3333333333333335</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fl">0.5555555555555556</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fl">3.3333333333333335</span></span></code></pre>
 </div>
 <p>We can also convert a floating point number to an integer or an
 integer to floating point number. Notice that Python by default rounds
@@ -499,15 +499,15 @@ down when it converts from floating point to integer.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert a to integer</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">7.83</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(a)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to float</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">float</span>(b)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fl">7.0</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># convert a to integer</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">7.83</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="bu">int</span>(a)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="dv">7</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co"># convert to float</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="bu">float</span>(b)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fl">7.0</span></span></code></pre>
 </div>
 </div>
 </section><section id="working-with-our-index-data"><h2 class="section-heading">Working With Our Index Data<a class="anchor" aria-label="anchor" href="#working-with-our-index-data"></a>
@@ -518,9 +518,9 @@ our data, if we want. For instance, we could convert the
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the record_id field from an integer to a float</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>] <span class="op">=</span> eebo_df[<span class="st">'Page Count'</span>].astype(<span class="st">'float64'</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].dtype</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># convert the record_id field from an integer to a float</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>] <span class="op">=</span> eebo_df[<span class="st">'Page Count'</span>].astype(<span class="st">'float64'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].dtype</span></code></pre>
 </div>
 <p><strong>OUTPUT:</strong> <code>dtype('float64')</code></p>
 <div class="section level3">
@@ -538,8 +538,8 @@ cells.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'EEBO'</span>].mean()</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fl">84280511.94630873</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>eebo_df[<span class="st">'EEBO'</span>].mean()</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fl">84280511.94630873</span></span></code></pre>
 </div>
 <p>Dealing with missing data values is always a challenge. It’s
 sometimes hard to know why values are missing - was it because of a data
@@ -565,9 +565,9 @@ weight values):</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(eebo_df[pd.isnull(eebo_df.EEBO)])</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how many rows have weight values?</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(eebo_df[eebo_df.EEBO <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">len</span>(eebo_df[pd.isnull(eebo_df.EEBO)])</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># how many rows have weight values?</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="bu">len</span>(eebo_df[eebo_df.EEBO <span class="op">&gt;</span> <span class="dv">0</span>])</span></code></pre>
 </div>
 <p>We can replace all NaN values with zeroes using the
 <code>.fillna()</code> method (after making a copy of the data so we
@@ -575,9 +575,9 @@ don’t lose our work):</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> eebo_df.copy()</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fill all NaN values with 0</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'EEBO'</span>] <span class="op">=</span> df1[<span class="st">'EEBO'</span>].fillna(<span class="dv">0</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>df1 <span class="op">=</span> eebo_df.copy()</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># fill all NaN values with 0</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>df1[<span class="st">'EEBO'</span>] <span class="op">=</span> df1[<span class="st">'EEBO'</span>].fillna(<span class="dv">0</span>)</span></code></pre>
 </div>
 <p>However NaN and 0 yield different analysis results. The mean value
 when NaN values are replaced with 0 is different from when NaN values
@@ -585,15 +585,15 @@ are simply thrown out or ignored.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'EEBO'</span>].mean()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">52170900.611285985</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>df1[<span class="st">'EEBO'</span>].mean()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fl">52170900.611285985</span></span></code></pre>
 </div>
 <p>We can fill NaN values with any value that we chose. The code below
 fills all NaN values with a mean for all weight values.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> df1[<span class="st">'EEBO'</span>] <span class="op">=</span> eebo_df[<span class="st">'EEBO'</span>].fillna(eebo_df[<span class="st">'EEBO'</span>].mean())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a> df1[<span class="st">'EEBO'</span>] <span class="op">=</span> eebo_df[<span class="st">'EEBO'</span>].fillna(eebo_df[<span class="st">'EEBO'</span>].mean())</span></code></pre>
 </div>
 <p>We could also chose to create a subset of our data, only keeping rows
 that do not contain NaN values.</p>
@@ -688,7 +688,7 @@ means for your work</li>
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/instructor/03-data-types-and-format.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

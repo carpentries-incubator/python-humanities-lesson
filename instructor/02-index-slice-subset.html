@@ -368,11 +368,11 @@ the last lesson. Let’s reopen and read in the data again:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure pandas is loaded</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the survey csv</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Make sure pandas is loaded</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># read in the survey csv</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
 </div>
 </section><section id="indexing-and-slicing-in-python"><h2 class="section-heading">Indexing and Slicing in Python<a class="anchor" aria-label="anchor" href="#indexing-and-slicing-in-python"></a>
 </h2>
@@ -389,19 +389,19 @@ name. There are two ways to do this:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: select a 'subset' of the data using the column name</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Place'</span>]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: use the column name as an 'attribute'; gives the same output</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>eebo_df.Place</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Method 1: select a 'subset' of the data using the column name</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>eebo_df[<span class="st">'Place'</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Method 2: use the column name as an 'attribute'; gives the same output</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>eebo_df.Place</span></code></pre>
 </div>
 <p>We can also create a new object that contains only the data within
 the <code>Status</code> column as follows:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creates an object, texts_species, that only contains the `status_id` column</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>texts_status <span class="op">=</span> eebo_df[<span class="st">'Status'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># creates an object, texts_species, that only contains the `status_id` column</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>texts_status <span class="op">=</span> eebo_df[<span class="st">'Status'</span>]</span></code></pre>
 </div>
 <p>We can pass a list of column names too, as an index to select columns
 in that order. This is useful when we need to reorganize our data.</p>
@@ -410,14 +410,14 @@ DataFrame, an exception (error) will be raised.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select the author and EEBO columns from the DataFrame</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>eebo_df[[<span class="st">'Author'</span>, <span class="st">'EEBO'</span>]]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># what happens when you flip the order?</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>eebo_df[[<span class="st">'EEBO'</span>, <span class="st">'Author'</span>]]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#what happens if you ask for a column that doesn't exist?</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Texts'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># select the author and EEBO columns from the DataFrame</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>eebo_df[[<span class="st">'Author'</span>, <span class="st">'EEBO'</span>]]</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># what happens when you flip the order?</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>eebo_df[[<span class="st">'EEBO'</span>, <span class="st">'Author'</span>]]</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#what happens if you ask for a column that doesn't exist?</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>eebo_df[<span class="st">'Texts'</span>]</span></code></pre>
 </div>
 </section><section id="extracting-range-based-subsets-slicing"><h2 class="section-heading">Extracting Range based Subsets: Slicing<a class="anchor" aria-label="anchor" href="#extracting-range-based-subsets-slicing"></a>
 </h2>
@@ -429,8 +429,8 @@ objects starting at 1.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of numbers:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Create a list of numbers:</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span></code></pre>
 </div>
 <p><img src="../fig/slicing-indexing.svg" alt="indexing diagram" class="figure"><img src="../fig/slicing-slicing.svg" alt="slicing diagram" class="figure"></p>
 <div id="challenge---extracting-data" class="callout discussion">
@@ -445,13 +445,13 @@ objects starting at 1.</p>
 </ol><div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>a[<span class="dv">0</span>]</span></code></pre>
 </div>
 <ol start="2" style="list-style-type: decimal"><li>How about this:</li>
 </ol><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">5</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>a[<span class="dv">5</span>]</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal"><li><p>In the example above, calling <code>a[5]</code> returns an error.
 Why is that?</p></li>
@@ -459,7 +459,7 @@ Why is that?</p></li>
 </ol><div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a[<span class="bu">len</span>(a)]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>a[<span class="bu">len</span>(a)]</span></code></pre>
 </div>
 </div>
 </div>
@@ -475,21 +475,21 @@ and 2 your code would look like this:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select rows 0, 1, 2 (row 3 is not selected)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># select rows 0, 1, 2 (row 3 is not selected)</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>eebo_df[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre>
 </div>
 <p>The stop bound in Python is different from what you might be used to
 in languages like Matlab and R.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select the first 5 rows (rows 0, 1, 2, 3, 4)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>eebo_df[:<span class="dv">5</span>]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># select the last element in the list</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (the slice starts at the last element,</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and ends at the end of the list)</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="op">-</span><span class="dv">1</span>:]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># select the first 5 rows (rows 0, 1, 2, 3, 4)</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>eebo_df[:<span class="dv">5</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># select the last element in the list</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># (the slice starts at the last element,</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># and ends at the end of the list)</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>eebo_df[<span class="op">-</span><span class="dv">1</span>:]</span></code></pre>
 </div>
 <p>We can also reassign values within subsets of our DataFrame.</p>
 <p>But before we do that, let’s look at the difference between the
@@ -501,11 +501,11 @@ Python.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using the 'copy() method'</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>true_copy_eebo_df <span class="op">=</span> eebo_df.copy()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using '=' operator</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ref_eebo_df <span class="op">=</span> eebo_df</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># using the 'copy() method'</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>true_copy_eebo_df <span class="op">=</span> eebo_df.copy()</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># using '=' operator</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>ref_eebo_df <span class="op">=</span> eebo_df</span></code></pre>
 </div>
 <p>You might think that the code <code>ref_eebo_df = eebo_df</code>
 creates a fresh distinct copy of the <code>surveys_df</code> DataFrame
@@ -553,7 +553,7 @@ operator</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ref_eebo_df <span class="op">=</span> eebo_df</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>ref_eebo_df <span class="op">=</span> eebo_df</span></code></pre>
 </div>
 </li>
 </ul><p>Okay, that’s enough of that. Let’s create a brand new clean dataframe
@@ -561,7 +561,7 @@ from the original data CSV file.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
 </div>
 </section><section id="slicing-subsets-of-rows-and-columns-in-python"><h2 class="section-heading">Slicing Subsets of Rows and Columns in Python<a class="anchor" aria-label="anchor" href="#slicing-subsets-of-rows-and-columns-in-python"></a>
 </h2>
@@ -582,8 +582,8 @@ select month, day and year (columns 2, 3 and 4 if we start counting at
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iloc[row slicing, column slicing]</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>eebo_df.iloc[<span class="dv">0</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">4</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># iloc[row slicing, column slicing]</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>eebo_df.iloc[<span class="dv">0</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">4</span>]</span></code></pre>
 </div>
 <p>which gives the <strong>output</strong></p>
 <pre><code>         EEBO    VID                       STC
@@ -599,14 +599,14 @@ data:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all columns for rows of index values 0 and 10</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>eebo_df.loc[[<span class="dv">0</span>, <span class="dv">10</span>], :]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># what does this do?</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>eebo_df.loc[<span class="dv">0</span>, [<span class="st">'Author'</span>, <span class="st">'Title'</span>, <span class="st">'Status'</span>]]</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># What happens when you type the code below?</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>eebo_df.loc[[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">149</span>], :]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># select all columns for rows of index values 0 and 10</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>eebo_df.loc[[<span class="dv">0</span>, <span class="dv">10</span>], :]</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># what does this do?</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>eebo_df.loc[<span class="dv">0</span>, [<span class="st">'Author'</span>, <span class="st">'Title'</span>, <span class="st">'Status'</span>]]</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># What happens when you type the code below?</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>eebo_df.loc[[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">149</span>], :]</span></code></pre>
 </div>
 <p><strong>NOTE</strong>: Labels must be found in the DataFrame or you
 will get a <code>KeyError</code>.</p>
@@ -622,14 +622,14 @@ location within the DataFrame and <code>iloc</code> indexing:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Syntax for iloc indexing to finding a specific data element</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dat.iloc[row, column]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Syntax for iloc indexing to finding a specific data element</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>dat.iloc[row, column]</span></code></pre>
 </div>
 <p>In this <code>iloc</code> example,</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>eebo_df.iloc[<span class="dv">2</span>, <span class="dv">6</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>eebo_df.iloc[<span class="dv">2</span>, <span class="dv">6</span>]</span></code></pre>
 </div>
 <p>gives the <strong>output</strong></p>
 <pre><code><span><span class="st">'1528'</span></span></code></pre>
@@ -659,31 +659,31 @@ we can select all rows that have a status value of Free:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>eebo_df.loc[eebo_df[<span class="st">"Terms"</span>].<span class="bu">str</span>.contains(<span class="st">"sermon"</span>, na<span class="op">=</span><span class="va">False</span>)]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>eebo_df.loc[eebo_df[<span class="st">"Terms"</span>].<span class="bu">str</span>.contains(<span class="st">"sermon"</span>, na<span class="op">=</span><span class="va">False</span>)]</span></code></pre>
 </div>
 <p>Which produces the following output:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>        TCP      EEBO  ...  Page Count   Place</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dv">23</span>   A00156  <span class="dv">99851064</span>  ...           <span class="dv">8</span>  London</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="dv">27</span>   A00164  <span class="dv">99851065</span>  ...           <span class="dv">7</span>  London</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="dv">113</span>  A00426  <span class="dv">99857357</span>  ...          <span class="dv">72</span>  London</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="dv">141</span>  A00510  <span class="dv">99852090</span>  ...          <span class="dv">48</span>  London</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span> rows x <span class="dv">11</span> columns]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>        TCP      EEBO  ...  Page Count   Place</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="dv">23</span>   A00156  <span class="dv">99851064</span>  ...           <span class="dv">8</span>  London</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="dv">27</span>   A00164  <span class="dv">99851065</span>  ...           <span class="dv">7</span>  London</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="dv">113</span>  A00426  <span class="dv">99857357</span>  ...          <span class="dv">72</span>  London</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="dv">141</span>  A00510  <span class="dv">99852090</span>  ...          <span class="dv">48</span>  London</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a>[<span class="dv">4</span> rows x <span class="dv">11</span> columns]</span></code></pre>
 </div>
 <p>Or we can select all rows with a page length greater than 100:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>eebo_df[eebo_df[<span class="st">"Page Count"</span>] <span class="op">&gt;</span> <span class="dv">100</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>eebo_df[eebo_df[<span class="st">"Page Count"</span>] <span class="op">&gt;</span> <span class="dv">100</span>]</span></code></pre>
 </div>
 <p>We can define sets of criteria too:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>eebo_df[(eebo_df.Date <span class="op">&gt;=</span> <span class="dv">1500</span>) <span class="op">&amp;</span> (eebo_df.Date <span class="op">&lt;=</span> <span class="dv">1550</span>)]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>eebo_df[(eebo_df.Date <span class="op">&gt;=</span> <span class="dv">1500</span>) <span class="op">&amp;</span> (eebo_df.Date <span class="op">&lt;=</span> <span class="dv">1550</span>)]</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="python-syntax-cheat-sheet">Python Syntax Cheat Sheet<a class="anchor" aria-label="anchor" href="#python-syntax-cheat-sheet"></a></h3>
@@ -720,9 +720,9 @@ statements.</p></li>
 </ol><div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>eebo_df[</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>        eebo_df[<span class="st">'Date'</span>].isin([listGoesHere])</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        ]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>eebo_df[</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>        eebo_df[<span class="st">'Date'</span>].isin([listGoesHere])</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>        ]</span></code></pre>
 </div>
 <p>Use the <code>isin</code> function to find all books written by
 Robert Aylett and Robert Aytoun. How many are there?</p>
@@ -747,14 +747,14 @@ example,</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set x to 5</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># what does the code below return?</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">&gt;</span> <span class="dv">5</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># how about this?</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> <span class="dv">5</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># set x to 5</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co"># what does the code below return?</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>x <span class="op">&gt;</span> <span class="dv">5</span></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co"># how about this?</span></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>x <span class="op">==</span> <span class="dv">5</span></span></code></pre>
 </div>
 <p>When we ask Python what the value of <code>x &gt; 5</code> is, we get
 <code>False</code>. This is because the condition,<code>x</code> is not
@@ -776,29 +776,29 @@ object.</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pd.isnull(eebo_df)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>pd.isnull(eebo_df)</span></code></pre>
 </div>
 <p>A snippet of the output is below:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>         TCP   EEBO    VID    STC  Status  Author   Date  Title  Terms  Pages</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">True</span>  <span class="va">False</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">149</span> rows x <span class="dv">11</span> columns]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>         TCP   EEBO    VID    STC  Status  Author   Date  Title  Terms  Pages</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="dv">0</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">True</span>  <span class="va">False</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="dv">1</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="dv">2</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="dv">3</span>      <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>   <span class="va">False</span>   <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span>  <span class="va">False</span></span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>[<span class="dv">149</span> rows x <span class="dv">11</span> columns]</span></code></pre>
 </div>
 <p>To select the rows where there are null values, we can use the mask
 as an index to subset our data as follows:</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To select just the rows with NaN values, we can use the 'any()' method</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>eebo_df[</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        pd.isnull(eebo_df).<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        ]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># To select just the rows with NaN values, we can use the 'any()' method</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>eebo_df[</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>        pd.isnull(eebo_df).<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>        ]</span></code></pre>
 </div>
 <p>Note that the <code>weight</code> column of our DataFrame contains
 many <code>null</code> or <code>NaN</code> values. We will explore ways
@@ -808,11 +808,11 @@ the code below do?</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what does this do?</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>empty_authors <span class="op">=</span> eebo_df[</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                        pd.isnull(eebo_df[<span class="st">'Author'</span>])</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                        ][<span class="st">'Author'</span>]</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(empty_authors)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># what does this do?</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>empty_authors <span class="op">=</span> eebo_df[</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>                        pd.isnull(eebo_df[<span class="st">'Author'</span>])</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>                        ][<span class="st">'Author'</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="bu">print</span>(empty_authors)</span></code></pre>
 </div>
 <p>Let’s take a minute to look at the statement above. We are using the
 Boolean object <code>pd.isnull(eebo_df['Author'])</code> as an index to
@@ -895,7 +895,7 @@ of status free and where page count values are greater than
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/instructor/02-index-slice-subset.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

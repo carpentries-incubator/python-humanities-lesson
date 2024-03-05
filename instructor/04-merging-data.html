@@ -348,28 +348,28 @@ data can be found in the data folder.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>authors_df <span class="op">=</span> pd.read_csv(<span class="st">"authors.csv"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                         keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>authors_df</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        TCP                                             Author</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>    A00002                         Aylett, Robert, <span class="dv">1583</span><span class="op">-</span><span class="dv">1655</span>?</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    A00005  Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon. English...</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    A00007             Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    A00008          Wood, William, fl. <span class="dv">1623</span>, attributed name.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    A00011</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>places_df <span class="op">=</span> pd.read_csv(<span class="st">"places.csv"</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                         keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>places_df</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    A00002                         London</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>   A00005                         London</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>   A00007                         London</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>   A00008               The Netherlands?</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>   A00011                      Amsterdam</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>   A00012                         London</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>   A00014                         London</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>authors_df <span class="op">=</span> pd.read_csv(<span class="st">"authors.csv"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>                         keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>authors_df</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>        TCP                                             Author</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="dv">0</span>    A00002                         Aylett, Robert, <span class="dv">1583</span><span class="op">-</span><span class="dv">1655</span>?</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="dv">1</span>    A00005  Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon. English...</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="dv">2</span>    A00007             Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon.</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="dv">3</span>    A00008          Wood, William, fl. <span class="dv">1623</span>, attributed name.</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="dv">4</span>    A00011</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>places_df <span class="op">=</span> pd.read_csv(<span class="st">"places.csv"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>                         keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>places_df</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>    A00002                         London</span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="dv">0</span>   A00005                         London</span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="dv">1</span>   A00007                         London</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="dv">2</span>   A00008               The Netherlands?</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="dv">3</span>   A00011                      Amsterdam</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="dv">4</span>   A00012                         London</span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="dv">5</span>   A00014                         London</span></code></pre>
 </div>
 <p>Take note that the <code>read_csv</code> method we used can take some
 additional options which we didn’t use previously. Many functions in
@@ -385,13 +385,13 @@ subsets of our data to see how this works.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in first 10 lines of the places table</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>place_sub <span class="op">=</span> places_df.head(<span class="dv">10</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># grab the last 20 rows </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>place_sub_last10 <span class="op">=</span> places_df.tail(<span class="dv">20</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#reset the index values to the second dataframe appends properly</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>place_sub_last10 <span class="op">=</span> place_sub_last10.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># drop=True option avoids adding new index column with old index values</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># read in first 10 lines of the places table</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>place_sub <span class="op">=</span> places_df.head(<span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># grab the last 20 rows </span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>place_sub_last10 <span class="op">=</span> places_df.tail(<span class="dv">20</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#reset the index values to the second dataframe appends properly</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>place_sub_last10 <span class="op">=</span> place_sub_last10.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># drop=True option avoids adding new index column with old index values</span></span></code></pre>
 </div>
 <p>When we concatenate DataFrames, we need to specify the axis.
 <code>axis=0</code> tells Pandas to stack the second DataFrame under the
@@ -405,11 +405,11 @@ data are related in some way).</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stack the DataFrames on top of each other</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vertical_stack <span class="op">=</span> pd.concat([place_sub, place_sub_last10], axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># place the DataFrames side by side</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>horizontal_stack <span class="op">=</span> pd.concat([place_sub, place_sub_last10], axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># stack the DataFrames on top of each other</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>vertical_stack <span class="op">=</span> pd.concat([place_sub, place_sub_last10], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># place the DataFrames side by side</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>horizontal_stack <span class="op">=</span> pd.concat([place_sub, place_sub_last10], axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="row-index-values-and-concat">Row Index Values and Concat<a class="anchor" aria-label="anchor" href="#row-index-values-and-concat"></a></h4>
@@ -431,8 +431,8 @@ line.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write DataFrame to CSV</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vertical_stack.to_csv(<span class="st">'out.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Write DataFrame to CSV</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>vertical_stack.to_csv(<span class="st">'out.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre>
 </div>
 <p>Check out your working directory to make sure the CSV wrote out
 properly, and that you can open it! If you want, try to bring it back
@@ -440,8 +440,8 @@ into python to make sure it imports properly.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for kicks read our output back into python and make sure all looks good</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>new_output <span class="op">=</span> pd.read_csv(<span class="st">'out.csv'</span>, keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># for kicks read our output back into python and make sure all looks good</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>new_output <span class="op">=</span> pd.read_csv(<span class="st">'out.csv'</span>, keep_default_na<span class="op">=</span><span class="va">False</span>, na_values<span class="op">=</span>[<span class="st">""</span>])</span></code></pre>
 </div>
 <div id="challenge---combine-data" class="callout challenge">
 <div class="callout-square">
@@ -462,14 +462,14 @@ python and combine the files to make one new data frame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to Challenge</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a> csv_1 <span class="op">=</span> pd.read_csv(<span class="st">"1635.csv"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> csv_2 <span class="op">=</span> pd.read_csv(<span class="st">"1640.csv"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> combined <span class="op">=</span> pd.concat( [csv_1, csv_2], axis<span class="op">=</span><span class="dv">0</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a> csv_1 <span class="op">=</span> pd.read_csv(<span class="st">"1635.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a> csv_2 <span class="op">=</span> pd.read_csv(<span class="st">"1640.csv"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a> combined <span class="op">=</span> pd.concat( [csv_1, csv_2], axis<span class="op">=</span><span class="dv">0</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -505,13 +505,13 @@ information.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> authors_df.columns</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Index([<span class="st">'TCP'</span>, <span class="st">'Author'</span>], dtype<span class="op">=</span><span class="st">'object'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> places_df.columns</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Index([<span class="st">'TCP'</span>, <span class="st">'Place'</span>], dtype<span class="op">=</span><span class="st">'object'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> authors_df.columns</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>Index([<span class="st">'TCP'</span>, <span class="st">'Author'</span>], dtype<span class="op">=</span><span class="st">'object'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> places_df.columns</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>Index([<span class="st">'TCP'</span>, <span class="st">'Place'</span>], dtype<span class="op">=</span><span class="st">'object'</span>)</span></code></pre>
 </div>
 <p>In our example, the join key is the column containing the identifier,
 which is called <code>TCP</code>.</p>
@@ -536,13 +536,13 @@ and an Inner join is the default option:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>merged_inner <span class="op">=</span> pd.merge(left<span class="op">=</span>authors_df,right<span class="op">=</span>places_df, left_on<span class="op">=</span><span class="st">'TCP'</span>, right_on<span class="op">=</span><span class="st">'TCP'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in this case `species_id` is the only column name in  both dataframes, so if we skippd `left_on`</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and `right_on` arguments we would still get the same result</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># what's the size of the output data?</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>merged_inner.shape</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>merged_inner</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>merged_inner <span class="op">=</span> pd.merge(left<span class="op">=</span>authors_df,right<span class="op">=</span>places_df, left_on<span class="op">=</span><span class="st">'TCP'</span>, right_on<span class="op">=</span><span class="st">'TCP'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># in this case `species_id` is the only column name in  both dataframes, so if we skippd `left_on`</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># and `right_on` arguments we would still get the same result</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># what's the size of the output data?</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>merged_inner.shape</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>merged_inner</span></code></pre>
 </div>
 <p><strong>OUTPUT:</strong></p>
 <pre><code>      TCP                                             Author             Place
@@ -604,16 +604,16 @@ DataFrame that do not have values for the join key(s) in the
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>merged_left <span class="op">=</span> pd.merge(left<span class="op">=</span>places_df,right<span class="op">=</span>authors_df, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'TCP'</span>, right_on<span class="op">=</span><span class="st">'TCP'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>merged_left</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>OUTPUT:<span class="op">**</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      TCP             Place                                             Author</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>  A00002            London                         Aylett, Robert, <span class="dv">1583</span><span class="op">-</span><span class="dv">1655</span>?</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  A00005            London  Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon. English...</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  A00007            London             Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon.</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  A00008  The Netherlands?          Wood, William, fl. <span class="dv">1623</span>, attributed name.</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  A00011         Amsterdam                                                NaN</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>merged_left <span class="op">=</span> pd.merge(left<span class="op">=</span>places_df,right<span class="op">=</span>authors_df, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'TCP'</span>, right_on<span class="op">=</span><span class="st">'TCP'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>merged_left</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="op">**</span>OUTPUT:<span class="op">**</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>      TCP             Place                                             Author</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="dv">0</span>  A00002            London                         Aylett, Robert, <span class="dv">1583</span><span class="op">-</span><span class="dv">1655</span>?</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="dv">1</span>  A00005            London  Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon. English...</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="dv">2</span>  A00007            London             Higden, Ranulf, d. <span class="fl">1364.</span> Polycronicon.</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="dv">3</span>  A00008  The Netherlands?          Wood, William, fl. <span class="dv">1623</span>, attributed name.</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="dv">4</span>  A00011         Amsterdam                                                NaN</span></code></pre>
 </div>
 <p>The result DataFrame from a left join (<code>merged_left</code>)
 looks very much like the result DataFrame from an inner join
@@ -627,12 +627,12 @@ that should have come from <code>authors_df</code> (i.e.,
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> merged_inner[ pd.isnull(merged_inner.Author) ]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>OUTPUT:<span class="op">**</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        TCP Author      Place</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    A00011    NaN  Amsterdam</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>    A00014    NaN     London</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>    A00018    NaN   Germany?</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a> merged_inner[ pd.isnull(merged_inner.Author) ]</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="op">**</span>OUTPUT:<span class="op">**</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>        TCP Author      Place</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="dv">4</span>    A00011    NaN  Amsterdam</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="dv">6</span>    A00014    NaN     London</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="dv">8</span>    A00018    NaN   Germany?</span></code></pre>
 </div>
 <p>These rows are the ones where the value of <code>Author</code> from
 <code>authors_df</code> does not occur in <code>places_df</code>.</p>
@@ -676,30 +676,30 @@ the:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                  left<span class="op">=</span>pd.read_csv(<span class="st">"authors.csv"</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                  right<span class="op">=</span>pd.read_csv(<span class="st">"places.csv"</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                  left_on<span class="op">=</span><span class="st">"TCP"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                  right_on<span class="op">=</span><span class="st">"TCP"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  )</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Part 1: number of unique places - we can use the .nunique() method</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>num_unique_places <span class="op">=</span> merged[<span class="st">"Place"</span>].nunique()</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Part 2: we can take advantage of the behaviour that the .count() method</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#         excludes NaN values. So .count() gives us the number that have place</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#         values</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>num_no_place <span class="op">=</span> <span class="bu">len</span>(merged) <span class="op">-</span> merged[<span class="st">"Place"</span>].count()</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Part 3: This needs us to check both columns and combine the resulting masks</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#         Then  we can use the trick of converting boolean to int, and summing, </span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#         to convert the combined mask to a number of True values</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>no_author <span class="op">=</span> pd.isnull(merged[<span class="st">"Author"</span>]) <span class="co"># True where is null</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>no_place <span class="op">=</span> pd.isnull(merged[<span class="st">"Place"</span>])</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>neither <span class="op">=</span> no_author <span class="op">&amp;</span> no_place</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>num_neither <span class="op">=</span> <span class="bu">sum</span>(neither)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>                  left<span class="op">=</span>pd.read_csv(<span class="st">"authors.csv"</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>                  right<span class="op">=</span>pd.read_csv(<span class="st">"places.csv"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>                  left_on<span class="op">=</span><span class="st">"TCP"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>                  right_on<span class="op">=</span><span class="st">"TCP"</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>                  )</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Part 1: number of unique places - we can use the .nunique() method</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>num_unique_places <span class="op">=</span> merged[<span class="st">"Place"</span>].nunique()</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># Part 2: we can take advantage of the behaviour that the .count() method</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#         excludes NaN values. So .count() gives us the number that have place</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#         values</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>num_no_place <span class="op">=</span> <span class="bu">len</span>(merged) <span class="op">-</span> merged[<span class="st">"Place"</span>].count()</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co"># Part 3: This needs us to check both columns and combine the resulting masks</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#         Then  we can use the trick of converting boolean to int, and summing, </span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#         to convert the combined mask to a number of True values</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>no_author <span class="op">=</span> pd.isnull(merged[<span class="st">"Author"</span>]) <span class="co"># True where is null</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>no_place <span class="op">=</span> pd.isnull(merged[<span class="st">"Place"</span>])</span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>neither <span class="op">=</span> no_author <span class="op">&amp;</span> no_place</span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>num_neither <span class="op">=</span> <span class="bu">sum</span>(neither)</span></code></pre>
 </div>
 </div>
 </div>
@@ -764,7 +764,7 @@ the:</p>
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/instructor/04-merging-data.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

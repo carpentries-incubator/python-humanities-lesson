@@ -350,11 +350,11 @@ data.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>authors_complete <span class="op">=</span> pd.read_csv( <span class="st">'eebo.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>authors_complete.index.name <span class="op">=</span> <span class="st">'X'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>authors_complete</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>authors_complete <span class="op">=</span> pd.read_csv( <span class="st">'eebo.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>authors_complete.index.name <span class="op">=</span> <span class="st">'X'</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>authors_complete</span></code></pre>
 </div>
 <pre><code>        EEBO    VID  ... Page Count             Place</code></pre>
 <p>X …<br>
@@ -367,8 +367,8 @@ Netherlands? A00011 99837000 1304 … 54 Amsterdam A00012 99853871 19269 …
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, output_file, show</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> output_notebook</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, output_file, show</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> output_notebook</span></code></pre>
 </div>
 </div>
 <section id="plotting-with-bokeh"><h2 class="section-heading">Plotting with bokeh<a class="anchor" aria-label="anchor" href="#plotting-with-bokeh"></a>
@@ -390,18 +390,18 @@ statement to get interactive and exportable plots</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>output_notebook()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>output_notebook()</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>p <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span></code></pre>
 </div>
 <figure><img src="fig/figure01.png" alt="png" class="figure mx-auto d-block"></figure><p>We can add simple points to create a scatter plot using circle.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>list_dates <span class="op">=</span> authors_complete[<span class="st">'Date'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>list_numbers <span class="op">=</span> authors_complete[<span class="st">'Page Count'</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p.circle(list_dates, list_numbers)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>show(p)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>list_dates <span class="op">=</span> authors_complete[<span class="st">'Date'</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>list_numbers <span class="op">=</span> authors_complete[<span class="st">'Page Count'</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>p.circle(list_dates, list_numbers)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>show(p)</span></code></pre>
 </div>
 <figure><img src="fig/figure02.png" alt="png" class="figure mx-auto d-block"></figure></section><section id="building-your-plots"><h2 class="section-heading">Building your plots<a class="anchor" aria-label="anchor" href="#building-your-plots"></a>
 </h2>
@@ -411,21 +411,21 @@ argument to circle to change the opacity of the points.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p1.circle(list_dates, list_numbers, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>show(p1)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>p1 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>p1.circle(list_dates, list_numbers, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>show(p1)</span></code></pre>
 </div>
 <figure><img src="fig/figure03.png" alt="png" class="figure mx-auto d-block"></figure><p>We can also add colors for all the points.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p2.circle(list_dates, list_numbers, color<span class="op">=</span><span class="st">"blue"</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>show(p2)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>p2 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>p2.circle(list_dates, list_numbers, color<span class="op">=</span><span class="st">"blue"</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>show(p2)</span></code></pre>
 </div>
 <figure><img src="fig/figure04.png" alt="png" class="figure mx-auto d-block"></figure></section><section id="plotting-time-series-data"><h2 class="section-heading">Plotting time series data<a class="anchor" aria-label="anchor" href="#plotting-time-series-data"></a>
 </h2>
@@ -435,16 +435,16 @@ group.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>yearly <span class="op">=</span> authors_df[[<span class="st">'Date'</span>,<span class="st">'Place'</span>,<span class="st">'Page Count'</span>]].groupby([<span class="st">'Date'</span>, <span class="st">'Place'</span>]).count().reset_index()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>yearly <span class="op">=</span> authors_df[[<span class="st">'Date'</span>,<span class="st">'Place'</span>,<span class="st">'Page Count'</span>]].groupby([<span class="st">'Date'</span>, <span class="st">'Place'</span>]).count().reset_index()</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">800</span>, plot_height<span class="op">=</span><span class="dv">250</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p3.line(yearly[<span class="st">'Date'</span>], yearly[<span class="st">'Page Count'</span>], color<span class="op">=</span><span class="st">'navy'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>show(p3)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>p3 <span class="op">=</span> figure(plot_width<span class="op">=</span><span class="dv">800</span>, plot_height<span class="op">=</span><span class="dv">250</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>p3.line(yearly[<span class="st">'Date'</span>], yearly[<span class="st">'Page Count'</span>], color<span class="op">=</span><span class="st">'navy'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>show(p3)</span></code></pre>
 </div>
 <pre><code>year 	place 	count</code></pre>
 <p>0 1515 London 1 1 1519 Londini 1 2 1526 London 2 3 1528 London 1 4
@@ -461,31 +461,31 @@ and counts on y axis.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.models <span class="im">import</span> ColumnDataSource, Range1d, LabelSet, Label</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">=</span> figure(title<span class="op">=</span><span class="st">"Plot of Page Counts by Year"</span>, plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>p4.circle(list_dates, list_numbers)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>p4.xaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Date'</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>p4.yaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Page Count'</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>show(p4)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">from</span> bokeh.models <span class="im">import</span> ColumnDataSource, Range1d, LabelSet, Label</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>p4 <span class="op">=</span> figure(title<span class="op">=</span><span class="st">"Plot of Page Counts by Year"</span>, plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>p4.circle(list_dates, list_numbers)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>p4.xaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Date'</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>p4.yaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Page Count'</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>show(p4)</span></code></pre>
 </div>
 <figure><img src="fig/figure06.png" alt="png" class="figure mx-auto d-block"></figure><p>or we canadd labels to the axes and change the font size for the
 labels</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="op">=</span> figure(title<span class="op">=</span><span class="st">"Plot of Page Counts by Year"</span>, plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p5.circle(list_dates, list_numbers)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>p5.xaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Date'</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>p5.yaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Page Count'</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>p5.xaxis[<span class="dv">0</span>].axis_label_text_font_size <span class="op">=</span> <span class="st">"24pt"</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>show(p5)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>p5 <span class="op">=</span> figure(title<span class="op">=</span><span class="st">"Plot of Page Counts by Year"</span>, plot_width<span class="op">=</span><span class="dv">400</span>, plot_height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>p5.circle(list_dates, list_numbers)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>p5.xaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Date'</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>p5.yaxis[<span class="dv">0</span>].axis_label <span class="op">=</span> <span class="st">'Page Count'</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>p5.xaxis[<span class="dv">0</span>].axis_label_text_font_size <span class="op">=</span> <span class="st">"24pt"</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>show(p5)</span></code></pre>
 </div>
 <figure><img src="fig/figure07.png" alt="png" class="figure mx-auto d-block"></figure><p>With all of this information in hand, please take another five
 minutes to either improve one of the plots generated in this exercise or
@@ -498,9 +498,9 @@ file:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> export_png</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>export_png(p4, filename<span class="op">=</span><span class="st">"plot.png"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> export_png</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>export_png(p4, filename<span class="op">=</span><span class="st">"plot.png"</span>)</span></code></pre>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
@@ -561,7 +561,7 @@ file:</p>
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/06-visualization-ggplot-python.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

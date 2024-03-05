@@ -461,7 +461,7 @@ is:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
 </div>
 <p>Each time we call a function that’s in a library, we use the syntax
 <code>LibraryName.FunctionName</code>. Adding the library name with a
@@ -483,10 +483,10 @@ Jupyter notebook if working with local files</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that pd.read_csv is used because we imported pandas as pd</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note that this assumes that the data file is in the same location</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as the Jupyter notebook</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># note that pd.read_csv is used because we imported pandas as pd</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co"># note that this assumes that the data file is in the same location</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># as the Jupyter notebook</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="so-whats-a-dataframe">So What’s a DataFrame?<a class="anchor" aria-label="anchor" href="#so-whats-a-dataframe"></a></h3>
@@ -523,7 +523,7 @@ a variable name by assigning a value to it using <code>=</code>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>eebo_df <span class="op">=</span> pd.read_csv(<span class="st">"eebo.csv"</span>)</span></code></pre>
 </div>
 <p>Notice that when you assign the imported DataFrame to a variable,
 Python does not produce any output on the screen. We can print the value
@@ -532,7 +532,7 @@ command prompt.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>eebo_df</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>eebo_df</span></code></pre>
 </div>
 <p>which prints contents like above</p>
 </div>
@@ -547,9 +547,9 @@ type of the data stored in <code>eebo_df</code> using the
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(eebo_df)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this does the same thing as the above!</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>eebo_df.__class__</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">type</span>(eebo_df)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># this does the same thing as the above!</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>eebo_df.__class__</span></code></pre>
 </div>
 <p>We can also enter <code>eebo_df.dtypes</code> at our prompt to view
 the data type for each column in our DataFrame. <code>int64</code>
@@ -584,7 +584,7 @@ its <code>columns</code> attribute</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>eebo_df.columns</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>eebo_df.columns</span></code></pre>
 </div>
 <p>As we will see later, we can use the contents of the Index object to
 extract (slice) specific records from our DataFrame based on their
@@ -637,8 +637,8 @@ out what we want to group by.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the column names</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>eebo_df.columns.values</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Look at the column names</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>eebo_df.columns.values</span></code></pre>
 </div>
 <p>which <strong>returns</strong>:</p>
 <pre><code>array(['TCP', 'EEBO', 'VID', 'STC', 'Status', 'Author', 'Date', 'Title',
@@ -649,19 +649,19 @@ column.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pd.unique(eebo_df[<span class="st">'Page Count'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>pd.unique(eebo_df[<span class="st">'Page Count'</span>])</span></code></pre>
 </div>
 <p>which <strong>returns</strong>:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>array([<span class="dv">134</span>, <span class="dv">302</span>, <span class="dv">386</span>,  <span class="dv">14</span>,  <span class="dv">54</span>,  <span class="dv">99</span>,   <span class="dv">1</span>,  <span class="dv">16</span>,  <span class="dv">26</span>,  <span class="dv">62</span>,  <span class="dv">50</span>,  <span class="dv">66</span>,  <span class="dv">30</span>,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">6</span>,  <span class="dv">36</span>,   <span class="dv">8</span>,  <span class="dv">12</span>,  <span class="dv">24</span>,  <span class="dv">22</span>,   <span class="dv">7</span>,  <span class="dv">20</span>,  <span class="dv">40</span>,  <span class="dv">38</span>,  <span class="dv">13</span>,  <span class="dv">28</span>,  <span class="dv">10</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">23</span>,   <span class="dv">2</span>, <span class="dv">112</span>,  <span class="dv">18</span>,   <span class="dv">4</span>,  <span class="dv">27</span>,  <span class="dv">42</span>,  <span class="dv">17</span>,  <span class="dv">46</span>,  <span class="dv">58</span>, <span class="dv">200</span>, <span class="dv">158</span>,  <span class="dv">65</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">96</span>, <span class="dv">178</span>,  <span class="dv">52</span>, <span class="dv">774</span>,  <span class="dv">81</span>, <span class="dv">392</span>,  <span class="dv">74</span>, <span class="dv">162</span>,  <span class="dv">56</span>, <span class="dv">100</span>, <span class="dv">172</span>,  <span class="dv">94</span>,  <span class="dv">79</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="dv">107</span>,  <span class="dv">48</span>, <span class="dv">102</span>, <span class="dv">343</span>, <span class="dv">136</span>,  <span class="dv">70</span>, <span class="dv">156</span>, <span class="dv">133</span>, <span class="dv">228</span>, <span class="dv">357</span>, <span class="dv">110</span>,  <span class="dv">72</span>,  <span class="dv">44</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">43</span>,  <span class="dv">37</span>,  <span class="dv">98</span>, <span class="dv">566</span>, <span class="dv">500</span>, <span class="dv">746</span>, <span class="dv">884</span>, <span class="dv">254</span>, <span class="dv">618</span>, <span class="dv">274</span>, <span class="dv">188</span>, <span class="dv">374</span>,  <span class="dv">47</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">34</span>, <span class="dv">177</span>,  <span class="dv">82</span>,  <span class="dv">78</span>,  <span class="dv">64</span>, <span class="dv">124</span>,  <span class="dv">80</span>, <span class="dv">108</span>, <span class="dv">182</span>, <span class="dv">120</span>,  <span class="dv">68</span>, <span class="dv">854</span>, <span class="dv">106</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>array([<span class="dv">134</span>, <span class="dv">302</span>, <span class="dv">386</span>,  <span class="dv">14</span>,  <span class="dv">54</span>,  <span class="dv">99</span>,   <span class="dv">1</span>,  <span class="dv">16</span>,  <span class="dv">26</span>,  <span class="dv">62</span>,  <span class="dv">50</span>,  <span class="dv">66</span>,  <span class="dv">30</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>         <span class="dv">6</span>,  <span class="dv">36</span>,   <span class="dv">8</span>,  <span class="dv">12</span>,  <span class="dv">24</span>,  <span class="dv">22</span>,   <span class="dv">7</span>,  <span class="dv">20</span>,  <span class="dv">40</span>,  <span class="dv">38</span>,  <span class="dv">13</span>,  <span class="dv">28</span>,  <span class="dv">10</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>        <span class="dv">23</span>,   <span class="dv">2</span>, <span class="dv">112</span>,  <span class="dv">18</span>,   <span class="dv">4</span>,  <span class="dv">27</span>,  <span class="dv">42</span>,  <span class="dv">17</span>,  <span class="dv">46</span>,  <span class="dv">58</span>, <span class="dv">200</span>, <span class="dv">158</span>,  <span class="dv">65</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>        <span class="dv">96</span>, <span class="dv">178</span>,  <span class="dv">52</span>, <span class="dv">774</span>,  <span class="dv">81</span>, <span class="dv">392</span>,  <span class="dv">74</span>, <span class="dv">162</span>,  <span class="dv">56</span>, <span class="dv">100</span>, <span class="dv">172</span>,  <span class="dv">94</span>,  <span class="dv">79</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>       <span class="dv">107</span>,  <span class="dv">48</span>, <span class="dv">102</span>, <span class="dv">343</span>, <span class="dv">136</span>,  <span class="dv">70</span>, <span class="dv">156</span>, <span class="dv">133</span>, <span class="dv">228</span>, <span class="dv">357</span>, <span class="dv">110</span>,  <span class="dv">72</span>,  <span class="dv">44</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>        <span class="dv">43</span>,  <span class="dv">37</span>,  <span class="dv">98</span>, <span class="dv">566</span>, <span class="dv">500</span>, <span class="dv">746</span>, <span class="dv">884</span>, <span class="dv">254</span>, <span class="dv">618</span>, <span class="dv">274</span>, <span class="dv">188</span>, <span class="dv">374</span>,  <span class="dv">47</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>        <span class="dv">34</span>, <span class="dv">177</span>,  <span class="dv">82</span>,  <span class="dv">78</span>,  <span class="dv">64</span>, <span class="dv">124</span>,  <span class="dv">80</span>, <span class="dv">108</span>, <span class="dv">182</span>, <span class="dv">120</span>,  <span class="dv">68</span>, <span class="dv">854</span>, <span class="dv">106</span>])</span></code></pre>
 </div>
 <div id="challenge---statistics" class="callout discussion">
 <div class="callout-square">
@@ -690,32 +690,32 @@ by using the syntax below:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].describe()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].describe()</span></code></pre>
 </div>
 <p>gives <strong>output</strong></p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>count    <span class="fl">149.000000</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mean     <span class="fl">104.382550</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>std      <span class="fl">160.125398</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>        <span class="fl">1.000000</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span><span class="op">%</span>       <span class="fl">16.000000</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dv">50</span><span class="op">%</span>       <span class="fl">52.000000</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span><span class="op">%</span>      <span class="fl">108.000000</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>      <span class="fl">884.000000</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>Name: Page Count, dtype: float64</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>count    <span class="fl">149.000000</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>mean     <span class="fl">104.382550</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>std      <span class="fl">160.125398</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="bu">min</span>        <span class="fl">1.000000</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="dv">25</span><span class="op">%</span>       <span class="fl">16.000000</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="dv">50</span><span class="op">%</span>       <span class="fl">52.000000</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="dv">75</span><span class="op">%</span>      <span class="fl">108.000000</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="bu">max</span>      <span class="fl">884.000000</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>Name: Page Count, dtype: float64</span></code></pre>
 </div>
 <p>We can also extract specific metrics for one or various columns if we
 wish:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].<span class="bu">min</span>()</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].<span class="bu">max</span>()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].mean()</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].std()</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].count()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].<span class="bu">min</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].<span class="bu">max</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].mean()</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].std()</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>eebo_df[<span class="st">'Page Count'</span>].count()</span></code></pre>
 </div>
 <p>But if we want to summarize by one or more variables, for example
 author or publication date, we can use the <strong><code>.groupby</code>
@@ -727,8 +727,8 @@ publication.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by status</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>grouped_data <span class="op">=</span> eebo_df.groupby(<span class="st">'Place'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Group data by status</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>grouped_data <span class="op">=</span> eebo_df.groupby(<span class="st">'Place'</span>)</span></code></pre>
 </div>
 <p>If we execute the <strong>pandas function
 <code>describe</code></strong> on this new object we will obtain
@@ -738,22 +738,22 @@ column of the DataFrame.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics for all numeric columns by place</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>grouped_data.describe()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># provide the mean for each numeric column by place</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>grouped_data.mean()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># summary statistics for all numeric columns by place</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>grouped_data.describe()</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># provide the mean for each numeric column by place</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>grouped_data.mean()</span></code></pre>
 </div>
 <p><code>grouped_data.mean()</code> <strong>OUTPUT:</strong></p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>                                       EEBO     ...      Page Count</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>Place                                           ...                </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Amsterdam                      <span class="fl">9.983700e+07</span>     ...       <span class="fl">54.000000</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>Antverpi                       <span class="fl">9.983759e+07</span>     ...       <span class="fl">34.000000</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>Antwerp                        <span class="fl">9.985185e+07</span>     ...       <span class="fl">40.000000</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>Cambridge                      <span class="fl">2.445926e+07</span>     ...        <span class="fl">1.000000</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>Emden                          <span class="fl">9.984713e+07</span>     ...       <span class="fl">58.000000</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>                                       EEBO     ...      Page Count</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>Place                                           ...                </span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>Amsterdam                      <span class="fl">9.983700e+07</span>     ...       <span class="fl">54.000000</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>Antverpi                       <span class="fl">9.983759e+07</span>     ...       <span class="fl">34.000000</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>Antwerp                        <span class="fl">9.985185e+07</span>     ...       <span class="fl">40.000000</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>Cambridge                      <span class="fl">2.445926e+07</span>     ...        <span class="fl">1.000000</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>Emden                          <span class="fl">9.984713e+07</span>     ...       <span class="fl">58.000000</span></span></code></pre>
 </div>
 <p>The <code>groupby</code> command is powerful in that it allows us to
 quickly generate summary stats.</p>
@@ -784,7 +784,7 @@ your data <code>eebo_df['Page Count'].describe()</code>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Did you get #3 right?</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>A Snippet of the Output from challenge 3 looks
 like:</strong></p>
@@ -810,15 +810,15 @@ this in a few ways, but we’ll use <code>groupby</code> combined with
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count the number of texts by authors</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>author_counts <span class="op">=</span> eebo_df.groupby(<span class="st">'Author'</span>)[<span class="st">'EEBO'</span>].count()</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(author_counts)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># count the number of texts by authors</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>author_counts <span class="op">=</span> eebo_df.groupby(<span class="st">'Author'</span>)[<span class="st">'EEBO'</span>].count()</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="bu">print</span>(author_counts)</span></code></pre>
 </div>
 <p>Or, we can also count just the rows that have the author “A. B.”:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>eebo_df.groupby(<span class="st">'Author'</span>)[<span class="st">'EEBO'</span>].count()[<span class="st">'Aylett, Robert, 1583-1655?'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>eebo_df.groupby(<span class="st">'Author'</span>)[<span class="st">'EEBO'</span>].count()[<span class="st">'Aylett, Robert, 1583-1655?'</span>]</span></code></pre>
 </div>
 <div id="challenge---make-a-list" class="callout discussion">
 <div class="callout-square">
@@ -851,11 +851,11 @@ work in our data according to the mean of the entire DataFrame.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when using a Jupyter notebook, force graphs to appear in line</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Collect data together</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>date_count <span class="op">=</span> eebo_df.groupby(<span class="st">"Date"</span>)[<span class="st">"Status"</span>].count()</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>date_count.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># when using a Jupyter notebook, force graphs to appear in line</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co"># Collect data together</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>date_count <span class="op">=</span> eebo_df.groupby(<span class="st">"Date"</span>)[<span class="st">"Status"</span>].count()</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>date_count.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span></code></pre>
 </div>
 <figure><img src="fig/01_weight_by_date.png" alt="Weight by Species Plot" class="figure mx-auto d-block"></figure><p>What does this graph show? Let’s step through</p>
 <ul><li>
@@ -1012,7 +1012,7 @@ expect it to look?
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/01-starting-with-data.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

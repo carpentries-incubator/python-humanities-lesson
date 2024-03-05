@@ -366,8 +366,8 @@ ipython notebook using a question mark. For example:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    pd.read_csv?</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>    <span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    pd.read_csv?</span></code></pre>
 </div>
 <p>Look through the function arguments to see if there is a default
 value that is different from what your file requires (Hint: the problem
@@ -382,28 +382,28 @@ this:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Author'</span>] <span class="op">=</span> df[<span class="st">'Author'</span>].<span class="bu">str</span>.split(<span class="st">';'</span>) <span class="co">#split a column in the data frame</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({<span class="st">'1stcolumn'</span>:[<span class="dv">100</span>,<span class="dv">200</span>], <span class="st">'2ndcolumn'</span>:[<span class="dv">10</span>,<span class="dv">20</span>]}) <span class="co"># this just creates a DataFrame for the example!</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'With the old column names:</span><span class="ch">\n</span><span class="st">'</span>) <span class="co"># the \n makes a new line, so it's easier to see</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> [<span class="st">'FirstColumn'</span>,<span class="st">'SecondColumn'</span>] <span class="co"># rename the columns!</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n\n</span><span class="st">With the new column names:</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    With the old column names:</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span><span class="er">stcolumn</span>  <span class="dv">2</span><span class="er">ndcolumn</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>        <span class="dv">100</span>         <span class="dv">10</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>        <span class="dv">200</span>         <span class="dv">20</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    With the new column names:</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>       FirstColumn  SecondColumn</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>          <span class="dv">100</span>            <span class="dv">10</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>          <span class="dv">200</span>            <span class="dv">20</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>    df[<span class="st">'Author'</span>] <span class="op">=</span> df[<span class="st">'Author'</span>].<span class="bu">str</span>.split(<span class="st">';'</span>) <span class="co">#split a column in the data frame</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({<span class="st">'1stcolumn'</span>:[<span class="dv">100</span>,<span class="dv">200</span>], <span class="st">'2ndcolumn'</span>:[<span class="dv">10</span>,<span class="dv">20</span>]}) <span class="co"># this just creates a DataFrame for the example!</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'With the old column names:</span><span class="ch">\n</span><span class="st">'</span>) <span class="co"># the \n makes a new line, so it's easier to see</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="bu">print</span>(df)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    df.columns <span class="op">=</span> [<span class="st">'FirstColumn'</span>,<span class="st">'SecondColumn'</span>] <span class="co"># rename the columns!</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n\n</span><span class="st">With the new column names:</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>    <span class="bu">print</span>(df)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>    With the old column names:</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>       <span class="dv">1</span><span class="er">stcolumn</span>  <span class="dv">2</span><span class="er">ndcolumn</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>    <span class="dv">0</span>        <span class="dv">100</span>         <span class="dv">10</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>    <span class="dv">1</span>        <span class="dv">200</span>         <span class="dv">20</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>    With the new column names:</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>       FirstColumn  SecondColumn</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>    <span class="dv">0</span>          <span class="dv">100</span>            <span class="dv">10</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>    <span class="dv">1</span>          <span class="dv">200</span>            <span class="dv">20</span></span></code></pre>
 </div>
 </section><section id="make-a-line-plot-of-your-data"><h2 class="section-heading">3. Make a line plot of your data<a class="anchor" aria-label="anchor" href="#make-a-line-plot-of-your-data"></a>
 </h2>
@@ -445,7 +445,7 @@ multiple plots using the function <code>subplot()</code>.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre>
 </div>
 <p>By default, matplotlib will create the figure in a separate window.
 When using ipython notebooks, we can make figures appear in-line within
@@ -453,7 +453,7 @@ the notebook by writing:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>matplotlib inline</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>    <span class="op">%</span>matplotlib inline</span></code></pre>
 </div>
 <p>We can start by plotting the values of a list of numbers (matplotlib
 can handle many types of numeric data, including numpy arrays and pandas
@@ -461,9 +461,9 @@ DataFrames - we are just using a list as an example!):</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    list_numbers <span class="op">=</span> [<span class="fl">1.5</span>, <span class="dv">4</span>, <span class="fl">2.2</span>, <span class="fl">5.7</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    plt.plot(list_numbers)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>    list_numbers <span class="op">=</span> [<span class="fl">1.5</span>, <span class="dv">4</span>, <span class="fl">2.2</span>, <span class="fl">5.7</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    plt.plot(list_numbers)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>The command <code>plt.show()</code> prompts Python to display the
 figure. Without it, it creates an object in memory but doesn’t produce a
@@ -481,8 +481,8 @@ will follow the list in order:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="fl">6.8</span>, <span class="fl">4.3</span>, <span class="fl">3.2</span>, <span class="fl">8.1</span>], list_numbers)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>    plt.plot([<span class="fl">6.8</span>, <span class="fl">4.3</span>, <span class="fl">3.2</span>, <span class="fl">8.1</span>], list_numbers)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>A third, optional argument in <code>plot()</code> is a string of
 characters that indicates the line type and color for the plot. The
@@ -493,9 +493,9 @@ through the matplotlib gallery for more examples.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="fl">6.8</span>, <span class="fl">4.3</span>, <span class="fl">3.2</span>, <span class="fl">8.1</span>], list_numbers, <span class="st">'ro-.'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    plt.axis([<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">6</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>    plt.plot([<span class="fl">6.8</span>, <span class="fl">4.3</span>, <span class="fl">3.2</span>, <span class="fl">8.1</span>], list_numbers, <span class="st">'ro-.'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    plt.axis([<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">6</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>The command <code>plt.axis()</code> sets the limits of the axes from
 a list of <code>[xmin, xmax, ymin, ymax]</code> values (the square
@@ -510,19 +510,19 @@ values and y values (and optionally line styles):</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create a numpy array between 0 and 10, with values evenly spaced every 0.5</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(<span class="fl">0.</span>, <span class="fl">10.</span>, <span class="fl">0.5</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># red dashes with no symbols, blue squares with a solid line, and green triangles with a dotted line</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'This is the x axis'</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'This is the y axis'</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'This is the figure title'</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    <span class="co"># create a numpy array between 0 and 10, with values evenly spaced every 0.5</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>    t <span class="op">=</span> np.arange(<span class="fl">0.</span>, <span class="fl">10.</span>, <span class="fl">0.5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>    <span class="co"># red dashes with no symbols, blue squares with a solid line, and green triangles with a dotted line</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    plt.xlabel(<span class="st">'This is the x axis'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    plt.ylabel(<span class="st">'This is the y axis'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>    plt.title(<span class="st">'This is the figure title'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>We can include a legend by adding the optional keyword argument
 <code>label=''</code> in <code>plot()</code>. Caution: We cannot add
@@ -534,18 +534,18 @@ lines can also be plotted in the same figure by calling the
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># red dashes with no symbols, blue squares with a solid line, and green triangles with a dotted line</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>, label<span class="op">=</span><span class="st">'cubic'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'This is the x axis'</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'This is the y axis'</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'This is the figure title'</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>    <span class="co"># red dashes with no symbols, blue squares with a solid line, and green triangles with a dotted line</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>, label<span class="op">=</span><span class="st">'cubic'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>    plt.xlabel(<span class="st">'This is the x axis'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>    plt.ylabel(<span class="st">'This is the y axis'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>    plt.title(<span class="st">'This is the figure title'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>The function <code>legend()</code> adds a legend to the figure, and
 the optional keyword arguments change its style. By default [typing just
@@ -559,23 +559,23 @@ parentheses:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this is the first figure</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    plt.figure(<span class="dv">1</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'This is figure 1'</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this is a second figure</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    plt.figure(<span class="dv">2</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'This is figure 2'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>    <span class="co"># this is the first figure</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    plt.figure(<span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    plt.title(<span class="st">'This is figure 1'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    plt.show()</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>    <span class="co"># this is a second figure</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>    plt.figure(<span class="dv">2</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, shadow<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="st">'x-large'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>    plt.title(<span class="st">'This is figure 2'</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 <p>A single figure can also include multiple plots in a grid pattern.
 The <code>subplot()</code> command especifies the number of rows, the
@@ -584,18 +584,18 @@ particular plot is occupying:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    plt.figure(<span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>) <span class="co"># two row, two columns, position 1</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># two row, two columns, position 2</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># two row, two columns, position 3</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>, label<span class="op">=</span><span class="st">'cubic'</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>    plt.figure(<span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>) <span class="co"># two row, two columns, position 1</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    plt.plot(t, t, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># two row, two columns, position 2</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">2</span>, <span class="st">'bs-'</span>, label<span class="op">=</span><span class="st">'square'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>    plt.subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># two row, two columns, position 3</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>    plt.plot(t, t<span class="op">**</span><span class="dv">3</span>, <span class="st">'g^:'</span>, label<span class="op">=</span><span class="st">'cubic'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>    plt.show()</span></code></pre>
 </div>
 </div>
 </section><section id="make-other-types-of-plots"><h2 class="section-heading">4. Make other types of plots:<a class="anchor" aria-label="anchor" href="#make-other-types-of-plots"></a>
@@ -681,7 +681,7 @@ ways matplotlib can handle dates and times for figures.</p>
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/07-putting-it-all-together.html",
   "dateCreated": "2024-02-13",
   "dateModified": "2024-02-13",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
