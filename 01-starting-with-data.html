@@ -443,29 +443,29 @@ Text Creation Partnership. The dataset is stored as a comma separated
 (<code>.csv</code>) file, where each row holds information for a single
 title, and the columns represent diferent aspects (variables) of each
 entry:</p>
-<table class="table"><thead><tr class="header"><th>Column</th>
+<table class="table"><thead><tr><th>Column</th>
 <th>Description</th>
-</tr></thead><tbody><tr class="odd"><td>TCP</td>
+</tr></thead><tbody><tr><td>TCP</td>
 <td>TCP identity</td>
-</tr><tr class="even"><td>EEBO</td>
+</tr><tr><td>EEBO</td>
 <td>EEBO identity</td>
-</tr><tr class="odd"><td>VID</td>
+</tr><tr><td>VID</td>
 <td>VID identity</td>
-</tr><tr class="even"><td>STC</td>
+</tr><tr><td>STC</td>
 <td>STC identity</td>
-</tr><tr class="odd"><td>status</td>
+</tr><tr><td>status</td>
 <td>Whether the book is free or not</td>
-</tr><tr class="even"><td>Author</td>
+</tr><tr><td>Author</td>
 <td>Author(s)</td>
-</tr><tr class="odd"><td>Date</td>
+</tr><tr><td>Date</td>
 <td>Date of publication</td>
-</tr><tr class="even"><td>Title</td>
+</tr><tr><td>Title</td>
 <td>The Book title</td>
-</tr><tr class="odd"><td>Terms</td>
+</tr><tr><td>Terms</td>
 <td>Terms associated with the text</td>
-</tr><tr class="even"><td>Page Count</td>
+</tr><tr><td>Page Count</td>
 <td>Number of pages in the text</td>
-</tr><tr class="odd"><td>Place</td>
+</tr><tr><td>Place</td>
 <td>Location where the work was published</td>
 </tr></tbody></table><p>If we open the <code>eebo.csv</code> data file using a text editor,
 the first few rows of our first file look like this:</p>
@@ -603,7 +603,7 @@ type of the data stored in <code>eebo_df</code> using the
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="bu">type</span>(eebo_df)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="co"># this does the same thing as the above!</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>eebo_df.__class__</span></code></pre>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>eebo_df.<span class="va">__class__</span></span></code></pre>
 </div>
 <p>We can also enter <code>eebo_df.dtypes</code> at our prompt to view
 the data type for each column in our DataFrame. <code>int64</code>
@@ -1068,7 +1068,7 @@ expect it to look?
   "identifier": "https://carpentries-incubator.github.io/python-humanities-lesson/01-starting-with-data.html",
   "dateCreated": "2025-07-01",
   "dateModified": "2024-02-13",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
